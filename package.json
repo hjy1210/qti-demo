@@ -1,0 +1,18 @@
+{
+  "name": "zipqti",
+  "version": "1.0.0",
+  "description": "zip qti package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "archiver": "^2.0.0",
+    "filesaver": "0.0.13",
+    "jszip": "^3.1.3",
+    "node-zip": "^1.1.1",
+    "xmldom": "^0.1.27"
+  }
+}
