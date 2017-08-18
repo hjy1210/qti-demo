@@ -1,5 +1,6 @@
 var fs = require('fs');
 var archiver = require('archiver');
+var AdmZip = require('adm-zip');
 
 var DOMParser = require('xmldom').DOMParser
 var XMLSerializer = require('xmldom').XMLSerializer
@@ -17,7 +18,7 @@ var root = `<?xml version="1.0"?>
 </manifest>`
 
 ///// In TAO, identifier of manifest element can not identical to that of resource element.
-function item2package(xmlfile) {
+function item2packageArchive(xmlfile) {
   //console.log(argv)
   //return
   var identifier = xmlfile.substr(0, xmlfile.lastIndexOf("."))
@@ -111,6 +112,77 @@ function item2package(xmlfile) {
   }
   // finalize the archive (ie we are done appending files but streams have to finish yet)
   archive.finalize();
+}
+function item2package(xmlfile) {
+  //console.log(argv)
+  //return
+  var identifier = xmlfile.substr(0, xmlfile.lastIndexOf("."))
+  var xmlstr = fs.readFileSync(xmlfile, 'utf-8')
+  //console.log(xmlstr)
+  var imsdoc = new DOMParser().parseFromString(root).documentElement
+  imsdoc.setAttribute("identifier", "manifest_" + identifier)
+  var xmldoc = new DOMParser().parseFromString(xmlstr).documentElement
+  var stylesheets = xmldoc.getElementsByTagName('stylesheet')
+  var images = xmldoc.getElementsByTagName('img')
+  var audios = xmldoc.getElementsByTagName('audio')
+  var objects = xmldoc.getElementsByTagName('object')
+  var resource = imsdoc.parentNode.createElement('resource')
+  resource.setAttribute("identifier", identifier)
+  resource.setAttribute("type", "imsqti_item_xmlv2p1")
+  resource.setAttribute("href", xmlfile)
+  imsdoc.getElementsByTagName('resources')[0].appendChild(resource)
+  var file = imsdoc.parentNode.createElement('file')
+  file.setAttribute('href', xmlfile)
+  resource.appendChild(file)
+  for (var i = 0; i < images.length; i++) {
+    file = imsdoc.parentNode.createElement('file')
+    file.setAttribute('href', images[i].getAttribute('src'))
+    resource.appendChild(file)
+  }
+  for (var i = 0; i < audios.length; i++) {
+    file = imsdoc.parentNode.createElement('file')
+    file.setAttribute('href', audios[i].getAttribute('src'))
+    resource.appendChild(file)
+  }
+  for (var i = 0; i < objects.length; i++) {
+    file = imsdoc.parentNode.createElement('file')
+    file.setAttribute('href', objects[i].getAttribute('data'))
+    resource.appendChild(file)
+  }
+  for (var i = 0; i < stylesheets.length; i++) {
+    file = imsdoc.parentNode.createElement('file')
+    file.setAttribute('href', stylesheets[i].getAttribute('href'))
+    resource.appendChild(file)
+  }
+  var imsmanifest=new XMLSerializer().serializeToString(imsdoc)
+  // fs.writeFileSync("imsmanifest.xml",imsmanifest , "utf-8")
+
+  
+  var files = [xmlfile]
+  for (var i=0;i<images.length;i++) {
+    files.push(images[i].getAttribute('src'))
+  }
+  for (var i=0;i<audios.length;i++) {
+    files.push(audios[i].getAttribute('src'))
+  }
+  for (var i=0;i<objects.length;i++) {
+    files.push(objects[i].getAttribute('data'))
+  }
+  for (var i=0;i<stylesheets.length;i++) {
+    files.push(stylesheets[i].getAttribute('href'))
+  }
+
+  console.log(files)
+  var zip= new AdmZip();
+  var buffer=new Buffer(imsmanifest)
+  ///// zip.addFile("imsmanifest.xml",buffer) add imsmanifest.xml as a directory, so 0644 is necessary
+  ///// zip.addLocalFile add file as a diretory, wrong attribute!
+  zip.addFile("imsmanifest.xml",buffer,'',0644)
+  for (var i = 0; i < files.length; i++) {
+    buffer=fs.readFileSync(files[i])
+    zip.addFile(files[i],buffer,'',0644)
+  }
+  zip.writeZip(identifier+".zip")
 }
 
 

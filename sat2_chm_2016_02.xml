@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assessmentItem 
+  xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p1.xsd" 
+  identifier="sat2_chm_2016_02" title="sat2_chm_2016_02" 
+  adaptive="false" timeDependent="false">
+  <responseDeclaration identifier="RESPONSE" cardinality="single" baseType="identifier">
+    <correctResponse>
+      <value>E</value>
+    </correctResponse>
+    <mapping defaultValue="0">
+      <mapEntry mapKey="E" mappedValue="3"/>
+    </mapping>
+  </responseDeclaration>
+  <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <stylesheet href="styles/style.css" type="text/css"/>
+  <itemBody>
+    <p>碘可以形成很多種氧化物，且可具有不同的氧化數。有一種很特殊的碘與氧的化合物稱為碘酸碘。
+      已知其中碘的氧化數分別為 \(\ce{+3}\) 與\(\ce{+5}\)，則下列何者是碘酸碘的化學式？
+    </p>
+    <choiceInteraction responseIdentifier="RESPONSE" shuffle="false" maxChoices="1">
+      <simpleChoice identifier="A">\(\ce{I2O3}\)</simpleChoice>
+      <simpleChoice identifier="B">\(\ce{I3O4}\)</simpleChoice>
+      <simpleChoice identifier="C">\(\ce{I3O6}\)</simpleChoice>
+      <simpleChoice identifier="D">\(\ce{I4O5}\)</simpleChoice>
+      <simpleChoice identifier="E">\(\ce{I4O9}\)</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+  <responseProcessing>
+    <responseCondition>
+      <responseIf>
+        <not>
+          <isNull>
+            <variable identifier="RESPONSE"/>
+          </isNull>
+        </not>
+        <setOutcomeValue identifier="SCORE">
+          <sum>
+            <variable identifier="SCORE"/>
+            <mapResponse identifier="RESPONSE"/>
+          </sum>
+        </setOutcomeValue>
+      </responseIf>
+    </responseCondition>
+  </responseProcessing>
+</assessmentItem>

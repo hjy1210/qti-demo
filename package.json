@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "adm-zip": "^0.4.7",
     "archiver": "^2.0.0",
     "filesaver": "0.0.13",
     "jszip": "^3.1.3",

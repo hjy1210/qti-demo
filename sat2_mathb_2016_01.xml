@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assessmentItem 
+  xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p1.xsd" 
+  identifier="sat2_mathb_2016_01" title="sat2_mathb_2016_01" 
+  adaptive="false" timeDependent="false">
+  <responseDeclaration identifier="RESPONSE" cardinality="single" baseType="identifier">
+    <correctResponse>
+      <value>_4</value>
+    </correctResponse>
+    <mapping defaultValue="0">
+      <mapEntry mapKey="_4" mappedValue="6"/>
+    </mapping>
+  </responseDeclaration>
+  <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <stylesheet href="styles/style.css" type="text/css"/>
+  <itemBody>
+    <choiceInteraction responseIdentifier="RESPONSE" shuffle="false" maxChoices="1">
+      <prompt>下列哪一個選項是方程式 \(7x^5-2x^4+14x^3-4x^2+7x-2=0\) 的根？
+      </prompt>
+      <simpleChoice identifier="_1">\(-1\)</simpleChoice>
+      <simpleChoice identifier="_2">\(\frac{1}{7}\)</simpleChoice>
+      <simpleChoice identifier="_3">\(-\frac{1}{7}\)</simpleChoice>
+      <simpleChoice identifier="_4">\(\frac{2}{7}\)</simpleChoice>
+      <simpleChoice identifier="_5">\(-\frac{2}{7}\)</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+  <responseProcessing>
+    <responseCondition>
+      <responseIf>
+        <not>
+          <isNull>
+            <variable identifier="RESPONSE"/>
+          </isNull>
+        </not>
+        <setOutcomeValue identifier="SCORE">
+          <sum>
+            <variable identifier="SCORE"/>
+            <mapResponse identifier="RESPONSE"/>
+          </sum>
+        </setOutcomeValue>
+      </responseIf>
+    </responseCondition>
+  </responseProcessing>
+</assessmentItem>

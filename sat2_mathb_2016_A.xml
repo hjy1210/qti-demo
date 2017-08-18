@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assessmentItem 
+  xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" 
+  xmlns:m="http://www.w3.org/1998/Math/MathML" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1 http://www.imsglobal.org/xsd/qti/qtiv2p1/imsqti_v2p1.xsd" 
+  identifier="sat2_mathb_2016_A" title="sat2_mathb_2016_A" label="" xml:lang="en-US" adaptive="false" timeDependent="false">
+  <responseDeclaration identifier="RESPONSE" cardinality="single" baseType="identifier">
+    <correctResponse>
+      <value>
+        _7
+      </value>
+    </correctResponse>
+  </responseDeclaration>
+  <responseDeclaration identifier="RESPONSE_1" cardinality="single" baseType="identifier">
+    <correctResponse>
+      <value>
+        _2
+      </value>
+    </correctResponse>
+  </responseDeclaration>
+  <responseDeclaration identifier="RESPONSE_2" cardinality="single" baseType="identifier">
+    <correctResponse>
+      <value>
+        _0
+      </value>
+    </correctResponse>
+  </responseDeclaration>
+  <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float"/>
+  <itemBody>
+    <p>不透明袋中有三顆白球及三顆紅球。從袋中每次取出一球依序置於桌面，每次每顆球被取出的機率相同。
+      全部取出後，前三顆球中有相鄰兩球同為白球的機率為
+      \(\frac{\ceec{1}}{\ceec{2}\ceec{3}}\)。（請化為最簡分數）                                           
+      <inlineChoiceInteraction responseIdentifier="RESPONSE" shuffle="false" required="false">
+        <inlineChoice identifier="_1" fixed="false" showHide="show">1</inlineChoice>
+        <inlineChoice identifier="_2" fixed="false" showHide="show">2</inlineChoice>
+        <inlineChoice identifier="_3" fixed="false" showHide="show">3</inlineChoice>
+        <inlineChoice identifier="_4" fixed="false" showHide="show">4</inlineChoice>
+        <inlineChoice identifier="_5" fixed="false" showHide="show">5</inlineChoice>
+        <inlineChoice identifier="_6" fixed="false" showHide="show">6</inlineChoice>
+        <inlineChoice identifier="_7" fixed="false" showHide="show">7</inlineChoice>
+        <inlineChoice identifier="_8" fixed="false" showHide="show">8</inlineChoice>
+        <inlineChoice identifier="_9" fixed="false" showHide="show">9</inlineChoice>
+        <inlineChoice identifier="_0" fixed="false" showHide="show">0</inlineChoice>
+        <inlineChoice identifier="_-" fixed="false" showHide="show">-</inlineChoice>
+        <inlineChoice identifier="_a" fixed="false" showHide="show">#</inlineChoice>
+      </inlineChoiceInteraction>
+      <inlineChoiceInteraction responseIdentifier="RESPONSE_1" shuffle="false" required="false">
+        <inlineChoice identifier="_1" fixed="false" showHide="show">1</inlineChoice>
+        <inlineChoice identifier="_2" fixed="false" showHide="show">2</inlineChoice>
+        <inlineChoice identifier="_3" fixed="false" showHide="show">3</inlineChoice>
+        <inlineChoice identifier="_4" fixed="false" showHide="show">4</inlineChoice>
+        <inlineChoice identifier="_5" fixed="false" showHide="show">5</inlineChoice>
+        <inlineChoice identifier="_6" fixed="false" showHide="show">6</inlineChoice>
+        <inlineChoice identifier="_7" fixed="false" showHide="show">7</inlineChoice>
+        <inlineChoice identifier="_8" fixed="false" showHide="show">8</inlineChoice>
+        <inlineChoice identifier="_9" fixed="false" showHide="show">9</inlineChoice>
+        <inlineChoice identifier="_0" fixed="false" showHide="show">0</inlineChoice>
+        <inlineChoice identifier="_-" fixed="false" showHide="show">-</inlineChoice>
+        <inlineChoice identifier="_a" fixed="false" showHide="show">#</inlineChoice>
+      </inlineChoiceInteraction>
+      <inlineChoiceInteraction responseIdentifier="RESPONSE_2" shuffle="false" required="false">
+        <inlineChoice identifier="_1" fixed="false" showHide="show">1</inlineChoice>
+        <inlineChoice identifier="_2" fixed="false" showHide="show">2</inlineChoice>
+        <inlineChoice identifier="_3" fixed="false" showHide="show">3</inlineChoice>
+        <inlineChoice identifier="_4" fixed="false" showHide="show">4</inlineChoice>
+        <inlineChoice identifier="_5" fixed="false" showHide="show">5</inlineChoice>
+        <inlineChoice identifier="_6" fixed="false" showHide="show">6</inlineChoice>
+        <inlineChoice identifier="_7" fixed="false" showHide="show">7</inlineChoice>
+        <inlineChoice identifier="_8" fixed="false" showHide="show">8</inlineChoice>
+        <inlineChoice identifier="_9" fixed="false" showHide="show">9</inlineChoice>
+        <inlineChoice identifier="_0" fixed="false" showHide="show">0</inlineChoice>
+        <inlineChoice identifier="_-" fixed="false" showHide="show">-</inlineChoice>
+        <inlineChoice identifier="_a" fixed="false" showHide="show">#</inlineChoice>
+      </inlineChoiceInteraction>
+    </p>
+  </itemBody>
+  <responseProcessing>
+    <responseCondition>
+      <responseIf>
+        <and>
+          <match>
+            <variable identifier="RESPONSE"/>
+            <correct identifier="RESPONSE"/>
+          </match>
+          <match>
+            <variable identifier="RESPONSE_1"/>
+            <correct identifier="RESPONSE_1"/>
+          </match>
+          <match>
+            <variable identifier="RESPONSE_2"/>
+            <correct identifier="RESPONSE_2"/>
+          </match>
+        </and>
+        <setOutcomeValue identifier="SCORE">
+          <baseValue baseType="float">6.0</baseValue>
+        </setOutcomeValue>
+      </responseIf>
+      <responseElse>
+        <setOutcomeValue identifier="SCORE">
+          <baseValue baseType="float">0.0</baseValue>
+        </setOutcomeValue>
+      </responseElse>
+    </responseCondition>
+  </responseProcessing>
+</assessmentItem>

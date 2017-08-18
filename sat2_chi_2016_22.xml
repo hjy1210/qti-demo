@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assessmentItem 
+  xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p1.xsd" 
+  identifier="sat2_chi_2016_22" title="sat2_chi_2016_22" adaptive="false" timeDependent="false">
+  <responseDeclaration identifier="RESPONSE" cardinality="multiple" baseType="identifier">
+    <correctResponse>
+      <value>B</value>
+      <value>D</value>
+      <value>E</value>
+    </correctResponse>
+    <mapping >
+      <mapEntry mapKey="A" mappedValue="-1"/>
+      <mapEntry mapKey="B" mappedValue="1"/>
+      <mapEntry mapKey="C" mappedValue="-1"/>
+      <mapEntry mapKey="D" mappedValue="1"/>
+      <mapEntry mapKey="E" mappedValue="1"/>
+    </mapping>
+  </responseDeclaration>
+  <outcomeDeclaration identifier="CHOICECOUNT" cardinality="single" baseType="float">
+    <defaultValue>
+      <value>5.0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <outcomeDeclaration identifier="CORRECTCOUNT" cardinality="single" baseType="float">
+    <defaultValue>
+      <value>3.0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <outcomeDeclaration identifier="MAXSCORE" cardinality="single" baseType="float">
+    <defaultValue>
+      <value>3.0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <itemBody>
+    <p>曹丕〈典論論文〉中「常人貴遠賤近」的「貴」，是「 以 … … 為貴」的意思 。</p>
+    <choiceInteraction responseIdentifier="RESPONSE" shuffle="false" maxChoices="5">
+      <prompt>下列文句「」內的字，與「貴」字用法相同的選項是 ：</prompt>
+      <simpleChoice identifier="A">君子之學也以「美」其身</simpleChoice>
+      <simpleChoice identifier="B">孟嘗君「怪」之，曰：此誰也</simpleChoice>
+      <simpleChoice identifier="C">諸侯恐懼，會盟而謀「弱」秦</simpleChoice>
+      <simpleChoice identifier="D">「甘」其食，美其服，安其居，樂其俗</simpleChoice>
+      <simpleChoice identifier="E">人知從太守遊而樂，而不知太守之「樂」其樂也</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+  <responseProcessing>
+    <responseCondition>
+      <responseIf>
+        <isNull>
+          <variable identifier="RESPONSE"/>
+        </isNull>
+        <setOutcomeValue identifier="SCORE">
+          <baseValue baseType="float">0.0</baseValue>
+        </setOutcomeValue>
+      </responseIf>
+      <responseElse>
+        <setOutcomeValue identifier="SCORE">
+          <max>
+            <baseValue baseType="float">0.0</baseValue>
+            <product>
+              <variable identifier="MAXSCORE"/>
+              <subtract>
+                <baseValue baseType="float">1.0</baseValue>
+                <divide>
+                  <product>
+                    <baseValue baseType="float">2.0</baseValue>
+                    <subtract>
+                      <variable identifier="CORRECTCOUNT" />
+                      <mapResponse identifier="RESPONSE"/>
+                    </subtract>
+                  </product>
+                  <variable identifier="CHOICECOUNT" />
+                </divide>
+              </subtract>
+            </product>
+          </max>
+        </setOutcomeValue>
+      </responseElse>
+    </responseCondition>
+  </responseProcessing>
+</assessmentItem>
