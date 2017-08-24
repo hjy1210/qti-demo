@@ -1,0 +1,49 @@
+    ul {
+      list-style-type: none;
+      overflow: hidden;
+      margin: 0px;
+      padding: 0px;
+      cursor: pointer;
+    }
+
+    li {
+      float: left;
+      padding: 0px 0px 0px 0px;
+      margin: 0px 10px 5px 0px;
+      border: 1px solid #ddd
+    }
+
+    li.deactive {
+      color: #aaa
+    }
+
+    li.active {
+      border: 1px solid #000
+    }
+
+    span {
+      display: inline-block;
+      min-width: 4ex;
+      min-height: 2ex;
+    }
+
+    span.canfill {
+      border: dashed 1px black;
+      cursor: pointer;
+    }
+
+    span.filled {
+      cursor: pointer;
+    }
+
+    span.active {
+      border: dashed 1px black
+    }
+
+    span.gap {
+      background-color: #ddd;
+    }
+
+    .gaptext {
+      border: 1px solid #ddd;
+    }
