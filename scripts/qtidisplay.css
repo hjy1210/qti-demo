@@ -6,7 +6,7 @@
       cursor: pointer;
     }
 
-    li {
+    li.gaptext {
       float: left;
       padding: 0px 0px 0px 0px;
       margin: 0px 10px 5px 0px;
@@ -21,7 +21,7 @@
       border: 1px solid #000
     }
 
-    span {
+    span.gap {
       display: inline-block;
       min-width: 4ex;
       min-height: 2ex;
