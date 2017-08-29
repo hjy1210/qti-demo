@@ -8,10 +8,15 @@ var root = '<?xml version="1.0" encoding="UTF-8" ?>\n<assessmentItem></assessmen
 
 ///// In TAO, identifier of manifest element can not identical to that of resource element.
 function raw2item(rawxml) {
-  function manipulateChoiceInteraction() {
+  function manipulateChoiceInteraction(node) {
+    var cI=node
     var cardinality = cI.getAttribute("cardinality")
     var correct = cI.getAttribute("correct")
     var quota = parseFloat(cI.getAttribute("quota"))
+    cI.removeAttribute("cardinality")
+    cI.removeAttribute("correct")
+    cI.removeAttribute("quota")
+
     var responseDeclaration = imsroot.createElement('responseDeclaration')
     var respId = 'resp_' + identifier + "_" + respNdx.toString()
     responseDeclaration.setAttribute('identifier', respId)
@@ -46,12 +51,13 @@ function raw2item(rawxml) {
     }
     //console.log(new XMLSerializer().serializeToString(responseDeclaration))
     imsdoc.insertBefore(responseDeclaration, itemBody)
-    var choiceInteraction = imsroot.createElement('choiceInteraction')
+    var choiceInteraction = cI /////imsroot.createElement('choiceInteraction')
     choiceInteraction.setAttribute('responseIdentifier', respId)
     choiceInteraction.setAttribute('shuffle', "false")
     choiceInteraction.setAttribute('maxChoices', cardinality === "single" ? "1" : "0")
-    itemBody.appendChild(choiceInteraction)
-    moveChildren(cI, choiceInteraction)
+    
+    //itemBody.appendChild(choiceInteraction)
+    //moveChildren(cI, choiceInteraction)
     var simpleChoices = choiceInteraction.getElementsByTagName('simpleChoice')
     //var simpleChoices = choiceInteraction.getElementsByTagName('simpleChoice')
     var cursymbol = symbol.indexOf(correct[0]) >= 0 ? symbol : msymbol
@@ -122,33 +128,33 @@ function raw2item(rawxml) {
       //console.log(new XMLSerializer().serializeToString(responseCondition) )
     }
   }
-  function manipulateInlineChoiceInteraction() {
+  function manipulateInlineChoiceInteraction(node) {
+    var iCI=node
     var correct = iCI.getAttribute("correct")
     var quota = parseFloat(iCI.getAttribute("quota"))
+    iCI.removeAttribute("correct")
+    iCI.removeAttribute("quota")
     var respId = 'resp_' + identifier + "_" + respNdx
-    console.log(correct,quota,respId)
+    //console.log(correct,quota,respId)
     var responseDeclarationStr=
       `<responseDeclaration identifier="${respId}" cardinality="single" baseType="identifier">
         <correctResponse>
-          <value>${correct}</value>
+          <value>${respId+"_"+correct}</value>
         </correctResponse>
       </responseDeclaration>`
     var responseDeclaration = new DOMParser().parseFromString(responseDeclarationStr).documentElement
-    var outcomeDeclarationStr=`<outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float"/>`
-    var outcomeDeclaration=new DOMParser().parseFromString(outcomeDeclarationStr).documentElement
     imsdoc.insertBefore(responseDeclaration, itemBody)
-    imsdoc.insertBefore(outcomeDeclaration, itemBody)
-    var inlineChoiceInteraction = imsroot.createElement('inlineChoiceInteraction')
+    var inlineChoiceInteraction = iCI /////imsroot.createElement('inlineChoiceInteraction')
     inlineChoiceInteraction.setAttribute('responseIdentifier', respId)
     inlineChoiceInteraction.setAttribute('shuffle', "false")
-    itemBody.appendChild(inlineChoiceInteraction)
-    moveChildren(iCI, inlineChoiceInteraction)
-    var inlineChoices = inlineChoiceInteraction.getElementsByTagName('inlineeChoice')
+    /////itemBody.appendChild(inlineChoiceInteraction)
+    /////moveChildren(iCI, inlineChoiceInteraction)
+    var inlineChoices = inlineChoiceInteraction.getElementsByTagName('inlineChoice')
     var cursymbol = symbol.indexOf(correct[0]) >= 0 ? symbol : msymbol
     for (var i = 0; i < inlineChoices.length; i++) {
       inlineChoices[i].setAttribute('identifier', respId + "_" + cursymbol[i])
     }
-    var rspcondstr=`<responseIf>
+    var rspcondstr=`<responseCondition><responseIf>
       <match>
         <variable identifier="${respId}"/>
         <correct identifier="${respId}"/>
@@ -159,9 +165,103 @@ function raw2item(rawxml) {
           <baseValue baseType="float">${quota}</baseValue>
         </sum>
       </setOutcomeValue>
-    </responseIf>`
+    </responseIf></responseCondition>`
     var responseCondition = new DOMParser().parseFromString(rspcondstr).documentElement
     responseProcessing.appendChild(responseCondition)
+  }
+  function manipulateGapMatchInteraction(node) {
+    var gMI=node
+    var respId = 'resp_' + identifier + "_" + respNdx
+    var gapMatchInteraction = gMI /////imsroot.createElement('inlineChoiceInteraction')
+    gapMatchInteraction.setAttribute('responseIdentifier', respId)
+    gapMatchInteraction.setAttribute('shuffle', "false")
+    //console.log(correct,quota,respId)
+    
+    var responseDeclarationStr=`<responseDeclaration identifier="${respId}" cardinality="multiple" baseType="directedPair"></responseDeclaration>`
+    var responseDeclaration = new DOMParser().parseFromString(responseDeclarationStr).documentElement
+  
+    
+    imsdoc.insertBefore(responseDeclaration, itemBody)
+    var correctResponse=imsroot.createElement('correctResponse')
+    responseDeclaration.appendChild(correctResponse)
+    var mapping=imsroot.createElement('mapping')
+    mapping.setAttribute("defaultValue","0")
+    responseDeclaration.appendChild(mapping)
+
+    /////itemBody.appendChild(inlineChoiceInteraction)
+    /////moveChildren(iCI, inlineChoiceInteraction)
+    var gaps=gapMatchInteraction.getElementsByTagName('gap')
+    var gapTexts = gapMatchInteraction.getElementsByTagName('gapText')
+    var cursymbol = symbol.indexOf(gaps[0].getAttribute('correct')[0]) >= 0 ? symbol : msymbol
+    for (var i = 0; i < gapTexts.length; i++) {
+      gapTexts[i].setAttribute('identifier', respId + "_" + cursymbol[i])
+      gapTexts[i].setAttribute('matchMax', "1")
+      gapTexts[i].setAttribute('matchMin', "0")
+    }
+
+   for (var i = 0; i < gaps.length; i++) {
+      gaps[i].setAttribute('identifier', respId + "_gap" +(i+1))
+      gaps[i].setAttribute('required', "false")
+      var correctvalue=respId+"_"+gaps[i].getAttribute("correct")
+      var correctvalue=correctvalue+" "+ gaps[i].getAttribute('identifier')
+      var value=imsroot.createElement('value')
+      value.appendChild(imsroot.createTextNode(correctvalue))
+      correctResponse.appendChild(value)
+      var mapEntry=imsroot.createElement('mapEntry')
+      mapping.appendChild(mapEntry)
+      mapEntry.setAttribute("mapKey",correctvalue)
+      mapEntry.setAttribute("mappedValue",gaps[i].getAttribute("quota"))
+      gaps[i].removeAttribute("quota")
+      gaps[i].removeAttribute("correct")
+    }
+
+    
+
+    var rspcondstr=`<responseCondition>
+		<responseIf>
+			<isNull>
+				<variable identifier="${respId}"/>
+			</isNull>
+      <setOutcomeValue identifier="SCORE">
+       <sum>
+        <variable identifier="SCORE">
+        <baseValue baseType="float">0.0</baseValue>
+       </sum>
+			</setOutcomeValue>
+		</responseIf>
+		<responseElse>
+			<setOutcomeValue identifier="SCORE">
+      <sum>
+        <variable identifier="SCORE">
+        <mapResponse identifier="${respId}"/>
+      </sum>
+			</setOutcomeValue>
+		</responseElse>
+	</responseCondition>`
+    var responseCondition = new DOMParser().parseFromString(rspcondstr).documentElement
+    responseProcessing.appendChild(responseCondition)
+  }
+
+  function modifyNode(node){
+    for (var i = 0; i < node.childNodes.length; i++) {
+      //console.log(node.nodeType,node.nodeName)
+      if (node.childNodes[i].nodeName === "choiceInteraction") {
+        //console.log("correct", iB.childNodes[i].getAttribute("correct"))
+        //var cI = node.childNodes[i]
+        respNdx++
+        manipulateChoiceInteraction(node.childNodes[i])
+      } else if (node.childNodes[i].nodeName === "inlineChoiceInteraction") {
+        //var iCI = node.childNodes[i]
+        respNdx++
+        manipulateInlineChoiceInteraction(node.childNodes[i])
+      } else if (node.childNodes[i].nodeName === "gapMatchInteraction") {
+        //var iCI = node.childNodes[i]
+        respNdx++
+        manipulateGapMatchInteraction(node.childNodes[i])
+      } else if (node.childNodes[i].nodeName !== "#text") {
+        modifyNode(node.childNodes[i])
+      }
+    }
   }
 
   function moveChildren(from, to) {
@@ -196,7 +296,9 @@ function raw2item(rawxml) {
   var responseProcessing = imsroot.createElement("responseProcessing")
   
   var respNdx = 0
-  for (var i = 0; i < iB.childNodes.length; i++) {
+  modifyNode(iB)
+  moveChildren(iB,itemBody)
+  /*for (var i = 0; i < iB.childNodes.length; i++) {
     //console.log(node.nodeType,node.nodeName)
     if (iB.childNodes[i].nodeName === "choiceInteraction") {
       //console.log("correct", iB.childNodes[i].getAttribute("correct"))
@@ -210,7 +312,7 @@ function raw2item(rawxml) {
     } else {
       itemBody.appendChild(iB.childNodes[i].cloneNode(true))
     }
-  }
+  }*/
   
   var outcomeDeclaration = imsroot.createElement('outcomeDeclaration')
   imsdoc.insertBefore(outcomeDeclaration, itemBody)
