@@ -18,7 +18,7 @@ var root = `<?xml version="1.0"?>
 </manifest>`
 
 ///// In TAO, identifier of manifest element can not identical to that of resource element.
-function item2packageArchive(xmlfile) {
+module.exports=function item2package(xmlfile) {
   //console.log(argv)
   //return
   var identifier = xmlfile.substr(0, xmlfile.lastIndexOf("."))
@@ -113,7 +113,7 @@ function item2packageArchive(xmlfile) {
   // finalize the archive (ie we are done appending files but streams have to finish yet)
   archive.finalize();
 }
-module.exports=function item2package(xmlfile) {
+function item2packageAdmZip(xmlfile) {
   //console.log(argv)
   //return
   var identifier = xmlfile.substr(0, xmlfile.lastIndexOf("."))
@@ -182,6 +182,7 @@ module.exports=function item2package(xmlfile) {
     buffer=fs.readFileSync(files[i])
     zip.addFile(files[i],buffer,'',0644)
   }
+  //zip.toBuffer(); //need for big entry
   zip.writeZip(identifier+".zip")
 }
 

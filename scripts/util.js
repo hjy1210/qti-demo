@@ -1,6 +1,5 @@
 var raw2item=require('./raw2item')
 var item2package=require('./item2package')
-var package2html=require('./package2html')
 var fs=require('fs')
 
 var rawxml = fs.readFileSync(process.argv[2], "utf-8")

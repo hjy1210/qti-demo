@@ -5,16 +5,17 @@ var DOMParser = require('xmldom').DOMParser
 var XMLSerializer = require('xmldom').XMLSerializer
 
 
-module.exports=function package2html(zipfile) {
+function package2html(zipfile) {
   function filterEntriesWithName(name) {
     return zipEntries.filter(entry => entry.entryName === name)
   }
   function replaceChoiceInteractions() {
     var choiceInteractions = itemBody.getElementsByTagName("choiceInteraction")
-    for (var i = 0; i < choiceInteractions.length; i++) {
+    for (var i = choiceInteractions.length-1; i >=0; i--) {
       var responseIdentifier = choiceInteractions[i].getAttribute('responseIdentifier')
-      var responseDeclaration = itemDoc.getElementsByTagName('responseDeclaration')[0]
-      var isMultiple = responseDeclaration.getAttribute('cardinality') == "multiple"
+      var responseDeclaration = itemDoc.getElementsByTagName('responseDeclaration')[i]
+      //var isMultiple = responseDeclaration.getAttribute('cardinality') == "multiple"
+      var isMultiple = choiceInteractions[i].getAttribute('maxChoices') == "0"
       var prompt = choiceInteractions[i].getElementsByTagName("prompt")[0]
       var table = itemDoc.parentNode.createElement('table')
       var tr, td
@@ -270,4 +271,4 @@ function moveChildren(from, to) {
   }
 }
 
-//package2html(process.argv[2])
+package2html(process.argv[2])
