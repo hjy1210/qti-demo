@@ -7,9 +7,9 @@ var XMLSerializer = require('xmldom').XMLSerializer
 var root = '<?xml version="1.0" encoding="UTF-8" ?>\n<assessmentItem></assessmentItem>'
 
 ///// In TAO, identifier of manifest element can not identical to that of resource element.
-function raw2item(rawxml) {
+module.exports=function raw2item(rawxml) {
   function manipulateChoiceInteraction(node) {
-    var cI=node
+    var cI = node
     var cardinality = cI.getAttribute("cardinality")
     var correct = cI.getAttribute("correct")
     var quota = parseFloat(cI.getAttribute("quota"))
@@ -55,7 +55,7 @@ function raw2item(rawxml) {
     choiceInteraction.setAttribute('responseIdentifier', respId)
     choiceInteraction.setAttribute('shuffle', "false")
     choiceInteraction.setAttribute('maxChoices', cardinality === "single" ? "1" : "0")
-    
+
     //itemBody.appendChild(choiceInteraction)
     //moveChildren(cI, choiceInteraction)
     var simpleChoices = choiceInteraction.getElementsByTagName('simpleChoice')
@@ -129,17 +129,17 @@ function raw2item(rawxml) {
     }
   }
   function manipulateInlineChoiceInteraction(node) {
-    var iCI=node
+    var iCI = node
     var correct = iCI.getAttribute("correct")
     var quota = parseFloat(iCI.getAttribute("quota"))
     iCI.removeAttribute("correct")
     iCI.removeAttribute("quota")
     var respId = 'resp_' + identifier + "_" + respNdx
     //console.log(correct,quota,respId)
-    var responseDeclarationStr=
+    var responseDeclarationStr =
       `<responseDeclaration identifier="${respId}" cardinality="single" baseType="identifier">
         <correctResponse>
-          <value>${respId+"_"+correct}</value>
+          <value>${respId + "_" + correct}</value>
         </correctResponse>
       </responseDeclaration>`
     var responseDeclaration = new DOMParser().parseFromString(responseDeclarationStr).documentElement
@@ -154,7 +154,7 @@ function raw2item(rawxml) {
     for (var i = 0; i < inlineChoices.length; i++) {
       inlineChoices[i].setAttribute('identifier', respId + "_" + cursymbol[i])
     }
-    var rspcondstr=`<responseCondition><responseIf>
+    var rspcondstr = `<responseCondition><responseIf>
       <match>
         <variable identifier="${respId}"/>
         <correct identifier="${respId}"/>
@@ -169,28 +169,80 @@ function raw2item(rawxml) {
     var responseCondition = new DOMParser().parseFromString(rspcondstr).documentElement
     responseProcessing.appendChild(responseCondition)
   }
+  function manipulateGroupInlineChoiceInteraction(node) {
+    var div = imsroot.createElement('div')
+    var nsymbol="1234567890MN"
+    ///// msymbol contains - and # which can not be in identidier, use M(minus) instead of -, N(number) instead of #
+    var gICI = node
+    var correct = gICI.getAttribute("correct")
+    var quota = parseFloat(gICI.getAttribute("quota"))
+    gICI.removeAttribute("correct")
+    gICI.removeAttribute("quota")
+    var respId // = 'resp_' + identifier + "_" + respNdx
+    var groupSize = correct.length
+    var rspcondstr = `<responseCondition><responseIf>
+    <and>
+    </and>
+     <setOutcomeValue identifier="SCORE">
+       <sum>
+         <variable identifier="SCORE" />
+         <baseValue baseType="float">${quota}</baseValue>
+       </sum>
+     </setOutcomeValue>
+   </responseIf></responseCondition>`
+    var responseCondition = new DOMParser().parseFromString(rspcondstr).documentElement
+    responseProcessing.appendChild(responseCondition)
+    var and = responseCondition.getElementsByTagName('and')[0]
+    for (var k = 0; k < groupSize; k++) {
+      respId = 'resp_' + identifier + "_" + (respNdx + k)
+      // respId = 'resp_' + (respNdx + k)
+      var responseDeclarationStr =
+        `<responseDeclaration identifier="${respId}" cardinality="single" baseType="identifier">
+        <correctResponse>
+          <value>${respId + "_" + nsymbol[msymbol.indexOf(correct[k])]}</value>
+        </correctResponse>
+      </responseDeclaration>`
+      var responseDeclaration = new DOMParser().parseFromString(responseDeclarationStr).documentElement
+      imsdoc.insertBefore(responseDeclaration, itemBody)
+      var inlineChoiceInteraction = imsroot.createElement('inlineChoiceInteraction')
+      inlineChoiceInteraction.setAttribute('responseIdentifier', respId)
+      inlineChoiceInteraction.setAttribute('shuffle', "false")
+      //var inlineChoices = inlineChoiceInteraction.getElementsByTagName('inlineChoice')
+      //var cursymbol = symbol.indexOf(correct[0]) >= 0 ? symbol : msymbol
+      for (var i = 0; i < msymbol.length; i++) {
+        var inlineChoiceStr=`<inlineChoice identifier="${respId + '_' + nsymbol[i]}">${msymbol[i]}</inlineChoice>`
+        var inlineChoice = new DOMParser().parseFromString(inlineChoiceStr).documentElement
+        inlineChoiceInteraction.appendChild(inlineChoice)
+      }
+      div.appendChild(inlineChoiceInteraction)
+      var matchStr = `<match><variable identifier="${respId}"/><correct identifier="${respId}"/></match>`
+      var match=new DOMParser().parseFromString(matchStr).documentElement
+      and.appendChild(match)
+    }
+    imsdoc.replaceChild(div, node)
+  }
   function manipulateGapMatchInteraction(node) {
-    var gMI=node
+    var gMI = node
     var respId = 'resp_' + identifier + "_" + respNdx
     var gapMatchInteraction = gMI /////imsroot.createElement('inlineChoiceInteraction')
     gapMatchInteraction.setAttribute('responseIdentifier', respId)
     gapMatchInteraction.setAttribute('shuffle', "false")
     //console.log(correct,quota,respId)
-    
-    var responseDeclarationStr=`<responseDeclaration identifier="${respId}" cardinality="multiple" baseType="directedPair"></responseDeclaration>`
+
+    var responseDeclarationStr = `<responseDeclaration identifier="${respId}" cardinality="multiple" baseType="directedPair"></responseDeclaration>`
     var responseDeclaration = new DOMParser().parseFromString(responseDeclarationStr).documentElement
-  
-    
+
+
     imsdoc.insertBefore(responseDeclaration, itemBody)
-    var correctResponse=imsroot.createElement('correctResponse')
+    var correctResponse = imsroot.createElement('correctResponse')
     responseDeclaration.appendChild(correctResponse)
-    var mapping=imsroot.createElement('mapping')
-    mapping.setAttribute("defaultValue","0")
+    var mapping = imsroot.createElement('mapping')
+    mapping.setAttribute("defaultValue", "0")
     responseDeclaration.appendChild(mapping)
 
     /////itemBody.appendChild(inlineChoiceInteraction)
     /////moveChildren(iCI, inlineChoiceInteraction)
-    var gaps=gapMatchInteraction.getElementsByTagName('gap')
+    var gaps = gapMatchInteraction.getElementsByTagName('gap')
     var gapTexts = gapMatchInteraction.getElementsByTagName('gapText')
     var cursymbol = symbol.indexOf(gaps[0].getAttribute('correct')[0]) >= 0 ? symbol : msymbol
     for (var i = 0; i < gapTexts.length; i++) {
@@ -199,32 +251,32 @@ function raw2item(rawxml) {
       gapTexts[i].setAttribute('matchMin', "0")
     }
 
-   for (var i = 0; i < gaps.length; i++) {
-      gaps[i].setAttribute('identifier', respId + "_gap" +(i+1))
+    for (var i = 0; i < gaps.length; i++) {
+      gaps[i].setAttribute('identifier', respId + "_gap" + (i + 1))
       gaps[i].setAttribute('required', "false")
-      var correctvalue=respId+"_"+gaps[i].getAttribute("correct")
-      var correctvalue=correctvalue+" "+ gaps[i].getAttribute('identifier')
-      var value=imsroot.createElement('value')
+      var correctvalue = respId + "_" + gaps[i].getAttribute("correct")
+      var correctvalue = correctvalue + " " + gaps[i].getAttribute('identifier')
+      var value = imsroot.createElement('value')
       value.appendChild(imsroot.createTextNode(correctvalue))
       correctResponse.appendChild(value)
-      var mapEntry=imsroot.createElement('mapEntry')
+      var mapEntry = imsroot.createElement('mapEntry')
       mapping.appendChild(mapEntry)
-      mapEntry.setAttribute("mapKey",correctvalue)
-      mapEntry.setAttribute("mappedValue",gaps[i].getAttribute("quota"))
+      mapEntry.setAttribute("mapKey", correctvalue)
+      mapEntry.setAttribute("mappedValue", gaps[i].getAttribute("quota"))
       gaps[i].removeAttribute("quota")
       gaps[i].removeAttribute("correct")
     }
 
-    
 
-    var rspcondstr=`<responseCondition>
+
+    var rspcondstr = `<responseCondition>
 		<responseIf>
 			<isNull>
 				<variable identifier="${respId}"/>
 			</isNull>
       <setOutcomeValue identifier="SCORE">
        <sum>
-        <variable identifier="SCORE">
+        <variable identifier="SCORE"/>
         <baseValue baseType="float">0.0</baseValue>
        </sum>
 			</setOutcomeValue>
@@ -232,17 +284,17 @@ function raw2item(rawxml) {
 		<responseElse>
 			<setOutcomeValue identifier="SCORE">
       <sum>
-        <variable identifier="SCORE">
+        <variable identifier="SCORE"/>
         <mapResponse identifier="${respId}"/>
       </sum>
 			</setOutcomeValue>
 		</responseElse>
-	</responseCondition>`
+	  </responseCondition>`
     var responseCondition = new DOMParser().parseFromString(rspcondstr).documentElement
     responseProcessing.appendChild(responseCondition)
   }
 
-  function modifyNode(node){
+  function modifyNode(node) {
     for (var i = 0; i < node.childNodes.length; i++) {
       //console.log(node.nodeType,node.nodeName)
       if (node.childNodes[i].nodeName === "choiceInteraction") {
@@ -254,6 +306,11 @@ function raw2item(rawxml) {
         //var iCI = node.childNodes[i]
         respNdx++
         manipulateInlineChoiceInteraction(node.childNodes[i])
+      } else if (node.childNodes[i].nodeName === "groupInlineChoiceInteraction") {
+        //var iCI = node.childNodes[i]
+        respNdx++
+        manipulateGroupInlineChoiceInteraction(node.childNodes[i])
+        respNdx = respNdx + (node.childNodes[i].getAttribute("correct").length - 1)
       } else if (node.childNodes[i].nodeName === "gapMatchInteraction") {
         //var iCI = node.childNodes[i]
         respNdx++
@@ -294,26 +351,11 @@ function raw2item(rawxml) {
   var itemBody = imsroot.createElement("itemBody")
   imsdoc.appendChild(itemBody)
   var responseProcessing = imsroot.createElement("responseProcessing")
-  
+
   var respNdx = 0
   modifyNode(iB)
-  moveChildren(iB,itemBody)
-  /*for (var i = 0; i < iB.childNodes.length; i++) {
-    //console.log(node.nodeType,node.nodeName)
-    if (iB.childNodes[i].nodeName === "choiceInteraction") {
-      //console.log("correct", iB.childNodes[i].getAttribute("correct"))
-      var cI = iB.childNodes[i]
-      respNdx++
-      manipulateChoiceInteraction()
-    } else if (iB.childNodes[i].nodeName === "inlineChoiceInteraction") {
-      var iCI = iB.childNodes[i]
-      respNdx++
-      manipulateInlineChoiceInteraction()
-    } else {
-      itemBody.appendChild(iB.childNodes[i].cloneNode(true))
-    }
-  }*/
-  
+  moveChildren(iB, itemBody)
+
   var outcomeDeclaration = imsroot.createElement('outcomeDeclaration')
   imsdoc.insertBefore(outcomeDeclaration, itemBody)
   outcomeDeclaration.setAttribute('identifier', "SCORE")
@@ -333,9 +375,9 @@ function raw2item(rawxml) {
   imsdoc.appendChild(responseProcessing)
   return new XMLSerializer().serializeToString(imsdoc)
 }
-var rawxml = fs.readFileSync(process.argv[2], "utf-8")
+/*var rawxml = fs.readFileSync(process.argv[2], "utf-8")
 var data = raw2item(rawxml)
 var xmlfile = process.argv[2].substr(0, process.argv[2].lastIndexOf('.')) + ".xml"
 fs.writeFileSync(xmlfile, data, "utf-8")
 //console.log(rawxml)
-console.log("done")
+console.log("done")*/

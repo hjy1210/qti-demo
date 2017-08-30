@@ -5,7 +5,7 @@ var DOMParser = require('xmldom').DOMParser
 var XMLSerializer = require('xmldom').XMLSerializer
 
 
-function package2html(zipfile) {
+module.exports=function package2html(zipfile) {
   function filterEntriesWithName(name) {
     return zipEntries.filter(entry => entry.entryName === name)
   }
@@ -229,15 +229,15 @@ function package2html(zipfile) {
   var script = itemDoc.parentNode.createElement('script')
   script.setAttribute('type', "text/x-mathjax-config")
   var content = `MathJax.Ajax.config.path["mhchem"] =  "https://cdnjs.cloudflare.com/ajax/libs/mathjax-mhchem/3.2.0";
-MathJax.Hub.Config({
-extensions: ["[mhchem]/mhchem.js"],
-TeX: {
-Macros: {
-ceec: ["{\\\\fbox{#1 }}", 1],
-ceece: ["\\\\underline{\  {\\\\fbox{#1 }}\  }", 1]
-}
-}
-});`
+    MathJax.Hub.Config({
+    extensions: ["[mhchem]/mhchem.js"],
+    TeX: {
+    Macros: {
+    ceec: ["{\\\\fbox{#1 }}", 1],
+    ceece: ["\\\\underline{\  {\\\\fbox{#1 }}\  }", 1]
+    }
+    }
+    });`
   script.appendChild(itemDoc.parentNode.createTextNode(content))
   head.appendChild(script)
   script = itemDoc.parentNode.createElement('script')
@@ -270,4 +270,4 @@ function moveChildren(from, to) {
   }
 }
 
-package2html(process.argv[2])
+//package2html(process.argv[2])

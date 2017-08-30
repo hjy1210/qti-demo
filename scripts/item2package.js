@@ -105,7 +105,7 @@ function item2packageArchive(xmlfile) {
     files.push(stylesheets[i].getAttribute('href'))
   }
 
-  console.log(files)
+  //console.log(files)
   archive.append(imsmanifest,{name:"imsmanifest.xml"})
   for (var i = 0; i < files.length; i++) {
     archive.append(fs.createReadStream(files[i]), { name: files[i] });
@@ -113,7 +113,7 @@ function item2packageArchive(xmlfile) {
   // finalize the archive (ie we are done appending files but streams have to finish yet)
   archive.finalize();
 }
-function item2package(xmlfile) {
+module.exports=function item2package(xmlfile) {
   //console.log(argv)
   //return
   var identifier = xmlfile.substr(0, xmlfile.lastIndexOf("."))
@@ -172,7 +172,7 @@ function item2package(xmlfile) {
     files.push(stylesheets[i].getAttribute('href'))
   }
 
-  console.log(files)
+  //console.log(files)
   var zip= new AdmZip();
   var buffer=new Buffer(imsmanifest)
   ///// zip.addFile("imsmanifest.xml",buffer) add imsmanifest.xml as a directory, so 0644 is necessary
@@ -186,4 +186,4 @@ function item2package(xmlfile) {
 }
 
 
-item2package(process.argv[2])
+//item2package(process.argv[2])
