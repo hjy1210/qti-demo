@@ -60,6 +60,18 @@ function package2html(zipfile) {
       images[i].setAttribute('src', base64)
     }
   }
+  function replaceAudios() {
+    var images = itemBody.getElementsByTagName('audio')
+    //console.log(images.length)
+    for (var i = 0; i < images.length; i++) {
+      var imgsrc = images[i].getAttribute('src')
+      //console.log(imgsrc)
+      var base64 = zip.readAsText(imgsrc, 'base64')
+      base64 = "data:audio/" + imgsrc.substr(imgsrc.lastIndexOf(".") + 1) + ";base64," + base64
+      //console.log(base64)
+      images[i].setAttribute('src', base64)
+    }
+  }
   function replaceInlineChoiceInteractions() {
     var inlineChoiceInteractions = itemBody.getElementsByTagName("inlineChoiceInteraction")
     var responseDeclarations = itemDoc.getElementsByTagName('responseDeclaration')
@@ -78,7 +90,8 @@ function package2html(zipfile) {
         select.appendChild(option)
       }
       moveChildren(inlineChoiceInteractions[i], select)
-      itemBody.replaceChild(select, inlineChoiceInteractions[i])
+      //itemBody.replaceChild(select, inlineChoiceInteractions[i])
+      inlineChoiceInteractions[i].parentNode.replaceChild(select, inlineChoiceInteractions[i])
     }
   }
   function replaceGapMatchInteractions() {
@@ -129,14 +142,14 @@ function package2html(zipfile) {
       var responseIdentifier = gapMatchInteractions[ii].getAttribute('responseIdentifier')
       //console.log(responseIdentifier)
       var gaptextElements = gapMatchInteractions[ii].getElementsByTagName('gapText')
-      console.log(gaptextElements.length)
+      //console.log(gaptextElements.length)
       var div = itemDoc.parentNode.createElement('div')
       var ul = itemDoc.parentNode.createElement('ul')
       div.appendChild(ul)
       //var gaptexts = []
       var gapmap = {}
       for (var i = 0; i < gaptextElements.length; i++) {
-        console.log(gaptextElements[i].attributes[0].name, gaptextElements[i].attributes[0].value)
+        //console.log(gaptextElements[i].attributes[0].name, gaptextElements[i].attributes[0].value)
         //if (gaptextElements[i].getAttribute("class")==="gaptext") {
         //gaptextElements[i].addEventListener("click", gaptextClick)
         //gaptexts.push(gaptextElements[i])
@@ -152,8 +165,8 @@ function package2html(zipfile) {
         gaptexts.push(li)
         gapmap[gaptextElements[i].getAttribute('identifier')] = li
         ul.appendChild(li)
-        console.log(li)
-        console.log(ul)
+        //console.log(li)
+        //console.log(ul)
         //}
       }
       gaptextElements[0].parentNode.insertBefore(div, gaptextElements[0])
@@ -207,11 +220,13 @@ function package2html(zipfile) {
   replaceInlineChoiceInteractions()
   replaceGapMatchInteractions()
   replaceImages()
+  replaceAudios()
   //console.log(new XMLSerializer().serializeToString(itemBody))
   //console.log("pass1")
   var div = itemDoc.parentNode.createElement('div')
   div.setAttribute('class', identifier)
   moveChildren(itemBody, div)
+  //console.log(new XMLSerializer().serializeToString(div))
   var html = itemDoc.parentNode.createElement('html')
   var body = itemDoc.parentNode.createElement('body')
   var head = itemDoc.parentNode.createElement('head')
@@ -272,3 +287,4 @@ function moveChildren(from, to) {
 }
 
 package2html(process.argv[2])
+//package2html("./sat2_mathb_2016_A.zip")

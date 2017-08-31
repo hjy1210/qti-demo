@@ -20,3 +20,10 @@ zip 10_11.png(26kB) corrupted!
 ## archiver 
 zip 10_11.png(26kB),1A.png(45kB) OK!
 archiver zip file asyncally.
+
+## package2html
+* 將itemBody.replaceChild 改成 inlineChoiceInteractions[i].parentNode.replaceChild
+* 增加replaceAudios
+
+## raw2item
+將選填題的groupInlineChoiceInteraction翻譯時，每個inlineChoiceInteraction前面增加\ceec{n}

@@ -5,3 +5,4 @@
 .box {border:1px black solid}
 table.table{border-collapse: collapse;}
 table.table td,th{border: 1px solid black;}
+td.right {text-align:right;}

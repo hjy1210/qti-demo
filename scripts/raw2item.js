@@ -214,6 +214,8 @@ module.exports=function raw2item(rawxml) {
         var inlineChoice = new DOMParser().parseFromString(inlineChoiceStr).documentElement
         inlineChoiceInteraction.appendChild(inlineChoice)
       }
+      var text=` \\(\\ceec{${k+1}}\\)=`
+      div.appendChild(imsroot.createTextNode(text))
       div.appendChild(inlineChoiceInteraction)
       var matchStr = `<match><variable identifier="${respId}"/><correct identifier="${respId}"/></match>`
       var match=new DOMParser().parseFromString(matchStr).documentElement
@@ -295,6 +297,7 @@ module.exports=function raw2item(rawxml) {
   }
 
   function modifyNode(node) {
+    if (!node.hasChildNodes()) return
     for (var i = 0; i < node.childNodes.length; i++) {
       //console.log(node.nodeType,node.nodeName)
       if (node.childNodes[i].nodeName === "choiceInteraction") {
