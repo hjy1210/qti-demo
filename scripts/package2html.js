@@ -212,16 +212,20 @@ function package2html(zipfile) {
       throw new Error(fileElements[i].getAttribute('href') + " not in package")
     }
   }
-  var itemDoc = new DOMParser().parseFromString(zip.readAsText(itementry.entryName)).documentElement
+  var itemStr=zip.readAsText(itementry.entryName)
+  var itemDoc = new DOMParser().parseFromString(itemStr,'text/xml').documentElement
+  ///// itemDoc.removeAttribute("xmlns") ///// NOT work!!!!!
+  itemDoc.setAttribute("xmlns","") /////otherwise each p element has xmlns attribute!!!
+  itemStr=new XMLSerializer().serializeToString(itemDoc)
+  itemDoc = new DOMParser().parseFromString(itemStr,'text/xml').documentElement
+
   var itemstyle = itemDoc.getElementsByTagName("stylesheet")[0]
-  //console.log(itemstyle!=null)
   var itemBody = itemDoc.getElementsByTagName("itemBody")[0]
   replaceChoiceInteractions()
   replaceInlineChoiceInteractions()
   replaceGapMatchInteractions()
   replaceImages()
   replaceAudios()
-  //console.log(new XMLSerializer().serializeToString(itemBody))
   //console.log("pass1")
   var div = itemDoc.parentNode.createElement('div')
   div.setAttribute('class', identifier)
@@ -287,4 +291,4 @@ function moveChildren(from, to) {
 }
 
 package2html(process.argv[2])
-//package2html("./sat2_mathb_2016_A.zip")
+//package2html("./sat2_chi_2016_01.zip")

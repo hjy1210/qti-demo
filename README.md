@@ -24,6 +24,16 @@ archiver zip file asyncally.
 ## package2html
 * 將itemBody.replaceChild 改成 inlineChoiceInteractions[i].parentNode.replaceChild
 * 增加replaceAudios
+* object 的正確語法如下
+```
+        <object type="audio/mpeg" height="50" data="audios/example1.mp3">
+          <param name="autoplay" value="false" />
+        </object>
+```
+在Chrome與Edge中，autoplay=false 無效，網頁一開馬上播放因黨，IE上則OK。所以應該用audio而非object，可惜QTI2.1只允許object,不予許audio。
+* xmldom 的 removeAttribute("xmlns") 無法將 xmlns 屬性去除，必須用setAttribute("xmlns","")
+
+QTI2.2支援audio,video。
 
 ## raw2item
 將選填題的groupInlineChoiceInteraction翻譯時，每個inlineChoiceInteraction前面增加\ceec{n}
