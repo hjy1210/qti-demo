@@ -1,13 +1,22 @@
 var fs = require('fs');
 var archiver = require('archiver');
 var AdmZip = require('adm-zip');
-
+const mjpage = require('mathjax-node-page').mjpage;
+var toMML=require('./util2')
+const options = {
+  format: ["TeX"],
+  MathJax: {
+    TeX: {
+      Macros: { ceec: ['{\\fbox{#1}}', 1] }
+    }
+  }
+}
 var DOMParser = require('xmldom').DOMParser
 var XMLSerializer = require('xmldom').XMLSerializer
 var root = '<?xml version="1.0" encoding="UTF-8" ?>\n<assessmentItem></assessmentItem>'
 
 ///// In TAO, identifier of manifest element can not identical to that of resource element.
-module.exports=function raw2item(rawxml) {
+module.exports = function raw2item(rawxml) {
   function manipulateChoiceInteraction(node) {
     var cI = node
     var cardinality = cI.getAttribute("cardinality")
@@ -79,7 +88,7 @@ module.exports=function raw2item(rawxml) {
               </sum>
             </setOutcomeValue>
           </responseIf>
-        </responseCondition>`
+          </responseCondition>`
       var responseCondition = new DOMParser().parseFromString(rspcondstr).documentElement
       responseProcessing.appendChild(responseCondition)
     }
@@ -122,7 +131,7 @@ module.exports=function raw2item(rawxml) {
               </sum>
             </setOutcomeValue>
           </responseElse>
-        </responseCondition>`
+          </responseCondition>`
       var responseCondition = new DOMParser().parseFromString(rspcondstr).documentElement
       responseProcessing.appendChild(responseCondition)
       //console.log(new XMLSerializer().serializeToString(responseCondition) )
@@ -138,10 +147,10 @@ module.exports=function raw2item(rawxml) {
     //console.log(correct,quota,respId)
     var responseDeclarationStr =
       `<responseDeclaration identifier="${respId}" cardinality="single" baseType="identifier">
-        <correctResponse>
-          <value>${respId + "_" + correct}</value>
-        </correctResponse>
-      </responseDeclaration>`
+            <correctResponse>
+            <value>${respId + "_" + correct}</value>
+            </correctResponse>
+            </responseDeclaration>`
     var responseDeclaration = new DOMParser().parseFromString(responseDeclarationStr).documentElement
     imsdoc.insertBefore(responseDeclaration, itemBody)
     var inlineChoiceInteraction = iCI /////imsroot.createElement('inlineChoiceInteraction')
@@ -155,23 +164,23 @@ module.exports=function raw2item(rawxml) {
       inlineChoices[i].setAttribute('identifier', respId + "_" + cursymbol[i])
     }
     var rspcondstr = `<responseCondition><responseIf>
-      <match>
-        <variable identifier="${respId}"/>
-        <correct identifier="${respId}"/>
-      </match>
-      <setOutcomeValue identifier="SCORE">
-        <sum>
-          <variable identifier="SCORE" />
-          <baseValue baseType="float">${quota}</baseValue>
-        </sum>
-      </setOutcomeValue>
-    </responseIf></responseCondition>`
+            <match>
+            <variable identifier="${respId}"/>
+            <correct identifier="${respId}"/>
+            </match>
+            <setOutcomeValue identifier="SCORE">
+            <sum>
+            <variable identifier="SCORE" />
+            <baseValue baseType="float">${quota}</baseValue>
+            </sum>
+            </setOutcomeValue>
+            </responseIf></responseCondition>`
     var responseCondition = new DOMParser().parseFromString(rspcondstr).documentElement
     responseProcessing.appendChild(responseCondition)
   }
   function manipulateGroupInlineChoiceInteraction(node) {
     var div = imsroot.createElement('div')
-    var nsymbol="1234567890MN"
+    var nsymbol = "1234567890MN"
     ///// msymbol contains - and # which can not be in identidier, use M(minus) instead of -, N(number) instead of #
     var gICI = node
     var correct = gICI.getAttribute("correct")
@@ -181,15 +190,15 @@ module.exports=function raw2item(rawxml) {
     var respId // = 'resp_' + identifier + "_" + respNdx
     var groupSize = correct.length
     var rspcondstr = `<responseCondition><responseIf>
-    <and>
-    </and>
-     <setOutcomeValue identifier="SCORE">
-       <sum>
-         <variable identifier="SCORE" />
-         <baseValue baseType="float">${quota}</baseValue>
-       </sum>
-     </setOutcomeValue>
-   </responseIf></responseCondition>`
+            <and>
+            </and>
+            <setOutcomeValue identifier="SCORE">
+            <sum>
+            <variable identifier="SCORE" />
+            <baseValue baseType="float">${quota}</baseValue>
+            </sum>
+            </setOutcomeValue>
+            </responseIf></responseCondition>`
     var responseCondition = new DOMParser().parseFromString(rspcondstr).documentElement
     responseProcessing.appendChild(responseCondition)
     var and = responseCondition.getElementsByTagName('and')[0]
@@ -198,10 +207,10 @@ module.exports=function raw2item(rawxml) {
       // respId = 'resp_' + (respNdx + k)
       var responseDeclarationStr =
         `<responseDeclaration identifier="${respId}" cardinality="single" baseType="identifier">
-        <correctResponse>
-          <value>${respId + "_" + nsymbol[msymbol.indexOf(correct[k])]}</value>
-        </correctResponse>
-      </responseDeclaration>`
+              <correctResponse>
+              <value>${respId + "_" + nsymbol[msymbol.indexOf(correct[k])]}</value>
+              </correctResponse>
+              </responseDeclaration>`
       var responseDeclaration = new DOMParser().parseFromString(responseDeclarationStr).documentElement
       imsdoc.insertBefore(responseDeclaration, itemBody)
       var inlineChoiceInteraction = imsroot.createElement('inlineChoiceInteraction')
@@ -210,15 +219,15 @@ module.exports=function raw2item(rawxml) {
       //var inlineChoices = inlineChoiceInteraction.getElementsByTagName('inlineChoice')
       //var cursymbol = symbol.indexOf(correct[0]) >= 0 ? symbol : msymbol
       for (var i = 0; i < msymbol.length; i++) {
-        var inlineChoiceStr=`<inlineChoice identifier="${respId + '_' + nsymbol[i]}">${msymbol[i]}</inlineChoice>`
+        var inlineChoiceStr = `<inlineChoice identifier="${respId + '_' + nsymbol[i]}">${msymbol[i]}</inlineChoice>`
         var inlineChoice = new DOMParser().parseFromString(inlineChoiceStr).documentElement
         inlineChoiceInteraction.appendChild(inlineChoice)
       }
-      var text=` \\(\\ceec{${k+1}}\\)=`
+      var text = ` \\(\\ceec{${k + 1}}\\)=`
       div.appendChild(imsroot.createTextNode(text))
       div.appendChild(inlineChoiceInteraction)
       var matchStr = `<match><variable identifier="${respId}"/><correct identifier="${respId}"/></match>`
-      var match=new DOMParser().parseFromString(matchStr).documentElement
+      var match = new DOMParser().parseFromString(matchStr).documentElement
       and.appendChild(match)
     }
     imsdoc.replaceChild(div, node)
@@ -272,26 +281,26 @@ module.exports=function raw2item(rawxml) {
 
 
     var rspcondstr = `<responseCondition>
-		<responseIf>
-			<isNull>
-				<variable identifier="${respId}"/>
-			</isNull>
-      <setOutcomeValue identifier="SCORE">
-       <sum>
-        <variable identifier="SCORE"/>
-        <baseValue baseType="float">0.0</baseValue>
-       </sum>
-			</setOutcomeValue>
-		</responseIf>
-		<responseElse>
-			<setOutcomeValue identifier="SCORE">
-      <sum>
-        <variable identifier="SCORE"/>
-        <mapResponse identifier="${respId}"/>
-      </sum>
-			</setOutcomeValue>
-		</responseElse>
-	  </responseCondition>`
+		        <responseIf>
+			      <isNull>
+				    <variable identifier="${respId}"/>
+			      </isNull>
+            <setOutcomeValue identifier="SCORE">
+            <sum>
+            <variable identifier="SCORE"/>
+            <baseValue baseType="float">0.0</baseValue>
+            </sum>
+			      </setOutcomeValue>
+		        </responseIf>
+		        <responseElse>
+			      <setOutcomeValue identifier="SCORE">
+            <sum>
+            <variable identifier="SCORE"/>
+            <mapResponse identifier="${respId}"/>
+            </sum>
+			      </setOutcomeValue>
+		        </responseElse>
+	          </responseCondition>`
     var responseCondition = new DOMParser().parseFromString(rspcondstr).documentElement
     responseProcessing.appendChild(responseCondition)
   }
@@ -376,7 +385,31 @@ module.exports=function raw2item(rawxml) {
   stylesheet.setAttribute('type', "text/css")
   imsdoc.insertBefore(stylesheet, itemBody)
   imsdoc.appendChild(responseProcessing)
-  return new XMLSerializer().serializeToString(imsdoc)
+  var needMML=true
+  return new Promise(function (fulfill, reject) {
+    if (needMML){
+      var itemBodyStr = new XMLSerializer().serializeToString(itemBody)
+      //mjpage(itemBodyStr, options, { mml: true }, function (html) {
+        //console.log(html); // resulting HTML string
+        ///// unfortunately all tagnames has changee to lowercase.
+        //console.log(html)
+        /*var body=new DOMParser().parseFromString(html).documentElement.getElementsByTagName('itembody')[0]
+        while(itemBody.hasChildNodes()){
+          itemBody.removeChild(itemBody.firstChild)
+        }
+        moveChildren(body,itemBody)
+        //console.log(new XMLSerializer().serializeToString(imsdoc))
+        fulfill(new XMLSerializer().serializeToString(imsdoc))*/
+      //})
+      toMML(itemBodyStr).then(result=>{
+        var newIB=new DOMParser().parseFromString(result).documentElement
+        itemBody.parentNode.replaceChild(newIB,itemBody)
+        fulfill(new XMLSerializer().serializeToString(imsdoc))
+      })
+    } else {
+      fulfill(new XMLSerializer().serializeToString(imsdoc))
+    }
+  })
 }
 /*var rawxml = fs.readFileSync(process.argv[2], "utf-8")
 var data = raw2item(rawxml)

@@ -37,3 +37,9 @@ QTI2.2支援audio,video。
 
 ## raw2item
 將選填題的groupInlineChoiceInteraction翻譯時，每個inlineChoiceInteraction前面增加\ceec{n}
+
+## mathjax-node
+用mathjax-node翻譯latex為mathml的時候，有些化學式子會出現些微的瑕疵，不符合QTI2的規格。
+例如，sat2_chm_2016_14.xml，mpadded > voffset=".??em" 要取消。sat2_chm_2016_11.xml，mpadded > mspace 裡的 negativethinmathspace 要改成0em，height="0"要改成height="0em" depth="0" 要改成  depth="0em"
+
+QTI 目前仍不接受 `<svg>`
