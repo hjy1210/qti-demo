@@ -5,7 +5,7 @@ var DOMParser = require('xmldom').DOMParser
 var XMLSerializer = require('xmldom').XMLSerializer
 
 
-function package2html(zipfile) {
+module.exports=function package2html(zipfile) {
   function filterEntriesWithName(name) {
     return zipEntries.filter(entry => entry.entryName === name)
   }
@@ -290,5 +290,5 @@ function moveChildren(from, to) {
   }
 }
 
-package2html(process.argv[2])
+//package2html(process.argv[2])
 //package2html("./sat2_chi_2016_01.zip")

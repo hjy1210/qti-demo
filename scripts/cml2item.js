@@ -2,7 +2,8 @@ var fs = require('fs');
 var archiver = require('archiver');
 var AdmZip = require('adm-zip');
 const mjpage = require('mathjax-node-page').mjpage;
-var toMML=require('./util2')
+//var toMML=require('./util2')
+var toMML=require('./cml2xml2')
 const options = {
   format: ["TeX"],
   MathJax: {

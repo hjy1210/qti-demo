@@ -1,4 +1,4 @@
-var raw2item=require('./raw2item')
+var raw2item=require('./cml2item')
 var item2package=require('./item2package')
 var fs=require('fs')
 
