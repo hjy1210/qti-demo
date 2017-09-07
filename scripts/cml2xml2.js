@@ -2,7 +2,7 @@ var DOMParser = require('xmldom').DOMParser
 var XMLSerializer = require('xmldom').XMLSerializer
 
 ///// mathjax-node promise version
-module.exports = function toMML(data) {
+module.exports=function toMML(data,type="mml") {
   var res = []
   // replace inline-Tex(delimited by \( and \)) by <mathjax-node class="inline">
   // replace Tex(delimited by \[ and \]) by <mathjax-node class="block">
@@ -13,15 +13,29 @@ module.exports = function toMML(data) {
       return `<mathjax-node class="block">${m.substr(2, m.length - 4)}</mathjax-node>`
     }
   })
-
+  ///// 要用mhchem3/mhchem.js，必須將mathjax/unpacked/extensions/TeX/mhchem3/mhchem.js複製到mathjax/unpacked/extensions
+  ///// 速度很慢。不知如何改進
+  ///// type==="pu" 的時候才用此法載入mhchem.js
+  ///// \ce 不需要，\pu才需要
   var mjAPI = require("mathjax-node");
-  mjAPI.config({
-    MathJax: {
-      TeX: {
-        Macros: { ceec: ['{\\fbox{#1}}', 1] }
+  if (type==="pu"){
+    mjAPI.config({
+      MathJax: {
+        extensions: ["mhchem.js"],
+        TeX: {
+          Macros: { ceec: ['{\\fbox{#1}}', 1] }
+        }
       }
-    }
-  });
+    });
+  } else {
+    mjAPI.config({
+      MathJax: {
+        TeX: {
+          Macros: { ceec: ['{\\fbox{#1}}', 1] }
+        }
+      }
+    });
+  }
   mjAPI.start();
 
   var doc = new DOMParser().parseFromString(str)
@@ -60,6 +74,6 @@ module.exports = function toMML(data) {
 
 /*var cmlStr = `<itemBody>Solution of equation \\(ax^2+bx+c=0\\) is
 \\[x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}.\\] Molecular formula of sulfuric acid is
-\\(\\ce{H2SO4}\\).</itemBody>`
+\\(\\ce{H2SO4}\\).\\(\\pu{1.0e-20 J}\\)</itemBody>`
 
 toMML(cmlStr).then(result=>console.log(result))*/
