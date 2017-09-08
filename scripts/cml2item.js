@@ -271,7 +271,7 @@ module.exports = function cml2item(rawxml,type) {
 
     var and = responseCondition.getElementsByTagName('and')[0]
     for (var k = 0; k < groupSize; k++) {
-      respId = 'resp_' + identifier + "_" + (respNdx + k)
+      respId = 'resp_' + identifier + "_" + respNdx+"_" + (k+1)
       // respId = 'resp_' + (respNdx + k)
       var responseDeclarationStr =
         `<responseDeclaration identifier="${respId}" cardinality="single" baseType="identifier">
@@ -407,8 +407,9 @@ module.exports = function cml2item(rawxml,type) {
       } else if (node.childNodes[i].nodeName === "groupInlineChoiceInteraction") {
         //var iCI = node.childNodes[i]
         respNdx++
+        //var len=node.childNodes[i].getAttribute("correct").length
         manipulateGroupInlineChoiceInteraction(node.childNodes[i])
-        respNdx = respNdx + (node.childNodes[i].getAttribute("correct").length - 1)
+        //respNdx = respNdx + (len - 1)
       } else if (node.childNodes[i].nodeName === "gapMatchInteraction") {
         //var iCI = node.childNodes[i]
         respNdx++
