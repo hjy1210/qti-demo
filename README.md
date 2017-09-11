@@ -30,7 +30,10 @@ archiver zip file asyncally.
           <param name="autoplay" value="false" />
         </object>
 ```
-在Chrome與Edge中，autoplay=false 無效，網頁一開馬上播放因黨，IE上則OK。所以應該用audio而非object，可惜QTI2.1只允許object,不予許audio。
+在Chrome與Edge中，autoplay=false 無效，網頁一開馬上播放語音檔，IE上則OK。所以應該用audio而非object，可惜QTI2.1只允許object,不予許audio。
+
+[etavener/qti-player](https://github.com/etavener/qti-player)示範了在QTI-xml裡面用`<object>`，但實作網頁的時候用`<audio>/<video>`取代之，見[T003](http://www.ewantavener.co.uk/demo/qti-player/app/index.html?id=T003)
+
 * xmldom 的 removeAttribute("xmlns") 無法將 xmlns 屬性去除，必須用setAttribute("xmlns","")
 
 QTI2.2支援audio,video。
@@ -41,5 +44,18 @@ QTI2.2支援audio,video。
 ## mathjax-node
 用mathjax-node翻譯latex為mathml的時候，有些化學式子會出現些微的瑕疵，不符合QTI2的規格。
 例如，sat2_chm_2016_14.xml，mpadded > voffset=".??em" 要取消。sat2_chm_2016_11.xml，mpadded > mspace 裡的 negativethinmathspace 要改成0em，height="0"要改成height="0em" depth="0" 要改成  depth="0em"
+
+mathjax-node 要使用mhchem3，可以用下列設定。
+```
+    mjAPI.config({
+      MathJax: {
+        extensions: ["TeX/mhchem.js"],
+        TeX: {
+          Macros: { ceec: ['{\\fbox{#1}}', 1] },
+          mhchem:{legacy:false}
+        }
+      }
+    });
+```
 
 QTI 目前仍不接受 `<svg>`

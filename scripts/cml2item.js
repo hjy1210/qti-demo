@@ -1,9 +1,8 @@
 var fs = require('fs');
 var archiver = require('archiver');
 var AdmZip = require('adm-zip');
-const mjpage = require('mathjax-node-page').mjpage;
 //var toMML=require('./util2')
-var toMML = require('./cml2xml2')
+var toMML = require('./cml2xml')
 // const options = {
 //   format: ["TeX"],
 // 
@@ -468,23 +467,11 @@ module.exports = function cml2item(rawxml,type) {
 
   imsdoc.removeChild(endofResponseDeclaration)
   imsdoc.removeChild(endofOutcomeDeclaration)
-  ///// stylesheet must put at just before itemBody
+  
   var needMML =  (type==="mml" || type==="pu")
   return new Promise(function (fulfill, reject) {
     if (needMML) {
       var itemBodyStr = new XMLSerializer().serializeToString(itemBody)
-      //mjpage(itemBodyStr, options, { mml: true }, function (html) {
-      //console.log(html); // resulting HTML string
-      ///// unfortunately all tagnames has changee to lowercase.
-      //console.log(html)
-      /*var body=new DOMParser().parseFromString(html).documentElement.getElementsByTagName('itembody')[0]
-      while(itemBody.hasChildNodes()){
-        itemBody.removeChild(itemBody.firstChild)
-      }
-      moveChildren(body,itemBody)
-      //console.log(new XMLSerializer().serializeToString(imsdoc))
-      fulfill(new XMLSerializer().serializeToString(imsdoc))*/
-      //})
       toMML(itemBodyStr,type).then(result => {
         var newIB = new DOMParser().parseFromString(result).documentElement
         itemBody.parentNode.replaceChild(newIB, itemBody)
@@ -495,9 +482,3 @@ module.exports = function cml2item(rawxml,type) {
     }
   })
 }
-/*var rawxml = fs.readFileSync(process.argv[2], "utf-8")
-var data = raw2item(rawxml)
-var xmlfile = process.argv[2].substr(0, process.argv[2].lastIndexOf('.')) + ".xml"
-fs.writeFileSync(xmlfile, data, "utf-8")
-//console.log(rawxml)
-console.log("done")*/

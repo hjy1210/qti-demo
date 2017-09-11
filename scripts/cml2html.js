@@ -1,7 +1,7 @@
 ///// usage:
 ///// node scripts\cml2html.js sat2_phy_2016_21.cml [mml|pu]
 var cml2item=require('./cml2item')
-var item2package2=require('./item2package2')
+var item2package=require('./item2package')
 var package2html=require('./package2html')
 var fs=require('fs')
 
@@ -14,7 +14,7 @@ var promise=cml2item(rawxml,type)
 promise.then(xml=>{
   //console.log("xml=\n",xml)
   fs.writeFileSync(xmlfile, xml, "utf-8")
-  return item2package2(xmlfile)
+  return item2package(xmlfile)
 })
 .then(()=>{package2html(zipfile)})
 //fs.writeFileSync(xmlfile, data, "utf-8")

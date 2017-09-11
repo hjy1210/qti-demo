@@ -1,3 +1,4 @@
+///// Promise version
 var fs = require('fs');
 var archiver = require('archiver');
 var AdmZip = require('adm-zip');
@@ -18,7 +19,7 @@ var root = `<?xml version="1.0"?>
 </manifest>`
 
 ///// In TAO, identifier of manifest element can not identical to that of resource element.
-module.exports=function item2package(xmlfile) {
+module.exports = function item2package(xmlfile) {
   //console.log(argv)
   //return
   var identifier = xmlfile.substr(0, xmlfile.lastIndexOf("."))
@@ -59,59 +60,65 @@ module.exports=function item2package(xmlfile) {
     file.setAttribute('href', stylesheets[i].getAttribute('href'))
     resource.appendChild(file)
   }
-  var imsmanifest=new XMLSerializer().serializeToString(imsdoc)
+  var imsmanifest = new XMLSerializer().serializeToString(imsdoc)
   // fs.writeFileSync("imsmanifest.xml",imsmanifest , "utf-8")
 
-  var output = fs.createWriteStream(identifier+'.zip');
-  var archive = archiver('zip', {
-    zlib: { level: 9 } // Sets the compression level.
-  });
+  var promise = new Promise((receive, reject) => {
 
-  // listen for all archive data to be written
-  output.on('close', function () {
-    console.log(archive.pointer() + ' total bytes');
-    console.log('archiver has been finalized and the output file descriptor has closed.');
-  });
+    var output = fs.createWriteStream(identifier + '.zip');
+    var archive = archiver('zip', {
+      zlib: { level: 9 } // Sets the compression level.
+    });
 
-  // good practice to catch warnings (ie stat failures and other non-blocking errors)
-  archive.on('warning', function (err) {
-    if (err.code === 'ENOENT') {
-      // log warning
-    } else {
-      // throw error
-      throw err;
+    // listen for all archive data to be written
+    output.on('close', function () {
+      console.log(archive.pointer() + ' total bytes');
+      console.log('archiver has been finalized and the output file descriptor has closed.');
+      receive()
+    });
+
+    // good practice to catch warnings (ie stat failures and other non-blocking errors)
+    archive.on('warning', function (err) {
+      if (err.code === 'ENOENT') {
+        // log warning
+      } else {
+        // throw error
+        reject(err);
+      }
+    });
+
+    // good practice to catch this error explicitly
+    archive.on('error', function (err) {
+      reject(err);
+    });
+
+    // pipe archive data to the file
+    archive.pipe(output);
+
+    var files = [xmlfile]
+    for (var i = 0; i < images.length; i++) {
+      files.push(images[i].getAttribute('src'))
     }
-  });
+    for (var i = 0; i < audios.length; i++) {
+      files.push(audios[i].getAttribute('src'))
+    }
+    for (var i = 0; i < objects.length; i++) {
+      files.push(objects[i].getAttribute('data'))
+    }
+    for (var i = 0; i < stylesheets.length; i++) {
+      files.push(stylesheets[i].getAttribute('href'))
+    }
 
-  // good practice to catch this error explicitly
-  archive.on('error', function (err) {
-    throw err;
-  });
-
-  // pipe archive data to the file
-  archive.pipe(output);
-
-  var files = [xmlfile]
-  for (var i=0;i<images.length;i++) {
-    files.push(images[i].getAttribute('src'))
-  }
-  for (var i=0;i<audios.length;i++) {
-    files.push(audios[i].getAttribute('src'))
-  }
-  for (var i=0;i<objects.length;i++) {
-    files.push(objects[i].getAttribute('data'))
-  }
-  for (var i=0;i<stylesheets.length;i++) {
-    files.push(stylesheets[i].getAttribute('href'))
-  }
-
-  //console.log(files)
-  archive.append(imsmanifest,{name:"imsmanifest.xml"})
-  for (var i = 0; i < files.length; i++) {
-    archive.append(fs.createReadStream(files[i]), { name: files[i] });
-  }
-  // finalize the archive (ie we are done appending files but streams have to finish yet)
-  archive.finalize();
+    //console.log(files)
+    archive.append(imsmanifest, { name: "imsmanifest.xml" })
+    for (var i = 0; i < files.length; i++) {
+      archive.append(fs.createReadStream(files[i]), { name: files[i] });
+    }
+    // finalize the archive (ie we are done appending files but streams have to finish yet)
+    archive.finalize();
+    
+  })
+  return promise
 }
 function item2packageAdmZip(xmlfile) {
   //console.log(argv)
@@ -154,36 +161,36 @@ function item2packageAdmZip(xmlfile) {
     file.setAttribute('href', stylesheets[i].getAttribute('href'))
     resource.appendChild(file)
   }
-  var imsmanifest=new XMLSerializer().serializeToString(imsdoc)
+  var imsmanifest = new XMLSerializer().serializeToString(imsdoc)
   // fs.writeFileSync("imsmanifest.xml",imsmanifest , "utf-8")
 
-  
+
   var files = [xmlfile]
-  for (var i=0;i<images.length;i++) {
+  for (var i = 0; i < images.length; i++) {
     files.push(images[i].getAttribute('src'))
   }
-  for (var i=0;i<audios.length;i++) {
+  for (var i = 0; i < audios.length; i++) {
     files.push(audios[i].getAttribute('src'))
   }
-  for (var i=0;i<objects.length;i++) {
+  for (var i = 0; i < objects.length; i++) {
     files.push(objects[i].getAttribute('data'))
   }
-  for (var i=0;i<stylesheets.length;i++) {
+  for (var i = 0; i < stylesheets.length; i++) {
     files.push(stylesheets[i].getAttribute('href'))
   }
 
   //console.log(files)
-  var zip= new AdmZip();
-  var buffer=new Buffer(imsmanifest)
+  var zip = new AdmZip();
+  var buffer = new Buffer(imsmanifest)
   ///// zip.addFile("imsmanifest.xml",buffer) add imsmanifest.xml as a directory, so 0644 is necessary
   ///// zip.addLocalFile add file as a diretory, wrong attribute!
-  zip.addFile("imsmanifest.xml",buffer,'',0644)
+  zip.addFile("imsmanifest.xml", buffer, '', 0644)
   for (var i = 0; i < files.length; i++) {
-    buffer=fs.readFileSync(files[i])
-    zip.addFile(files[i],buffer,'',0644)
+    buffer = fs.readFileSync(files[i])
+    zip.addFile(files[i], buffer, '', 0644)
   }
   //zip.toBuffer(); //need for big entry
-  zip.writeZip(identifier+".zip")
+  zip.writeZip(identifier + ".zip")
 }
 
 
