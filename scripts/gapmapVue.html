@@ -45,129 +45,132 @@
     <div>
       <div>
         <ul>
-          <li class="gapText" identifier="resp_sat2_eng_2016_21_30_1_A" matchMax="1" matchMin="0" @click="gaptextClick(0)">movable</li>
-          <li class="gapText" identifier="resp_sat2_eng_2016_21_30_1_B" matchMax="1" matchMin="0" @click="gaptextClick(1)">installed</li>
-          <li class="gapText" identifier="resp_sat2_eng_2016_21_30_1_C" matchMax="1" matchMin="0" @click="gaptextClick(2)">diversified</li>
-          <li class="gapText" identifier="resp_sat2_eng_2016_21_30_1_D" matchMax="1" matchMin="0" @click="gaptextClick(3)">problem</li>
-          <li class="gapText" identifier="resp_sat2_eng_2016_21_30_1_E" matchMax="1" matchMin="0" @click="gaptextClick(4)">aged</li>
-          <li class="gapText" identifier="resp_sat2_eng_2016_21_30_1_F" matchMax="1" matchMin="0" @click="gaptextClick(5)">planning</li>
-          <li class="gapText" identifier="resp_sat2_eng_2016_21_30_1_G" matchMax="1" matchMin="0" @click="gaptextClick(6)">measured</li>
-          <li class="gapText" identifier="resp_sat2_eng_2016_21_30_1_H" matchMax="1" matchMin="0" @click="gaptextClick(7)">constructing</li>
-          <li class="gapText" identifier="resp_sat2_eng_2016_21_30_1_I" matchMax="1" matchMin="0" @click="gaptextClick(8)">exact</li>
-          <li class="gapText" identifier="resp_sat2_eng_2016_21_30_1_J" matchMax="1" matchMin="0" @click="gaptextClick(9)">deteriorating</li>
-          <li class="gapText" identifier="resp_sat2_eng_2016_21_30_1_K" matchMax="1" matchMin="0" @click="gaptextClick(10)">statue</li>
-          <li class="gapText" identifier="resp_sat2_eng_2016_21_30_1_L" matchMax="1" matchMin="0" @click="gaptextClick(11)">religious</li>
+          <li class="gapText" matchMax="1" matchMin="0" :class="{active:activies[0],deactive:deactivies[0]}" @click="gaptextClick(0)">{{gaptexts[0]}}</li>
+          <li class="gapText" matchMax="1" matchMin="0" :class="{active:activies[1],deactive:deactivies[1]}" @click="gaptextClick(1)">{{gaptexts[1]}}</li>
+          <li class="gapText" matchMax="1" matchMin="0" :class="{active:activies[2],deactive:deactivies[2]}" @click="gaptextClick(2)">{{gaptexts[2]}}</li>
+          <li class="gapText" matchMax="1" matchMin="0" :class="{active:activies[3],deactive:deactivies[3]}" @click="gaptextClick(3)">{{gaptexts[3]}}</li>
+          <li class="gapText" matchMax="1" matchMin="0" :class="{active:activies[4],deactive:deactivies[4]}" @click="gaptextClick(4)">{{gaptexts[4]}}</li>
+          <li class="gapText" matchMax="1" matchMin="0" :class="{active:activies[5],deactive:deactivies[5]}" @click="gaptextClick(5)">{{gaptexts[5]}}</li>
+          <li class="gapText" matchMax="1" matchMin="0" :class="{active:activies[6],deactive:deactivies[6]}" @click="gaptextClick(6)">{{gaptexts[6]}}</li>
+          <li class="gapText" matchMax="1" matchMin="0" :class="{active:activies[7],deactive:deactivies[7]}" @click="gaptextClick(7)">{{gaptexts[7]}}</li>
+          <li class="gapText" matchMax="1" matchMin="0" :class="{active:activies[8],deactive:deactivies[8]}" @click="gaptextClick(8)">{{gaptexts[8]}}</li>
+          <li class="gapText" matchMax="1" matchMin="0" :class="{active:activies[9],deactive:deactivies[9]}" @click="gaptextClick(9)">{{gaptexts[9]}}</li>
+          <li class="gapText" matchMax="1" matchMin="0" :class="{active:activies[10],deactive:deactivies[10]}" @click="gaptextClick(10)">{{gaptexts[10]}}</li>
+          <li class="gapText" matchMax="1" matchMin="0" :class="{active:activies[11],deactive:deactivies[11]}" @click="gaptextClick(11)">{{gaptexts[11]}}</li>
         </ul>
       </div>
 
       <p xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">The Great Sphinx in the Giza desert is a mythological creature with the body of a lion and the head of a human being.
         This monumental
-        <span identifier="resp_sat2_eng_2016_21_30_1_gap1" required="false" class="gap" @click="gapClick(0)"></span> is
+        <span required="false" class="gap" :class="{canfill:canfills[0],filled:gaps[0]<ntexts}" @click="gapClick(0)">{{gaptexts[gaps[0]]}}</span> is
         often regarded as a national symbol of Egypt, having guarded the famous Egyptian pyramids for 4,000 years. Nevertheless,
         the stone creature does not look like it did 4,000 years ago; wind, water, pollution, and human contact have slowly
-        <span identifier="resp_sat2_eng_2016_21_30_1_gap2" required="false" class="gap" @click="gapClick(1)"></span> the
+        <span required="false" class="gap" :class="{canfill:canfills[1],filled:gaps[1]<ntexts}" @click="gapClick(1)">{{gaptexts[gaps[1]]}}</span> the
         rock. Scientists are now trying to restore it. They not only want it to look like it did when it was first built
         but also are looking for ways to keep it from
-        <span identifier="resp_sat2_eng_2016_21_30_1_gap3" required="false" class="gap" @click="gapClick(2)"></span> more
+        <span required="false" class="gap" :class="{canfill:canfills[2],filled:gaps[2]<ntexts}" @click="gapClick(2)">{{gaptexts[gaps[2]]}}</span> more
         than it has.
       </p>
       <p>Fixing the Sphinx, however, is not an easy job. It takes several years of
-        <span identifier="resp_sat2_eng_2016_21_30_1_gap4" required="false" class="gap" @click="gapClick(3)"></span> before
+        <span required="false" class="gap" :class="{canfill:canfills[3],filled:gaps[3]<ntexts}" @click="gapClick(3)">{{gaptexts[gaps[3]]}}</span> before
         the work begins. Each stone in the Sphinx is carefully
-        <span identifier="resp_sat2_eng_2016_21_30_1_gap5" required="false" class="gap" @click="gapClick(4)"></span>.
+        <span required="false" class="gap" :class="{canfill:canfills[4],filled:gaps[4]<ntexts}" @click="gapClick(4)">{{gaptexts[gaps[4]]}}</span>.
         Scientists use computers to help figure out the size and shape of each stone. Each old stone is given a number. Then,
         one by one, replacement stones are carved by hand, just like people did long ago, in the
-        <span identifier="resp_sat2_eng_2016_21_30_1_gap6" required="false" class="gap" @click="gapClick(5)"></span> sizes
+        <span required="false" class="gap" :class="{canfill:canfills[5],filled:gaps[5]<ntexts}" @click="gapClick(5)">{{gaptexts[gaps[5]]}}</span> sizes
         and shapes as the ones they are replacing. When the new stones are ready, they are
-        <span identifier="resp_sat2_eng_2016_21_30_1_gap7" required="false" class="gap" @click="gapClick(6)"></span> and
+        <span required="false" class="gap" :class="{canfill:canfills[6],filled:gaps[6]<ntexts}" @click="gapClick(6)">{{gaptexts[gaps[6]]}}</span> and
         the worn ones removed.
       </p>
       <p>Scientists are also worried about how to keep the Sphinx from falling apart again. They have talked about
-        <span identifier="resp_sat2_eng_2016_21_30_1_gap8" required="false" class="gap" @click="gapClick(7)"></span> a
+        <span required="false" class="gap" :class="{canfill:canfills[7],filled:gaps[7]<ntexts}" @click="gapClick(7)">{{gaptexts[gaps[7]]}}</span> a
         wall around the Sphinx to protect it from the wind and sand, or perhaps covering it completely with a glass pyramid.
         Some think that burying part of it in the sand would serve the purpose. One scientist has even suggested building
         a
-        <span identifier="resp_sat2_eng_2016_21_30_1_gap9" required="false" class="gap" @click="gapClick(8)"></span> shelter
+        <span required="false" class="gap" :class="{canfill:canfills[8],filled:gaps[8]<ntexts}" @click="gapClick(8)">{{gaptexts[gaps[8]]}}</span> shelter
         to protect it at night and during bad weather. The walls of the shelter could be retracted into the ground during
         the day so that visitors could see the Sphinx.
       </p>
       <p>There are no easy solutions to the
-        <span identifier="resp_sat2_eng_2016_21_30_1_gap10" required="false" class="gap" @click="gapClick(9)"></span>        , not to mention solutions that are agreeable to all parties. The one thing that is agreed upon is that something
+        <span required="false" class="gap" :class="{canfill:canfills[9],filled:gaps[9]<ntexts}" @click="gapClick(9)">{{gaptexts[gaps[9]]}}</span>        , not to mention solutions that are agreeable to all parties. The one thing that is agreed upon is that something
         needs to be done to protect this ancient sculpture.
       </p>
+      <p><button @click="getResponse()">GetResponse</button></p>
     </div>
   </div>
   <script src="https://unpkg.com/vue"></script>
 
   <script>
-    app = new Vue({
+    // Move all view components out of ViewModel
+    vm = new Vue({
       el: "#sat2_eng_2016_21_30",
       data: {
-        Gaps: Array.from({ length: 10 }, (e, i) => "\u00a0"),
-        gaptexts: [],
+        gaptexts: ["movable","installed","diversified","problem","aged","planning","measured","constructing","exact","deteriorating","statue","religious","\u00a0"],
+        gaptextIds:["resp_sat2_eng_2016_21_30_1_A","resp_sat2_eng_2016_21_30_1_B","resp_sat2_eng_2016_21_30_1_C",
+          "resp_sat2_eng_2016_21_30_1_D","resp_sat2_eng_2016_21_30_1_E","resp_sat2_eng_2016_21_30_1_F",
+          "resp_sat2_eng_2016_21_30_1_G","resp_sat2_eng_2016_21_30_1_H","resp_sat2_eng_2016_21_30_1_I",
+          "resp_sat2_eng_2016_21_30_1_J","resp_sat2_eng_2016_21_30_1_K","resp_sat2_eng_2016_21_30_1_L"],
+        gapIds:["resp_sat2_eng_2016_21_30_1_gap1","resp_sat2_eng_2016_21_30_1_gap2","resp_sat2_eng_2016_21_30_1_gap3",
+          "resp_sat2_eng_2016_21_30_1_gap4","resp_sat2_eng_2016_21_30_1_gap5","resp_sat2_eng_2016_21_30_1_gap6",
+          "resp_sat2_eng_2016_21_30_1_gap7","resp_sat2_eng_2016_21_30_1_gap8","resp_sat2_eng_2016_21_30_1_gap9",
+          "resp_sat2_eng_2016_21_30_1_gap10"],
+        ntexts:12,
+        ngaps:10,
         gaps:[],
-        gapmap: {},
-        activeIdentifier: null
+        canfills:[],
+        activies:[],
+        deactivies:[],
+        activeIndex: -1
       },
-      mounted: function () {
-        this.gaptexts = document.getElementsByClassName('gapText')
-        for (var i = 0; i < this.gaptexts.length; i++) {
-           //gaptexts[i].setAttribute("@click", "message")
-           this.gapmap[this.gaptexts[i].getAttribute('identifier')] = this.gaptexts[i]
-        }
-        this.gaps = document.getElementsByClassName('gap')
-        for (var i = 0; i < this.gaps.length; i++) {
-          this.gaps[i].innerHTML = "\u00a0"
-        }
+      created: function () {
+        this.gaps=Array.from({ length: this.ngaps }, (e, i) => this.ntexts)
+        this.canfills=Array.from({ length: this.ngaps }, (e, i) => false)
+        this.activies=Array.from({ length: this.ntexts }, (e, i) => false)
+        this.deactivies=Array.from({ length: this.ntexts }, (e, i) => false)
       },
       methods: {
         gaptextClick(x) {
-          //console.log("Hello",x)
-          if (this.gaptexts[x].classList.contains('deactive')) return
-          this.activeIdentifier=this.gaptexts[x].getAttribute("identifier")
-          for (var i = 0; i < this.gaps.length; i++) {
-            this.gaps[i].classList.add("canfill")
+          if (this.activies[x] || this.deactivies[x]) return
+          for (var i = 0; i < this.ngaps; i++) {
+            //this.canfills.splice(i,1,true)
+            Vue.set(this.canfills,i,true)
           }
-          for (var i = 0; i < this.gaps.length; i++) {
-            //console.log(i,this.gaps[i].classList)
+          if (this.activeIndex>=0){
+            //this.activies.splice(this.activeIndex,1,false)
+            Vue.set(this.activies,this.activeIndex,false)
           }
-          this.gaptexts[x].classList.add('active')
-          for (var i = 0; i < this.gaptexts.length; i++) {
-            //console.log(i,this.gaptexts[i].classList)
-          }
-          for (var i = 0; i < this.gaptexts.length; i++) {
-            if (i==x ) continue
-            this.gaptexts[i].classList.remove('active')
-          }
-          for (var i = 0; i < this.gaptexts.length; i++) {
-            //console.log(i,this.gaptexts[i].classList)
-          }
+          //this.activies.splice(x,1,true)
+          Vue.set(this.activies,x,true)
+          this.activeIndex=x
         },
         gapClick(x) {
-          var gaps=this.gaps
-          var gaptexts=this.gaptexts
-          if (!gaps[x].classList.contains('canfill') && !gaps[x].classList.contains('filled')) return
-          if (gaps[x].classList.contains('filled')) {
-            var gaptextIdentifier = gaps[x].getAttribute('gaptextIdentifier')
-            this.gapmap[gaptextIdentifier].classList.remove('deactive')
-            if (!this.activeIdentifier) {
-              gaps[x].classList.remove('filled')
-              gaps[x].removeAttribute('gaptextIdentifier')
-              gaps[x].innerHTML = "\u00a0"
-            }
+          if (!this.canfills[x] && !(this.gaps[x]<this.ntexts)) return
+          if (this.gaps[x]<this.ntexts) {
+            //this.deactivies.splice(this.gaps[x],1,false) 
+            //this.gaps.splice(x,1,this.ntexts)
+            Vue.set(this.deactivies,this.gaps[x],false)
+            Vue.set(this.gaps,x,this.ntexts)
           }
-          if (this.activeIdentifier) {
-            //console.log('gap',gaps[x].childNodes[0])
-            //console.log('gaptext',this.gapmap[this.activeIdentifier].childNodes[0])
-            gaps[x].childNodes[0].nodeValue = this.gapmap[this.activeIdentifier].childNodes[0].nodeValue
-            gaps[x].setAttribute('gaptextIdentifier', this.activeIdentifier)
-            gaps[x].classList.add('filled')
-            this.gapmap[this.activeIdentifier].classList.add('deactive')
+          if (this.activeIndex>=0) {
+            //this.gaps.splice(x,1,this.activeIndex)
+            //this.activies.splice(this.activeIndex,1,false)
+            //this.deactivies.splice(this.activeIndex,1,true)
+            Vue.set(this.gaps,x,this.activeIndex)
+            Vue.set(this.activies,this.activeIndex,false)
+            Vue.set(this.deactivies,this.activeIndex,true)
           }
-          //for (var i = 0; i < gaptexts.length; i++) console.log(gaptexts[i].classList)
-          this.activeIdentifier = null
-          for (var i = 0; i < gaps.length; i++) gaps[i].classList.remove('canfill')
-          for (var i = 0; i < gaptexts.length; i++) gaptexts[i].classList.remove('active')
+          this.activeIndex=-1
+          for (var i = 0; i < this.gaps.length; i++) {
+            //this.canfills.splice(i,1,false)
+            Vue.set(this.canfills,i,false)
+          }
+        },
+        getResponse(){
+          var res=[]
+          for (var i=0;i<this.ngaps;i++){
+            res.push((this.gaps[i]<this.ntexts?this.gaptextIds[this.gaps[i]]:"")+" "+this.gapIds[i])
+          }
+          console.log(res)
         }
 
       }

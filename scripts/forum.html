@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+  <div id="app">
+    <b>{{ message }}</b> is binding to message. <br/> <b>{{msgs[0]}}</b> is binding to msgs[0].
+    <p>After load/refresh this page, If
+      <ol>
+        <li>you click Change_Message button alone, change of message reflect to DOM immediately.</li>
+        <li>you click Change_Msgs[0] button alone, change of msgs[0] do not reflect to DOM at all.</li>
+        <li>you click Change_Msgs[0] button followed by click Change_Message button, 
+          both changes reflect to DOM immediately.</li>
+      </ol>
+
+    </p>
+    <p><button @click="changeMeaasge">Change_Message</button></p>
+    <p><button @click="changeMsgs">Change_Msgs[0]</button></p>
+    <p><button @click="changeMsgsBySlice">Change_Msgs[0]_BySlice</button></p>
+    <p>I am curious about case 3, why change of message trigger updating of msg[0]?</p>
+    <p>Solution: replace this.msgs[0]="msgs[0] changed" by this.msgs.splice(0,1,"msgs[0] changed")</p>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!',
+        msgs: ['Hello React']
+      },
+      methods:{
+        changeMeaasge(){
+          this.message="message changed"
+        },
+        changeMsgs(){
+          this.msgs[0]="msgs[0] changed"
+        },
+        changeMsgsBySlice(){
+          this.msgs.splice(0,1,"msgs[0] changed")
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
