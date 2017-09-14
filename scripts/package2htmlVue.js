@@ -18,6 +18,7 @@ module.exports=function package2html(zipfile) {
       var isMultiple = choiceInteractions[i].getAttribute('maxChoices') == "0"
       var prompt = choiceInteractions[i].getElementsByTagName("prompt")[0]
       var table = itemDoc.parentNode.createElement('table')
+      table.setAttribute("id",responseIdentifier) // set id for Vue
       var tr, td
       if (prompt) {
         var p = itemDoc.parentNode.createElement('p')
@@ -31,13 +32,19 @@ module.exports=function package2html(zipfile) {
       }
       var simpleChoices = choiceInteractions[i].getElementsByTagName('simpleChoice')
       var button
+      var choiceIds="["
       for (var j = 0; j < simpleChoices.length; j++) {
+        
+        choiceIds+=`"${simpleChoices[j].getAttribute('identifier')}"`
+        if (j<simpleChoices.length-1)choiceIds+=","
+
         tr = itemDoc.parentNode.createElement('tr')
         td = itemDoc.parentNode.createElement('td')
         td.setAttribute('width', '30px')
         button = itemDoc.parentNode.createElement('input')
-        button.setAttribute('name', "C_" + i)
         button.setAttribute('type', isMultiple ? "checkbox" : "radio")
+        button.setAttribute(":value",`choiceIds[${j}]`)
+        button.setAttribute("v-model",isMultiple ?"values":"value")
         td.appendChild(button)
         tr.appendChild(td)
         td = itemDoc.parentNode.createElement('td')
@@ -45,7 +52,40 @@ module.exports=function package2html(zipfile) {
         tr.appendChild(td)
         table.appendChild(tr)
       }
+      choiceIds+="]"
       itemBody.replaceChild(table, choiceInteractions[i])
+
+      scriptStr+=isMultiple?      
+        `vm_${responseIdentifier}=new Vue({
+        el:"#${responseIdentifier}",
+        data:{
+          identifier:"${responseIdentifier}",
+          choiceIds:${choiceIds},
+          nChoices:${simpleChoices.length},
+          values:[]
+        },
+        methods:{
+          getResponse(){
+            return(this.values)
+          }
+        }
+      })\n
+      `
+      :
+      ` vm_${responseIdentifier}=new Vue({
+        el:"#${responseIdentifier}",
+        data:{
+          identifier:"${responseIdentifier}",
+          choiceIds:${choiceIds},
+          nChoices:${simpleChoices.length},
+          value:""
+        },
+        methods:{
+          getResponse(){
+            return(this.value)
+          }
+        }
+      })\n`
     }
   }
   function replaceImages() {
@@ -81,17 +121,46 @@ module.exports=function package2html(zipfile) {
       //console.log(responseIdentifier)
       var inlineChoices = inlineChoiceInteractions[i].getElementsByTagName('inlineChoice')
       var select = itemDoc.parentNode.createElement('select')
+      select.setAttribute("id",responseIdentifier)
+      select.setAttribute("v-model","value")
       var option = itemDoc.parentNode.createElement('option')
+      option.setAttribute("value","")
       option.appendChild(itemDoc.parentNode.createTextNode('-option-'))
       select.appendChild(option)
+      var optionIdsStr="["
+      var valuesStr="["
       for (var j = 0; j < inlineChoices.length; j++) {
+        optionIdsStr+=`"${inlineChoices[j].getAttribute('identifier')}"`
         option = itemDoc.parentNode.createElement('option')
-        moveChildren(inlineChoices[j], option)
+        option.setAttribute(":value",`optionIds[${j}]`)
+        option.appendChild(itemDoc.parentNode.createTextNode(`{{values[${j}]}}`))
+        valuesStr+=`"${inlineChoices[j].childNodes[0].nodeValue}"`
+        if (j<inlineChoices.length-1){
+          valuesStr+=","
+          optionIdsStr+=","
+        }
         select.appendChild(option)
       }
-      moveChildren(inlineChoiceInteractions[i], select)
-      //itemBody.replaceChild(select, inlineChoiceInteractions[i])
+      valuesStr+="]"
+      optionIdsStr+="]"
+      //moveChildren(inlineChoiceInteractions[i], select)
       inlineChoiceInteractions[i].parentNode.replaceChild(select, inlineChoiceInteractions[i])
+
+      scriptStr+=
+        `var vm_${responseIdentifier}=new Vue({
+          el:"#${responseIdentifier}",
+          data:{
+            values:${valuesStr},
+            value:"",
+            optionIds:${optionIdsStr}
+          },
+          methods:{
+            getResponse(){
+              return this.value
+            }
+          }
+        })\n
+        `
     }
   }
   function replaceGapMatchInteractions() {
@@ -303,7 +372,7 @@ module.exports=function package2html(zipfile) {
           }
   
         }
-      })
+      })\n
     `
     }
   }

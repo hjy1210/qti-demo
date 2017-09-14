@@ -1,0 +1,80 @@
+<html><head><meta charset="UTF-8"/><style>.sat2_eng_2016_11_15 .kai {font-family:標楷體;}.sat2_eng_2016_11_15 
+.cnumber {list-style-type: cjk-ideographic;}.sat2_eng_2016_11_15 
+.underline {text-decoration: underline; }.sat2_eng_2016_11_15 
+.blockquote{margin:0px 0px 0px 30px;}.sat2_eng_2016_11_15 
+.box {border:1px black solid}.sat2_eng_2016_11_15 
+table.table{border-collapse: collapse;}.sat2_eng_2016_11_15 
+table.table td,th{border: 1px solid black;}.sat2_eng_2016_11_15 
+td.right {text-align:right;}
+</style><script type="text/x-mathjax-config">MathJax.Ajax.config.path["mhchem"] =  "https://cdnjs.cloudflare.com/ajax/libs/mathjax-mhchem/3.2.0";
+    MathJax.Hub.Config({
+    extensions: ["[mhchem]/mhchem.js"],
+    TeX: {
+    Macros: {
+    ceec: ["{\\fbox{#1 }}", 1],
+    ceece: ["\\underline{  {\\fbox{#1 }}  }", 1]
+    }
+    }
+    });</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><link rel="stylesheet" type="text/css" href="scripts/qtidisplay.css"/></head><body><div class="sat2_eng_2016_11_15">
+    
+    <p xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+      Have you been irritated by someone standing too close in line, talking too loud or making eye contact for too long? Or, they
+      may have
+      <span >
+        <select v-model="value" id="resp_sat2_eng_2016_11_15_1">
+          <option value="">-option-</option>
+          <option :value="optionIds[0]">{{values[0]}}</option>
+          <option :value="optionIds[1]">{{values[1]}}</option>
+          <option :value="optionIds[2]">{{values[2]}}</option>
+          <option :value="optionIds[3]">{{values[3]}}</option>
+      </select></span> you with the loud music from their earphones, or by taking up more than one seat on a crowded subway car. You feel unhappy because your personal space has been violated.
+    </p>
+    <p>
+      According to scientists, personal space involves certain invisible forces imposed on you through all the
+      <select><option>-option-</option><option>angles</option><option>events</option><option>senses</option><option>regions</option>
+        <inlineChoice identifier="resp_sat2_eng_2016_11_15_2_A"/>
+        <inlineChoice identifier="resp_sat2_eng_2016_11_15_2_B"/>
+        <inlineChoice identifier="resp_sat2_eng_2016_11_15_2_C"/>
+        <inlineChoice identifier="resp_sat2_eng_2016_11_15_2_D"/>
+        </select>. For example, people may feel their space is being invaded when they experience an unwelcome sound, smell, or stare.
+    </p>
+    <p>In certain situations such as in crowded subway cars or elevators, it is not always possible for people to keep their
+      <span id="resp_sat2_eng_2016_11_15_3"><select><option>-option-</option><option>prefer</option><option>preferring</option><option>preferred</option><option>being preferred</option></span>
+        <inlineChoice identifier="resp_sat2_eng_2016_11_15_3_A"/>
+        <inlineChoice identifier="resp_sat2_eng_2016_11_15_3_B"/>
+        <inlineChoice identifier="resp_sat2_eng_2016_11_15_3_C"/>
+        <inlineChoice identifier="resp_sat2_eng_2016_11_15_3_D"/>
+      </select> distance from others. They learn coping strategies to deal with their discomfort. For instance, people often avoid
+      eye contact with someone standing
+      <select><option>-option-</option><option>long before</option><option>close to</option><option>aside from</option><option>soon after</option>
+        <inlineChoice identifier="resp_sat2_eng_2016_11_15_4_A"/>
+        <inlineChoice identifier="resp_sat2_eng_2016_11_15_4_B"/>
+        <inlineChoice identifier="resp_sat2_eng_2016_11_15_4_C"/>
+        <inlineChoice identifier="resp_sat2_eng_2016_11_15_4_D"/>
+      </select> them, or they pretend that these people are lifeless objects in their personal space. Given the opportunity, they may
+      <select><option>-option-</option><option>retreat</option><option>explore</option><option>dispense</option><option>connect</option>
+        <inlineChoice identifier="resp_sat2_eng_2016_11_15_5_A"/>
+        <inlineChoice identifier="resp_sat2_eng_2016_11_15_5_B"/>
+        <inlineChoice identifier="resp_sat2_eng_2016_11_15_5_C"/>
+        <inlineChoice identifier="resp_sat2_eng_2016_11_15_5_D"/>
+      </select> to a corner, putting distance between themselves and strangers. Or, they may sit or stand equidistant from one another
+      like birds on a wire.
+    </p>
+  </div><script src="scripts/qtidisplay.js"></script>
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+    var vm=new Vue({
+      el:"#resp_sat2_eng_2016_11_15_1",
+      data:{
+        values:["offended","controlled","acquired","supplied"],
+        value:"",
+        optionIds:["resp_sat2_eng_2016_11_15_1_A","resp_sat2_eng_2016_11_15_1_B","resp_sat2_eng_2016_11_15_1_C","resp_sat2_eng_2016_11_15_1_D"]
+      },
+      methods:{
+        getResponse(){
+          return this.value
+        }
+      }
+    })
+  </script>
+</body></html>

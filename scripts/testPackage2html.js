@@ -1,2 +1,3 @@
-var package2html=require('./scripts/package2htmlTryVue')
-package2html("sat2_eng_2016_21_30.zip")
+var package2html=require('./package2htmlTryVue')
+var zipfile = process.argv[2]
+package2html(zipfile)

@@ -2,7 +2,7 @@
 ///// node scripts\cml2html.js sat2_phy_2016_21.cml [mml|pu]
 var cml2item=require('./cml2item')
 var item2package=require('./item2package')
-var package2html=require('./package2html')
+var package2html=require('./package2htmlVue')
 var fs=require('fs')
 
 var rawxml = fs.readFileSync(process.argv[2], "utf-8")
