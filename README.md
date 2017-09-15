@@ -59,3 +59,8 @@ mathjax-node 要使用mhchem3，可以用下列設定。
 ```
 
 QTI 目前仍不接受 `<svg>`
+
+## package2html
+ * 原來的package2html.js搭配qtidisplay.js，在一個網頁有兩個gapMatchInteraction的時候會互相衝突。
+ * 改用package2htmlVue.js，因為script都封裝在元件內，同一個網頁不管有幾個gapMatchInteraction都可以運作。
+ * 用package2htmlJs.js搭配qtidisplayJs.js，負擔較輕。

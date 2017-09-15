@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <span onclick="alert('hi')">Test On Click</span>
+  <span onclick="((e)=>handle(e))()">Test On Click</span>
+  <span id="test">Test On Click</span>
+  <script>
+    //document.getElementById("test").addEventListener('click',handle)
+    document.getElementById("test").setAttribute("onclick","handle(this,'ABC')")
+    function handle(e,data){
+       console.log("hi")
+       console.log(e)
+       console.log(data)
+       console.log(e)
+       console.log(e.getAttribute("id"))
+    }
+  </script>
+</body>
+</html>
