@@ -37,8 +37,8 @@ function gapClick(e) {
 }
 
 var responses = {}
-var outcomes={}
-var corrects={}
+var outcomes = {}
+var corrects = {}
 var itemInfo
 var processing
 function score(node) {
@@ -47,20 +47,20 @@ function score(node) {
       score(node.childNodes[0])
     case "variable":
       var id = node.getAttribute("identifier")
-      if (outcomes[id]!=null) return outcomes[id]
+      if (outcomes[id] != null) return outcomes[id]
       //if (itemInfo.outcomeInfo[id]!=null) return parseFloat(itemInfo.outcomeInfo[id])
-      if (responses[id]!=null) return responses[id][0]
+      if (responses[id] != null) return responses[id][0]
       return null
       break
     case "isNull":
       var v = score(node.childNodes[0])
-      return (v===undefined || v === null || v.length === 0) ? true : false
+      return (v === undefined || v === null || v.length === 0) ? true : false
     case "not":
       var v = score(node.childNodes[0])
       return !v
     case "setOutcomeValue":
       //itemInfo.outcomeInfo[node.getAttribute("identifier")] = score(node.childNodes[0])
-      outcomes[node.getAttribute("identifier")]=score(node.childNodes[0])
+      outcomes[node.getAttribute("identifier")] = score(node.childNodes[0])
       return
     case "sum":
       var sum = 0
@@ -71,61 +71,66 @@ function score(node) {
     case "mapResponse":
       var mapping = itemInfo.responseInfo[node.getAttribute("identifier")].mapping
       if (typeof mapping === "string") {
-        itemInfo.responseInfo[node.getAttribute("identifier")].mapping = new DOMParser().parseFromString(mapping,"text/xml").documentElement
+        itemInfo.responseInfo[node.getAttribute("identifier")].mapping = new DOMParser().parseFromString(mapping, "text/xml").documentElement
         mapping = itemInfo.responseInfo[node.getAttribute("identifier")].mapping
       }
-      var v=0
-      var id=node.getAttribute("identifier")
-      var defaultValue=mapping.getAttribute("defaultValue")
-      for (var i=0;i<responses[id].length;i++){
-        var value=defaultValue
-        for (var j=0;j<mapping.childNodes.length;j++){
-          if (mapping.childNodes[j].getAttribute("mapKey")===responses[id][i]){
-            value=mapping.childNodes[j].getAttribute("mappedValue")
+      var v = 0
+      var id = node.getAttribute("identifier")
+      var defaultValue = mapping.getAttribute("defaultValue")
+      for (var i = 0; i < responses[id].length; i++) {
+        var value = defaultValue
+        for (var j = 0; j < mapping.childNodes.length; j++) {
+          if (mapping.childNodes[j].getAttribute("mapKey") === responses[id][i]) {
+            value = mapping.childNodes[j].getAttribute("mappedValue")
             break
           }
         }
-        v+=parseFloat(value)
+        v += parseFloat(value)
       }
       return v
     case "baseValue":
-      var s=node.getAttribute("baseType")
-      var v=node.childNodes[0].nodeValue
-      if (s==="float") v=parseFloat(v)
+      var s = node.getAttribute("baseType")
+      var v = node.childNodes[0].nodeValue
+      if (s === "float") v = parseFloat(v)
       return v
+    case "responseElseIf":
     case "responseIf":
-        var cond=score(node.childNodes[0])
-        if (cond) score(node.childNodes[1])
-        break
+      var cond = score(node.childNodes[0])
+      if (cond) {
+        score(node.childNodes[1])
+      } else {
+        if (node.nextSibling) score(node.nextSibling)
+      }
+      break
     case "responseElse":
       score(node.childNodes[0])
       break
     case "max":
-      var v=score(node.childNodes[0])
-      for (var i=1;i<node.childNodes.length;i++){
-        v=Math.max(v,score(node.childNodes[i]))
+      var v = score(node.childNodes[0])
+      for (var i = 1; i < node.childNodes.length; i++) {
+        v = Math.max(v, score(node.childNodes[i]))
       }
       return v
     case "subtract":
-      return score(node.childNodes[0])-score(node.childNodes[1])
+      return score(node.childNodes[0]) - score(node.childNodes[1])
     case "divide":
-      return score(node.childNodes[0])/score(node.childNodes[1])
+      return score(node.childNodes[0]) / score(node.childNodes[1])
     case "product":
-      return score(node.childNodes[0])*score(node.childNodes[1])
+      return score(node.childNodes[0]) * score(node.childNodes[1])
     case "correct":
       return corrects[node.getAttribute("identifier")]
     case "match":
-      var v0=score(node.childNodes[0])
-      var v1=score(node.childNodes[1])
-      if (v0==null || v1==null || v0.length!=v1.length) return false
-      for (var i=0;i<v0.length;i++){
-        if (v0[i]!=v1[i]) return false
+      var v0 = score(node.childNodes[0])
+      var v1 = score(node.childNodes[1])
+      if (v0 == null || v1 == null || v0.length != v1.length) return false
+      for (var i = 0; i < v0.length; i++) {
+        if (v0[i] != v1[i]) return false
       }
       return true
     case "and":
-      var res=score(node.childNodes[0])
-      for (var i=0;i<node.childNodes[i];i++){
-        res=res && score(node.childNodes[i])
+      var res = score(node.childNodes[0])
+      for (var i = 1; i < node.childNodes.length; i++) {
+        res = res && score(node.childNodes[i])
       }
       return res
     default:
@@ -135,17 +140,17 @@ function score(node) {
 function getScore() {
   for (name in itemInfo.responseInfo) {
     responses[name] = getResponse(name)
-    if (itemInfo.responseInfo[name].correctResponse){
-      corrects[name]=itemInfo.responseInfo[name].correctResponse[0]
+    if (itemInfo.responseInfo[name].correctResponse) {
+      corrects[name] = itemInfo.responseInfo[name].correctResponse[0]
     }
   }
-  for (name in itemInfo.outcomeInfo){
-    outcomes[name]=itemInfo.outcomeInfo[name][0]
+  for (name in itemInfo.outcomeInfo) {
+    outcomes[name] = itemInfo.outcomeInfo[name][0]
   }
   score(processing)
-  console.log("responses",responses)
-  console.log("corrects",corrects)
-  console.log("outcomes",outcomes)
+  console.log("responses", responses)
+  console.log("corrects", corrects)
+  console.log("outcomes", outcomes)
 }
 
 function handleFileSelect(f) {
