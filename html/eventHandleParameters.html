@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  Click following list item to inspect output in comsole.
+  <ul>
+    <li><span onclick="console.log('hi');console.log(event)">onclick="console.log('hi');console.log(event)"</span></li>
+    <li><span onclick="handle(event,'123')">onclick="handle(event,'123')"</span></li>
+    <li><span onclick="handle(this,'123')">onclick="handle(this,'123')"</span></li>
+    <li><span id="test1" onclick="handle(e,'123')">onclick="handle(e,'123')"</span></li>
+    <li><span id="test3">document.getElementById("test3").setAttribute("onclick","handle(this,'ABC')")</span></li>
+    <li><span id="test4">document.getElementById("test4").addEventListener("click", handle,"EFG")</span></li>
+    <li><span id="test5">document.getElementById("test5").addEventListener("click", ()=>handle(event,"123"))</span></li>
+  </ul>
+  <pre>
+    &lt;script>
+      document.getElementById("test3").setAttribute("onclick", "handle(this,'ABC')")
+      document.getElementById("test4").addEventListener("click", handle,"EFG")
+      document.getElementById("test5").addEventListener("click", ()=>handle(event,"123"))
+      function handle(e, data) {
+        console.log(e)
+        console.log(data)
+      }
+    &lt;/script>
+  </pre>
+  <script>
+        //document.getElementById("test").addEventListener('click',handle)
+        document.getElementById("test3").setAttribute("onclick", "handle(this,'ABC')")
+        document.getElementById("test4").addEventListener("click", handle,"EFG")
+        document.getElementById("test5").addEventListener("click", ()=>handle(event,"123"))
+        function handle(e, data) {
+          console.log(e)
+          console.log(data)
+        }
+  </script>
+</body>
+
+</html>

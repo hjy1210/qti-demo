@@ -66,6 +66,13 @@ mathjax-node 要使用mhchem3，可以用下列設定。
       }
     });
 ```
+### Vue
+gapMatchVueComponent.html 製作了一個 Vue component，<gapmatch-component>。
+gapmatch-component 利用 slot 將整個 gapMatchInteraction 的內容放在裡面，使用時，只要傳遞 childgaps 與 gapindexes 兩個參數進去就可以了，比目前在 package2htmlVue.js 裡面使用的方法還要輕便許多。
+
+eventHandleParameters.html 用來了解事件發生時參數如何傳遞，用 addEventListener
+似乎比較不會受到到底this指的是甚麼的困擾。
+
 ### object
 QTI 2.1 接受 object 而不支援 audio/video，object  的正確語法為 
 ```
