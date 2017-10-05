@@ -36,7 +36,7 @@ module.exports = function cml2item(rawxml,type) {
     imsdoc.insertBefore(new DOMParser().parseFromString(scorendxStr).documentElement,
       endofOutcomeDeclaration)
     
-    var respId = 'resp_' + identifier + "_" + respNdx
+    var respId = 'r_' + respNdx
     var responseStr=
       `<responseDeclaration identifier="${respId}" cardinality="${cardinality}" baseType="identifier">
         <correctResponse/>
@@ -161,7 +161,7 @@ module.exports = function cml2item(rawxml,type) {
     var quota = parseFloat(iCI.getAttribute("quota"))
     iCI.removeAttribute("correct")
     iCI.removeAttribute("quota")
-    var respId = 'resp_' + identifier + "_" + respNdx
+    var respId = 'r_' + respNdx
     
     var scorendxStr=`<outcomeDeclaration identifier="SCORE_${respNdx}" cardinality="single"
       baseType="float">
@@ -270,7 +270,7 @@ module.exports = function cml2item(rawxml,type) {
 
     var and = responseCondition.getElementsByTagName('and')[0]
     for (var k = 0; k < groupSize; k++) {
-      respId = 'resp_' + identifier + "_" + respNdx+"_" + (k+1)
+      respId = 'r_' + respNdx+"_" + (k+1)
       // respId = 'resp_' + (respNdx + k)
       var responseDeclarationStr =
         `<responseDeclaration identifier="${respId}" cardinality="single" baseType="identifier">
@@ -302,7 +302,7 @@ module.exports = function cml2item(rawxml,type) {
   }
   function manipulateGapMatchInteraction(node) {
     var gMI = node
-    var respId = 'resp_' + identifier + "_" + respNdx
+    var respId = 'r_' + respNdx
     var gapMatchInteraction = gMI /////imsroot.createElement('inlineChoiceInteraction')
     gapMatchInteraction.setAttribute('responseIdentifier', respId)
     gapMatchInteraction.setAttribute('shuffle', "false")

@@ -9,9 +9,9 @@ var AdmZip = require('adm-zip');
 var DOMParser = require('xmldom').DOMParser
 var XMLSerializer = require('xmldom').XMLSerializer
 
-function getInfo(itemStr){
+function getInfo(itemStr,zip){
   var itemDoc = new DOMParser().parseFromString(itemStr,'text/xml').documentElement
-
+  var myid=itemDoc.getAttribute("identifier")
   var responseInfo={}
   var outcomeInfo={}
   
@@ -57,12 +57,21 @@ function getInfo(itemStr){
   var responseProcessing=itemDoc.getElementsByTagName("responseProcessing")[0]
   var responseStr=new XMLSerializer().serializeToString(responseProcessing)
   responseStr=responseStr.replace(/>\s*?</g,"><")
-  return {responseInfo:responseInfo,outcomeInfo:outcomeInfo,
+  var info={identifier:myid,responseInfo:responseInfo,outcomeInfo:outcomeInfo,
     responseProcessing:responseStr}
+  var itemstyle = itemDoc.getElementsByTagName("stylesheet")[0]
+  if (itemstyle != null) {
+    stylecontent = zip.readAsText(itemstyle.getAttribute('href'))
+    //stylecontent = stylecontent.replace(/[^}]*?{/g, x => `.${identifier} ${x}`)
+    info.styleContent=stylecontent
+  } else {
+    info.styleContent=""
+  }
+  return info
 }
 
 
-module.exports=function package2html(zipfile) {
+module.exports=function package2json(zipfile) {
   function filterEntriesWithName(name) {
     return zipEntries.filter(entry => entry.entryName === name)
   }
@@ -251,8 +260,9 @@ module.exports=function package2html(zipfile) {
     }
   }
   var itemStr=zip.readAsText(itementry.entryName)
-  
-  fs.writeFileSync("responseInfo.json",JSON.stringify(getInfo(itemStr),null,2))
+  var itemInfo=getInfo(itemStr,zip)
+
+  //fs.writeFileSync("responseInfo.json",JSON.stringify(getInfo(itemStr),null,2))
 
   var itemDoc = new DOMParser().parseFromString(itemStr,'text/xml').documentElement
   ///// itemDoc.removeAttribute("xmlns") ///// NOT work!!!!!
@@ -272,76 +282,11 @@ module.exports=function package2html(zipfile) {
   var div = itemDoc.parentNode.createElement('div')
   div.setAttribute('class', identifier)
   moveChildren(itemBody, div)
+  itemInfo.html=new XMLSerializer().serializeToString(div)
+  return itemInfo
+  //fs.writeFileSync("itemInfo.json",JSON.stringify(itemInfo,null,2))
   ///// 
   //console.log(JSON.stringify(getInfo(zip),null,2))
-
-  //console.log(new XMLSerializer().serializeToString(div))
-  var html = itemDoc.parentNode.createElement('html')
-  var body = itemDoc.parentNode.createElement('body')
-  var head = itemDoc.parentNode.createElement('head')
-  var meta = itemDoc.parentNode.createElement('meta')
-  meta.setAttribute('charset', "UTF-8")
-  head.appendChild(meta)
-  if (itemstyle != null) {
-    //console.log(itemstyle)
-    var style = itemDoc.parentNode.createElement('style')
-    var stylecontent = zip.readAsText(itemstyle.getAttribute('href'))
-    stylecontent = stylecontent.replace(/[^}]*?{/g, x => `.${identifier} ${x}`)
-    style.appendChild(itemDoc.parentNode.createTextNode(stylecontent))
-    head.appendChild(style)
-  }
-
-  var script = itemDoc.parentNode.createElement('script')
-  script.setAttribute('type', "text/x-mathjax-config")
-  var content = `MathJax.Ajax.config.path["mhchem"] =  "https://cdnjs.cloudflare.com/ajax/libs/mathjax-mhchem/3.2.0";
-    MathJax.Hub.Config({
-    extensions: ["[mhchem]/mhchem.js"],
-    TeX: {
-    Macros: {
-    ceec: ["{\\\\fbox{#1 }}", 1],
-    ceece: ["\\\\underline{\  {\\\\fbox{#1 }}\  }", 1]
-    }
-    }
-    });`
-  script.appendChild(itemDoc.parentNode.createTextNode(content))
-  head.appendChild(script)
-  script = itemDoc.parentNode.createElement('script')
-  script.setAttribute('src', "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML")
-  script.appendChild(itemDoc.parentNode.createTextNode(""))
-  head.appendChild(script)
-  var link = itemDoc.parentNode.createElement('link')
-  link.setAttribute("rel", "stylesheet")
-  link.setAttribute("type", "text/css")
-  link.setAttribute("href", "scripts/qtidisplay.css")
-  head.appendChild(link)
-  script = itemDoc.parentNode.createElement('script')
-  script.setAttribute('src', "scripts/qtidisplayJs.js")
-  script.appendChild(itemDoc.parentNode.createTextNode(""))
-  //console.log("pass2")
-  html.appendChild(head)
-  html.appendChild(body)
-  body.appendChild(div)
-  body.appendChild(script)
-
-  //pick responseInfo.json file<input id="upload" type=file accept="text/json" 
-  //onchange="if (this.files.length>0) handleFileSelect(this.files[0])">
-  //<button onclick="getScore()">Get Score</button>
-  var p=itemDoc.parentNode.createElement("p")
-  p.appendChild(itemDoc.parentNode.createTextNode("pick responseInfo.json file"))
-  var inp=itemDoc.parentNode.createElement("input")
-  inp.setAttribute("type","file")
-  inp.setAttribute("accept","text/json")
-  inp.setAttribute("onchange","if (this.files.length>0) handleFileSelect(this.files[0])")
-  p.appendChild(inp)
-  var button=itemDoc.parentNode.createElement("button")
-  button.setAttribute("onclick","getScore()")
-  button.appendChild(itemDoc.parentNode.createTextNode("Get Score"))
-  p.appendChild(button)
-  body.appendChild(p)
-  
-  var data = new XMLSerializer().serializeToString(html)
-  //console.log(data)
-  fs.writeFileSync(zipfile.substr(0, zipfile.lastIndexOf(".")) + ".html", data, "utf-8")
 }
 
 function moveChildren(from, to) {
@@ -353,4 +298,4 @@ function moveChildren(from, to) {
 }
 
 //package2html(process.argv[2])
-//package2html("./sat2_chi_2016_01.zip")
+//package2html("./mixed.zip")
