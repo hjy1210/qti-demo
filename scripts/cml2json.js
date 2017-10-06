@@ -9,7 +9,11 @@ var cmlxml = fs.readFileSync(process.argv[2], "utf-8")
 var xmlfile = process.argv[2].substr(0, process.argv[2].lastIndexOf('.')) + ".xml"
 var zipfile = process.argv[2].substr(0, process.argv[2].lastIndexOf('.')) + ".zip"
 var jsonfile=process.argv[2].substr(0, process.argv[2].lastIndexOf('.')) + ".json"
-var type=process.argv[3]  // pu for MathML with special treatment, mml for MathML, otherwise no MML
+var type
+if (process.argv[3]) 
+  type=process.argv[3] // pu for MathML with special treatment, mml for MathML, otherwise no MML
+else
+  type="pu"
 var promise=cml2item(cmlxml,type)
 promise
   .then(xml=>{

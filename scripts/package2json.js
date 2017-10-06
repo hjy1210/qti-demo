@@ -200,7 +200,7 @@ module.exports=function package2json(zipfile) {
         //gaptexts.push(gaptextElements[i])
         //gapmap[gaptextElements[i].getAttribute('identifier')] = gaptextElements[i]
         var li = itemDoc.parentNode.createElement('li')
-        li.setAttribute("class", "gapText")
+        li.setAttribute("class", "gaptext")
         li.setAttribute("name", responseIdentifier)
         for (var j = 0; j < gaptextElements[i].attributes.length; j++) {
           li.setAttribute(gaptextElements[i].attributes[j].name, gaptextElements[i].attributes[j].value)
