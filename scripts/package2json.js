@@ -20,9 +20,9 @@ function getInfo(itemStr,zip){
     var name=responseDeclarations[i].getAttribute("identifier")
     responseInfo[name]={}
     var baseType=responseDeclarations[i].getAttribute("baseType")
-    //var cardinality=responseDeclarations[i].getAttribute("cardinality")
-    //responseInfo[name]["baseType"]=baseType
-    //responseInfo[name]["cardinality"]=cardinality
+    var cardinality=responseDeclarations[i].getAttribute("cardinality")
+    responseInfo[name]["baseType"]=baseType
+    responseInfo[name]["cardinality"]=cardinality
     var correctResponse=responseDeclarations[i].getElementsByTagName("correctResponse")[0]
     if (correctResponse){
       responseInfo[name]["correctResponse"]=[]
@@ -33,7 +33,9 @@ function getInfo(itemStr,zip){
         if (baseType=="integer") value=parseInt(value)
         responseInfo[name]["correctResponse"].push(value)
       }
+      if (cardinality=="single") responseInfo[name]["correctResponse"]=responseInfo[name]["correctResponse"][0]
     }
+
     var mapping=responseDeclarations[i].getElementsByTagName("mapping")[0]
     if (mapping){
       var mapStr=new XMLSerializer().serializeToString(mapping)
@@ -45,6 +47,7 @@ function getInfo(itemStr,zip){
   for (var i=0;i<outcomeDeclarations.length;i++){
     name=outcomeDeclarations[i].getAttribute("identifier")
     var bT=outcomeDeclarations[i].getAttribute("baseType")
+    var cardinality=outcomeDeclarations[i].getAttribute("cardinality")
     var defaultValue=outcomeDeclarations[i].getElementsByTagName("defaultValue")[0]
     var values=defaultValue.getElementsByTagName("value")
     outcomeInfo[name]=[]
@@ -52,7 +55,7 @@ function getInfo(itemStr,zip){
       var v= bT==="float"?parseFloat(values[j].childNodes[0].nodeValue):parseInt(values[j].childNodes[0].nodeValue)
       outcomeInfo[name].push(v)
     }
-    
+    if (cardinality=='single') outcomeInfo[name] = outcomeInfo[name][0]
   }
   var responseProcessing=itemDoc.getElementsByTagName("responseProcessing")[0]
   var responseStr=new XMLSerializer().serializeToString(responseProcessing)
