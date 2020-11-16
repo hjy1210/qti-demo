@@ -1,0 +1,290 @@
+<assessmentItem xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p1.xsd" identifier="sat2_chm_2016_02" title="sat2_chm_2016_02" adaptive="false" timeDependent="false">
+    <responseDeclaration identifier="r_1" cardinality="single" baseType="identifier">
+        <correctResponse><value>r_1_E</value></correctResponse>
+        <mapping defaultValue="0"><mapEntry mapKey="r_1_E" mappedValue="3"/></mapping>
+       </responseDeclaration>
+    <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+    </outcomeDeclaration>
+    <outcomeDeclaration identifier="SCORE_1" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+      </outcomeDeclaration>
+    <stylesheet href="styles/style.css" type="text/css"/>
+    <itemBody xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+    
+    <p>碘可以形成很多種氧化物，且可具有不同的氧化數。有一種很特殊的碘與氧的化合物稱為碘酸碘。
+      已知其中碘的氧化數分別為 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\ce{+3}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo>+</mo>
+      <mn>3</mn>
+    </mrow>
+  </mrow>
+</math> 與<math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\ce{+5}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo>+</mo>
+      <mn>5</mn>
+    </mrow>
+  </mrow>
+</math>，則下列何者是碘酸碘的化學式？
+    </p>
+    <choiceInteraction responseIdentifier="r_1" shuffle="false" maxChoices="1" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+      <simpleChoice identifier="r_1_A"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\ce{I2O3}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">I</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>2</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">O</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>3</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+  </mrow>
+</math></simpleChoice>
+      <simpleChoice identifier="r_1_B" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\ce{I3O4}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">I</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>3</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">O</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>4</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+  </mrow>
+</math></simpleChoice>
+      <simpleChoice identifier="r_1_C" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\ce{I3O6}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">I</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>3</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">O</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>6</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+  </mrow>
+</math></simpleChoice>
+      <simpleChoice identifier="r_1_D" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\ce{I4O5}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">I</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>4</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">O</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>5</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+  </mrow>
+</math></simpleChoice>
+      <simpleChoice identifier="r_1_E" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\ce{I4O9}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">I</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>4</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">O</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>9</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+  </mrow>
+</math></simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+    <responseProcessing xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+    <responseCondition>
+          <responseIf>
+            <not>
+              <isNull>
+                <variable identifier="r_1"/>
+              </isNull>
+            </not>
+            <setOutcomeValue identifier="SCORE_1">
+              <sum>
+                <variable identifier="SCORE_1"/>
+                <mapResponse identifier="r_1"/>
+              </sum>
+            </setOutcomeValue>
+          </responseIf>
+          </responseCondition><setOutcomeValue identifier="SCORE">
+        <sum>
+        <variable identifier="SCORE"/>
+        <variable identifier="SCORE_1"/>
+        </sum>
+      </setOutcomeValue></responseProcessing>
+    </assessmentItem>

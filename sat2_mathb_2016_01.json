@@ -1,0 +1,18 @@
+{
+  "identifier": "sat2_mathb_2016_01",
+  "responseInfo": {
+    "r_1": {
+      "baseType": "identifier",
+      "cardinality": "single",
+      "correctResponse": "r_1_4",
+      "mapping": "<mapping defaultValue=\"0\" xmlns=\"http://www.imsglobal.org/xsd/imsqti_v2p1\"><mapEntry mapKey=\"r_1_4\" mappedValue=\"6\"/></mapping>"
+    }
+  },
+  "outcomeInfo": {
+    "SCORE": 0,
+    "SCORE_1": 0
+  },
+  "responseProcessing": "<responseProcessing xmlns=\"http://www.imsglobal.org/xsd/imsqti_v2p1\"><responseCondition><responseIf><not><isNull><variable identifier=\"r_1\"/></isNull></not><setOutcomeValue identifier=\"SCORE_1\"><sum><variable identifier=\"SCORE_1\"/><mapResponse identifier=\"r_1\"/></sum></setOutcomeValue></responseIf></responseCondition><setOutcomeValue identifier=\"SCORE\"><sum><variable identifier=\"SCORE\"/><variable identifier=\"SCORE_1\"/></sum></setOutcomeValue></responseProcessing>",
+  "styleContent": ".kai {font-family:標楷體;}\r\n.cnumber {list-style-type: cjk-ideographic;}\r\n.underline {text-decoration: underline; }\r\n.blockquote{margin:0px 0px 0px 30px;}\r\n.box {border:1px black solid}\r\ntable.table{border-collapse: collapse;}\r\ntable.table td,th{border: 1px solid black;}\r\ntd.right {text-align:right;}\r\n",
+  "html": "<div class=\"sat2_mathb_2016_01\">\n    \r\n    <p xmlns=\"http://www.imsglobal.org/xsd/imsqti_v2p1\">下列哪一個選項是方程式 <math xmlns=\"http://www.w3.org/1998/Math/MathML\" alttext=\"7x^5-2x^4+14x^3-4x^2+7x-2=0\">\n  <mn>7</mn>\n  <msup>\n    <mi>x</mi>\n    <mn>5</mn>\n  </msup>\n  <mo>−<!-- − --></mo>\n  <mn>2</mn>\n  <msup>\n    <mi>x</mi>\n    <mn>4</mn>\n  </msup>\n  <mo>+</mo>\n  <mn>14</mn>\n  <msup>\n    <mi>x</mi>\n    <mn>3</mn>\n  </msup>\n  <mo>−<!-- − --></mo>\n  <mn>4</mn>\n  <msup>\n    <mi>x</mi>\n    <mn>2</mn>\n  </msup>\n  <mo>+</mo>\n  <mn>7</mn>\n  <mi>x</mi>\n  <mo>−<!-- − --></mo>\n  <mn>2</mn>\n  <mo>=</mo>\n  <mn>0</mn>\n</math> 的根？</p>\r\n   <table><tr><td width=\"30px\"><input name=\"r_1\" type=\"radio\" value=\"r_1_1\"/></td><td><math xmlns=\"http://www.w3.org/1998/Math/MathML\" alttext=\"-1\">\n  <mo>−<!-- − --></mo>\n  <mn>1</mn>\n</math></td></tr><tr><td width=\"30px\"><input name=\"r_1\" type=\"radio\" value=\"r_1_2\"/></td><td><math xmlns=\"http://www.w3.org/1998/Math/MathML\" alttext=\"\\frac{1}{7}\">\n  <mfrac>\n    <mn>1</mn>\n    <mn>7</mn>\n  </mfrac>\n</math></td></tr><tr><td width=\"30px\"><input name=\"r_1\" type=\"radio\" value=\"r_1_3\"/></td><td><math xmlns=\"http://www.w3.org/1998/Math/MathML\" alttext=\"-\\frac{1}{7}\">\n  <mo>−<!-- − --></mo>\n  <mfrac>\n    <mn>1</mn>\n    <mn>7</mn>\n  </mfrac>\n</math></td></tr><tr><td width=\"30px\"><input name=\"r_1\" type=\"radio\" value=\"r_1_4\"/></td><td><math xmlns=\"http://www.w3.org/1998/Math/MathML\" alttext=\"\\frac{2}{7}\">\n  <mfrac>\n    <mn>2</mn>\n    <mn>7</mn>\n  </mfrac>\n</math></td></tr><tr><td width=\"30px\"><input name=\"r_1\" type=\"radio\" value=\"r_1_5\"/></td><td><math xmlns=\"http://www.w3.org/1998/Math/MathML\" alttext=\"-\\frac{2}{7}\">\n  <mo>−<!-- − --></mo>\n  <mfrac>\n    <mn>2</mn>\n    <mn>7</mn>\n  </mfrac>\n</math></td></tr></table>\r\n  </div>"
+}

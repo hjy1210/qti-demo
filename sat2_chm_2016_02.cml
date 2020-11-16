@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assessmentItem identifier="sat2_chm_2016_02">
+  <itemBody>
+    <p>碘可以形成很多種氧化物，且可具有不同的氧化數。有一種很特殊的碘與氧的化合物稱為碘酸碘。
+      已知其中碘的氧化數分別為 \(\ce{+3}\) 與\(\ce{+5}\)，則下列何者是碘酸碘的化學式？
+    </p>
+    <choiceInteraction cardinality="single" correct="E" quota="3">
+      <simpleChoice>\(\ce{I2O3}\)</simpleChoice>
+      <simpleChoice>\(\ce{I3O4}\)</simpleChoice>
+      <simpleChoice>\(\ce{I3O6}\)</simpleChoice>
+      <simpleChoice>\(\ce{I4O5}\)</simpleChoice>
+      <simpleChoice>\(\ce{I4O9}\)</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+</assessmentItem>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<assessmentItem identifier="sat2_phy_2016_03">
+  <itemBody>
+    <p>欲瞭解聲波如何在金屬中傳播，可利用簡化的一維模型：將金屬原子視為質量 \(m\) 的小球， 以間距 \(d\) 排列成一直線，且相鄰兩個小球間以力常數 \(k\) 的彈簧連結， 藉以模擬原子間的作用力。在此簡化模型的假設下，應用因次分析來判定，
+      下列何者可能為金屬中的聲速？
+    </p>
+    <choiceInteraction cardinality="single" correct="A" quota="3">
+      <simpleChoice>\(d\sqrt{k/m}\)</simpleChoice>
+      <simpleChoice>\(d\sqrt{mk}\)</simpleChoice>
+      <simpleChoice>\(\sqrt{dm/k}\)</simpleChoice>
+      <simpleChoice>\(dk/m\)</simpleChoice>
+      <simpleChoice>\(mk/d\)</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+</assessmentItem>

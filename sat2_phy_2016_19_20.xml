@@ -1,0 +1,272 @@
+<assessmentItem xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p1.xsd" identifier="sat2_phy_2016_19_20" title="sat2_phy_2016_19_20" adaptive="false" timeDependent="false">
+    <responseDeclaration identifier="r_1" cardinality="single" baseType="identifier">
+        <correctResponse><value>r_1_C</value></correctResponse>
+        <mapping defaultValue="0"><mapEntry mapKey="r_1_C" mappedValue="3"/></mapping>
+       </responseDeclaration><responseDeclaration identifier="r_2" cardinality="single" baseType="identifier">
+        <correctResponse><value>r_2_A</value></correctResponse>
+        <mapping defaultValue="0"><mapEntry mapKey="r_2_A" mappedValue="3"/></mapping>
+       </responseDeclaration>
+    <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+    </outcomeDeclaration>
+    <outcomeDeclaration identifier="SCORE_1" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+      </outcomeDeclaration><outcomeDeclaration identifier="SCORE_2" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+      </outcomeDeclaration>
+    <stylesheet href="styles/style.css" type="text/css"/>
+    <itemBody xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+    
+    <p>在實驗室中有一台可發出波長為 200 nm 的雷射光源，功率為 3.0 W 。已知光速為 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\pu{3.0e8 m/s}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mn>3.0</mn>
+    <mo>⋅<!-- ⋅ --></mo>
+    <msup>
+      <mn>10</mn>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>8</mn>
+      </mrow>
+    </msup>
+    <mtext> </mtext>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">m</mi>
+    </mrow>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo>/</mo>
+    </mrow>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">s</mi>
+    </mrow>
+  </mrow>
+</math> ，普朗克常數為 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\pu{6.6e-34 J*s}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mn>6.6</mn>
+    <mo>⋅<!-- ⋅ --></mo>
+    <msup>
+      <mn>10</mn>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mo>−<!-- − --></mo>
+        <mn>34</mn>
+      </mrow>
+    </msup>
+    <mtext> </mtext>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">J</mi>
+    </mrow>
+    <mspace width="0.056em"/>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo>⋅<!-- ⋅ --></mo>
+    </mrow>
+    <mspace width="0.056em"/>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">s</mi>
+    </mrow>
+  </mrow>
+</math> 。</p>
+    <choiceInteraction responseIdentifier="r_1" shuffle="false" maxChoices="1" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+      <prompt>此光源發出的每個光子之能量約為下列何者？</prompt>
+      <simpleChoice identifier="r_1_A"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\pu{1.0e-14 J}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mn>1.0</mn>
+    <mo>⋅<!-- ⋅ --></mo>
+    <msup>
+      <mn>10</mn>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mo>−<!-- − --></mo>
+        <mn>14</mn>
+      </mrow>
+    </msup>
+    <mtext> </mtext>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">J</mi>
+    </mrow>
+  </mrow>
+</math></simpleChoice>
+      <simpleChoice identifier="r_1_B" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\pu{1.0e-16 J}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mn>1.0</mn>
+    <mo>⋅<!-- ⋅ --></mo>
+    <msup>
+      <mn>10</mn>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mo>−<!-- − --></mo>
+        <mn>16</mn>
+      </mrow>
+    </msup>
+    <mtext> </mtext>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">J</mi>
+    </mrow>
+  </mrow>
+</math></simpleChoice>
+      <simpleChoice identifier="r_1_C" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\pu{1.0e-18 J}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mn>1.0</mn>
+    <mo>⋅<!-- ⋅ --></mo>
+    <msup>
+      <mn>10</mn>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mo>−<!-- − --></mo>
+        <mn>18</mn>
+      </mrow>
+    </msup>
+    <mtext> </mtext>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">J</mi>
+    </mrow>
+  </mrow>
+</math></simpleChoice>
+      <simpleChoice identifier="r_1_D" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\pu{1.0e-20 J}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mn>1.0</mn>
+    <mo>⋅<!-- ⋅ --></mo>
+    <msup>
+      <mn>10</mn>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mo>−<!-- − --></mo>
+        <mn>20</mn>
+      </mrow>
+    </msup>
+    <mtext> </mtext>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">J</mi>
+    </mrow>
+  </mrow>
+</math></simpleChoice>
+      <simpleChoice identifier="r_1_E" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\pu{1.0e-22 J}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mn>1.0</mn>
+    <mo>⋅<!-- ⋅ --></mo>
+    <msup>
+      <mn>10</mn>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mo>−<!-- − --></mo>
+        <mn>22</mn>
+      </mrow>
+    </msup>
+    <mtext> </mtext>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">J</mi>
+    </mrow>
+  </mrow>
+</math></simpleChoice>
+    </choiceInteraction>
+    <p xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">當此光源發出的雷射光入射至一物體而被完全吸收時， 該物體所受雷射光的平均作用力之量值約為多少牛頓？ （光子動量 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="P">
+  <mi>P</mi>
+</math>、能量 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="E">
+  <mi>E</mi>
+</math> 與光速 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="c">
+  <mi>c</mi>
+</math> 的關係為 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="E= Pc">
+  <mi>E</mi>
+  <mo>=</mo>
+  <mi>P</mi>
+  <mi>c</mi>
+</math>。）</p>
+    <choiceInteraction responseIdentifier="r_2" shuffle="false" maxChoices="1" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+      <simpleChoice identifier="r_2_A"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\pu{1.0e-8}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mn>1.0</mn>
+    <mo>⋅<!-- ⋅ --></mo>
+    <msup>
+      <mn>10</mn>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mo>−<!-- − --></mo>
+        <mn>8</mn>
+      </mrow>
+    </msup>
+  </mrow>
+</math></simpleChoice>
+      <simpleChoice identifier="r_2_B" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\pu{1.0e-6}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mn>1.0</mn>
+    <mo>⋅<!-- ⋅ --></mo>
+    <msup>
+      <mn>10</mn>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mo>−<!-- − --></mo>
+        <mn>6</mn>
+      </mrow>
+    </msup>
+  </mrow>
+</math></simpleChoice>
+      <simpleChoice identifier="r_2_C" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\pu{1.0e-4}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mn>1.0</mn>
+    <mo>⋅<!-- ⋅ --></mo>
+    <msup>
+      <mn>10</mn>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mo>−<!-- − --></mo>
+        <mn>4</mn>
+      </mrow>
+    </msup>
+  </mrow>
+</math></simpleChoice>
+      <simpleChoice identifier="r_2_D" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\pu{1.0e-2}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mn>1.0</mn>
+    <mo>⋅<!-- ⋅ --></mo>
+    <msup>
+      <mn>10</mn>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mo>−<!-- − --></mo>
+        <mn>2</mn>
+      </mrow>
+    </msup>
+  </mrow>
+</math></simpleChoice>
+      <simpleChoice identifier="r_2_E" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\pu{1.0}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mn>1.0</mn>
+  </mrow>
+</math></simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+    <responseProcessing xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+    <responseCondition>
+          <responseIf>
+            <not>
+              <isNull>
+                <variable identifier="r_1"/>
+              </isNull>
+            </not>
+            <setOutcomeValue identifier="SCORE_1">
+              <sum>
+                <variable identifier="SCORE_1"/>
+                <mapResponse identifier="r_1"/>
+              </sum>
+            </setOutcomeValue>
+          </responseIf>
+          </responseCondition><setOutcomeValue identifier="SCORE">
+        <sum>
+        <variable identifier="SCORE"/>
+        <variable identifier="SCORE_1"/>
+        </sum>
+      </setOutcomeValue><responseCondition>
+          <responseIf>
+            <not>
+              <isNull>
+                <variable identifier="r_2"/>
+              </isNull>
+            </not>
+            <setOutcomeValue identifier="SCORE_2">
+              <sum>
+                <variable identifier="SCORE_2"/>
+                <mapResponse identifier="r_2"/>
+              </sum>
+            </setOutcomeValue>
+          </responseIf>
+          </responseCondition><setOutcomeValue identifier="SCORE">
+        <sum>
+        <variable identifier="SCORE"/>
+        <variable identifier="SCORE_2"/>
+        </sum>
+      </setOutcomeValue></responseProcessing>
+    </assessmentItem>

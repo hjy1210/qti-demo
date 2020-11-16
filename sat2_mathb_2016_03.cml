@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<assessmentItem identifier="sat2_mathb_2016_03">
+  <itemBody>
+    <p>坐標平面上有兩向量 \(\overset{\rightharpoonup}{u}=(5,10)\)， \(\overset{\rightharpoonup}{v}=(-4,2)\)。 請問下列哪一個向量的長度最大？
+    </p>
+    <choiceInteraction cardinality="single" correct="1" quota="6">
+      <simpleChoice>\(-3\overset{\rightharpoonup}{u}\)</simpleChoice>
+      <simpleChoice>\(6\overset{\rightharpoonup}{v}\)</simpleChoice>
+      <simpleChoice>\(-2\overset{\rightharpoonup}{u}-5 \overset{\rightharpoonup}{v}\)</simpleChoice>
+      <simpleChoice>\(2\overset{\rightharpoonup}{u}-5 \overset{\rightharpoonup}{v}\)</simpleChoice>
+      <simpleChoice>\(\overset{\rightharpoonup}{u}+7 \overset{\rightharpoonup}{v}\)</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+</assessmentItem>

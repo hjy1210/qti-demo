@@ -1,0 +1,86 @@
+<assessmentItem xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p1.xsd" identifier="sat2_bio_2016_10_11" title="sat2_bio_2016_10_11" adaptive="false" timeDependent="false">
+    <responseDeclaration identifier="r_1" cardinality="single" baseType="identifier">
+        <correctResponse><value>r_1_B</value></correctResponse>
+        <mapping defaultValue="0"><mapEntry mapKey="r_1_B" mappedValue="1"/></mapping>
+       </responseDeclaration><responseDeclaration identifier="r_2" cardinality="single" baseType="identifier">
+        <correctResponse><value>r_2_D</value></correctResponse>
+        <mapping defaultValue="0"><mapEntry mapKey="r_2_D" mappedValue="1"/></mapping>
+       </responseDeclaration>
+    <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+    </outcomeDeclaration>
+    <outcomeDeclaration identifier="SCORE_1" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+      </outcomeDeclaration><outcomeDeclaration identifier="SCORE_2" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+      </outcomeDeclaration>
+    <stylesheet href="styles/style.css" type="text/css"/>
+    <itemBody xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+    
+    <p>某生利用基因工程改變具有①~⑤功能性區域的酵素甲基因，
+      剔除部分區域後，獲得酵素乙~丁。取等量的酵素甲~丁進行酵素活性分析。
+      試依下圖結果回答第下面兩題。<br/>
+      <img src="images/10_11.png" alt=""/>
+    </p>
+    <choiceInteraction responseIdentifier="r_1" shuffle="false" maxChoices="1">
+      <prompt> 下列推論何者正確？</prompt>
+      <simpleChoice identifier="r_1_A">酵素甲活性不因酸鹼度變化而有影響</simpleChoice>
+      <simpleChoice identifier="r_1_B">酵素乙可與受質相結合</simpleChoice>
+      <simpleChoice identifier="r_1_C">提供酵素丙更高濃度的受質，其活性可持續上升</simpleChoice>
+      <simpleChoice identifier="r_1_D">酵素丁具有最高活性</simpleChoice>
+    </choiceInteraction>
+    <choiceInteraction responseIdentifier="r_2" shuffle="false" maxChoices="1">
+      <prompt>對於酵素活性而言，最重要的功能性區域為何？</prompt>
+      <simpleChoice identifier="r_2_A">①</simpleChoice>
+      <simpleChoice identifier="r_2_B">②</simpleChoice>
+      <simpleChoice identifier="r_2_C">③</simpleChoice>
+      <simpleChoice identifier="r_2_D">④</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+    <responseProcessing>
+    <responseCondition>
+          <responseIf>
+            <not>
+              <isNull>
+                <variable identifier="r_1"/>
+              </isNull>
+            </not>
+            <setOutcomeValue identifier="SCORE_1">
+              <sum>
+                <variable identifier="SCORE_1"/>
+                <mapResponse identifier="r_1"/>
+              </sum>
+            </setOutcomeValue>
+          </responseIf>
+          </responseCondition><setOutcomeValue identifier="SCORE">
+        <sum>
+        <variable identifier="SCORE"/>
+        <variable identifier="SCORE_1"/>
+        </sum>
+      </setOutcomeValue><responseCondition>
+          <responseIf>
+            <not>
+              <isNull>
+                <variable identifier="r_2"/>
+              </isNull>
+            </not>
+            <setOutcomeValue identifier="SCORE_2">
+              <sum>
+                <variable identifier="SCORE_2"/>
+                <mapResponse identifier="r_2"/>
+              </sum>
+            </setOutcomeValue>
+          </responseIf>
+          </responseCondition><setOutcomeValue identifier="SCORE">
+        <sum>
+        <variable identifier="SCORE"/>
+        <variable identifier="SCORE_2"/>
+        </sum>
+      </setOutcomeValue></responseProcessing>
+    </assessmentItem>

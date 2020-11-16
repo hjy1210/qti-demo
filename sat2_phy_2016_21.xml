@@ -1,0 +1,317 @@
+<assessmentItem xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p1.xsd" identifier="sat2_phy_2016_21" title="sat2_phy_2016_21" adaptive="false" timeDependent="false">
+    <responseDeclaration identifier="r_1" cardinality="multiple" baseType="identifier">
+        <correctResponse><value>r_1_BDE</value></correctResponse>
+        <mapping defaultValue="-1"><mapEntry mapKey="r_1_B" mappedValue="1"/><mapEntry mapKey="r_1_D" mappedValue="1"/><mapEntry mapKey="r_1_E" mappedValue="1"/></mapping>
+       </responseDeclaration>
+    <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+    </outcomeDeclaration>
+    <outcomeDeclaration identifier="SCORE_1" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+      </outcomeDeclaration>
+    <stylesheet href="styles/style.css" type="text/css"/>
+    <itemBody xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+    
+    <p>一個電中性的鋰原子在有兩個電子被游離後，成為只剩一個電子的鋰離子，下圖為其能階示意圖， 圖中 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="n">
+  <mi>n</mi>
+</math> 為主量子數。令 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="E_{nn'}">
+  <msub>
+    <mi>E</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>n</mi>
+      <msup>
+        <mi>n</mi>
+        <mo>′</mo>
+      </msup>
+    </mrow>
+  </msub>
+</math> 為能階 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="n">
+  <mi>n</mi>
+</math> 與能階 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="n'">
+  <msup>
+    <mi>n</mi>
+    <mo>′</mo>
+  </msup>
+</math> 的能階差， 即 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="E_{nn'}=E_n -
+      E_{n'}">
+  <msub>
+    <mi>E</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>n</mi>
+      <msup>
+        <mi>n</mi>
+        <mo>′</mo>
+      </msup>
+    </mrow>
+  </msub>
+  <mo>=</mo>
+  <msub>
+    <mi>E</mi>
+    <mi>n</mi>
+  </msub>
+  <mo>−<!-- − --></mo>
+  <msub>
+    <mi>E</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <msup>
+        <mi>n</mi>
+        <mo>′</mo>
+      </msup>
+    </mrow>
+  </msub>
+</math>，當電子從能階 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="n">
+  <mi>n</mi>
+</math> 躍遷到能階 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="n'">
+  <msup>
+    <mi>n</mi>
+    <mo>′</mo>
+  </msup>
+</math> 時， 若 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="n > n'">
+  <mi>n</mi>
+  <mo>></mo>
+  <msup>
+    <mi>n</mi>
+    <mo>′</mo>
+  </msup>
+</math>，會輻射出波長為 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\lambda_{nn'}">
+  <msub>
+    <mi>λ<!-- λ --></mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>n</mi>
+      <msup>
+        <mi>n</mi>
+        <mo>′</mo>
+      </msup>
+    </mrow>
+  </msub>
+</math> 的光子;若 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext=" n &lt; n'">
+  <mi>n</mi>
+  <mo>&lt;</mo>
+  <msup>
+    <mi>n</mi>
+    <mo>′</mo>
+  </msup>
+</math>，
+      則需吸收波長為 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext=" \lambda_{nn'} ">
+  <msub>
+    <mi>λ<!-- λ --></mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>n</mi>
+      <msup>
+        <mi>n</mi>
+        <mo>′</mo>
+      </msup>
+    </mrow>
+  </msub>
+</math> 的光子。 已知普朗克常數 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="h=\pu{6.63e-34 J*s}">
+  <mi>h</mi>
+  <mo>=</mo>
+  <mrow class="MJX-TeXAtom-ORD">
+    <mn>6.63</mn>
+    <mo>⋅<!-- ⋅ --></mo>
+    <msup>
+      <mn>10</mn>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mo>−<!-- − --></mo>
+        <mn>34</mn>
+      </mrow>
+    </msup>
+    <mtext> </mtext>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">J</mi>
+    </mrow>
+    <mspace width="0.056em"/>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo>⋅<!-- ⋅ --></mo>
+    </mrow>
+    <mspace width="0.056em"/>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">s</mi>
+    </mrow>
+  </mrow>
+</math>，<math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\pu{1eV}=\pu{1.6e-19 J}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mn>1</mn>
+    <mtext> </mtext>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">e</mi>
+      <mi mathvariant="normal">V</mi>
+    </mrow>
+  </mrow>
+  <mo>=</mo>
+  <mrow class="MJX-TeXAtom-ORD">
+    <mn>1.6</mn>
+    <mo>⋅<!-- ⋅ --></mo>
+    <msup>
+      <mn>10</mn>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mo>−<!-- − --></mo>
+        <mn>19</mn>
+      </mrow>
+    </msup>
+    <mtext> </mtext>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">J</mi>
+    </mrow>
+  </mrow>
+</math> ， 光速 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="c=\pu{3.0e8 m/s}">
+  <mi>c</mi>
+  <mo>=</mo>
+  <mrow class="MJX-TeXAtom-ORD">
+    <mn>3.0</mn>
+    <mo>⋅<!-- ⋅ --></mo>
+    <msup>
+      <mn>10</mn>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mn>8</mn>
+      </mrow>
+    </msup>
+    <mtext> </mtext>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">m</mi>
+    </mrow>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo>/</mo>
+    </mrow>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">s</mi>
+    </mrow>
+  </mrow>
+</math>，<br xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"/>下列關於此鋰離子的敘述哪些正確？
+      <img src="images/phy_2016_21.png" alt=""/></p>
+    <choiceInteraction responseIdentifier="r_1" shuffle="false" maxChoices="0">
+      <simpleChoice identifier="r_1_A"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\lambda_{21}+\lambda_{32}=\lambda_{31}">
+  <msub>
+    <mi>λ<!-- λ --></mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mn>21</mn>
+    </mrow>
+  </msub>
+  <mo>+</mo>
+  <msub>
+    <mi>λ<!-- λ --></mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mn>32</mn>
+    </mrow>
+  </msub>
+  <mo>=</mo>
+  <msub>
+    <mi>λ<!-- λ --></mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mn>31</mn>
+    </mrow>
+  </msub>
+</math></simpleChoice>
+      <simpleChoice identifier="r_1_B" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="E_{31}=E_{21}+E_{32}">
+  <msub>
+    <mi>E</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mn>31</mn>
+    </mrow>
+  </msub>
+  <mo>=</mo>
+  <msub>
+    <mi>E</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mn>21</mn>
+    </mrow>
+  </msub>
+  <mo>+</mo>
+  <msub>
+    <mi>E</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mn>32</mn>
+    </mrow>
+  </msub>
+</math></simpleChoice>
+      <simpleChoice identifier="r_1_C" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">在能階 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="n=3">
+  <mi>n</mi>
+  <mo>=</mo>
+  <mn>3</mn>
+</math> 的電子無法直接躍遷到能階 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="n=1">
+  <mi>n</mi>
+  <mo>=</mo>
+  <mn>1</mn>
+</math></simpleChoice>
+      <simpleChoice identifier="r_1_D" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">在能階 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="n=2">
+  <mi>n</mi>
+  <mo>=</mo>
+  <mn>2</mn>
+</math> 的電子可吸收 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\lambda_{23}">
+  <msub>
+    <mi>λ<!-- λ --></mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mn>23</mn>
+    </mrow>
+  </msub>
+</math> 的光子躍遷到能階 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="n=3">
+  <mi>n</mi>
+  <mo>=</mo>
+  <mn>3</mn>
+</math></simpleChoice>
+      <simpleChoice identifier="r_1_E" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">當電子在能階 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="n=1">
+  <mi>n</mi>
+  <mo>=</mo>
+  <mn>1</mn>
+</math>時，以波長 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\ce{9nm}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mn>9</mn>
+    <mspace width="thinmathspace"/>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">n</mi>
+      <mi mathvariant="normal">m</mi>
+    </mrow>
+  </mrow>
+</math> 的光子可將其游離</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+    <responseProcessing xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+    <responseCondition>
+          <responseIf>
+            <isNull>
+              <variable identifier="r_1"/>
+            </isNull>
+            <setOutcomeValue identifier="SCORE_1">
+             <sum>
+              <variable identifier="SCORE_1"/>
+              <baseValue baseType="float">0.0</baseValue>
+             </sum>
+            </setOutcomeValue>
+          </responseIf>
+          <responseElse>
+            <setOutcomeValue identifier="SCORE_1">
+             <sum>
+              <variable identifier="SCORE_1"/>
+              <max>
+                <baseValue baseType="float">0.0</baseValue>
+                <product>
+                  <baseValue baseType="float">5</baseValue>
+                  <subtract>
+                    <baseValue baseType="float">1.0</baseValue>
+                    <divide>
+                      <product>
+                        <baseValue baseType="float">2.0</baseValue>
+                        <subtract>
+                          <baseValue baseType="float">3</baseValue>
+                          <mapResponse identifier="r_1"/>
+                        </subtract>
+                      </product>
+                      <baseValue baseType="float">5</baseValue>
+                    </divide>
+                  </subtract>
+                </product>
+              </max>
+              </sum>
+            </setOutcomeValue>
+          </responseElse>
+          </responseCondition><setOutcomeValue identifier="SCORE">
+        <sum>
+        <variable identifier="SCORE"/>
+        <variable identifier="SCORE_1"/>
+        </sum>
+      </setOutcomeValue></responseProcessing>
+    </assessmentItem>

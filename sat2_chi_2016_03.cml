@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<assessmentItem identifier="sat2_chi_2016_03">
+  <itemBody>
+    <p>下列是《西遊記》中的一段文字，請依文意選出排列順序最恰當的選項：</p>
+    <p class="kai">
+      真個光陰迅速，　　　甲、老君的火候俱全，　　　乙、只聽得爐頭聲響，　　　丙、猛睜睛看見光明，　　　　丁、忽一日，開爐取丹，　　　戊、不覺七七四十九日，　　　己、那大聖雙手侮著眼，正自揉搓流涕，　　　他就忍不住，將身一縱，跳出丹爐。
+      <span class="box">侮:同「捂」。</span>
+    </p>
+    <choiceInteraction cardinality="single" correct="C" quota="2">
+      <simpleChoice>丁戊丙甲乙己</simpleChoice>
+      <simpleChoice>丁己丙乙甲戊</simpleChoice>
+      <simpleChoice>戊甲丁己乙丙</simpleChoice>
+      <simpleChoice>戊乙丙己丁甲</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+</assessmentItem>

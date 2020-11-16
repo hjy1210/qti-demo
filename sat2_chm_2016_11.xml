@@ -1,0 +1,466 @@
+<assessmentItem xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p1.xsd" identifier="sat2_chm_2016_11" title="sat2_chm_2016_11" adaptive="false" timeDependent="false">
+    <responseDeclaration identifier="r_1" cardinality="single" baseType="identifier">
+        <correctResponse><value>r_1_E</value></correctResponse>
+        <mapping defaultValue="0"><mapEntry mapKey="r_1_E" mappedValue="3"/></mapping>
+       </responseDeclaration>
+    <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+    </outcomeDeclaration>
+    <outcomeDeclaration identifier="SCORE_1" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+      </outcomeDeclaration>
+    <stylesheet href="styles/style.css" type="text/css"/>
+    <itemBody xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+    
+    <p>王同學在定溫下，進行氣體平衡反應的實驗，想利用實驗數據求得反應的平衡常數。所使用的氣體為 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\ce{NO2}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">N</mi>
+      <mi mathvariant="normal">O</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>2</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+  </mrow>
+</math> 與 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\ce{N2O4}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">N</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>2</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">O</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>4</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+  </mrow>
+</math>，其初始的濃度及經過一段時間後，到達平衡時的濃度如下表所示。</p>
+    <table class="table" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+      <tbody>
+      <tr>
+        <th rowspan="2">實驗</th>
+        <th colspan="2">初始濃度(M)</th>
+        <th colspan="2">平衡濃度(M)</th>
+      </tr>
+      <tr>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\ce{[NO2]}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mo stretchy="false">[</mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">N</mi>
+      <mi mathvariant="normal">O</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>2</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+    <mo stretchy="false">]</mo>
+  </mrow>
+</math></td>
+        <td xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\ce{[N2O4]}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mo stretchy="false">[</mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">N</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>2</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">O</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>4</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+    <mo stretchy="false">]</mo>
+  </mrow>
+</math></td>
+        <td xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\ce{[NO2]}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mo stretchy="false">[</mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">N</mi>
+      <mi mathvariant="normal">O</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>2</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+    <mo stretchy="false">]</mo>
+  </mrow>
+</math></td>
+        <td xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\ce{[N2O4]}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mo stretchy="false">[</mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">N</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>2</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">O</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>4</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+    <mo stretchy="false">]</mo>
+  </mrow>
+</math></td>
+      </tr>
+      <tr xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+        <td>1</td>
+        <td>0.00</td>
+        <td>0.67</td>
+        <td>0.055</td>
+        <td>0.64</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>0.05</td>
+        <td>0.45</td>
+        <td>0.046</td>
+        <td>0.45</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>0.03</td>
+        <td>0.50</td>
+        <td>0.048</td>
+        <td>0.49</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>0.20</td>
+        <td>0.00</td>
+        <td>0.020</td>
+        <td>0.09</td>
+      </tr>
+    </tbody>
+    </table>
+    <p> 試問下列哪一數字最接近 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext=" \ce{N2O4(g)
+      &lt;=> 2NO2(g)}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">N</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>2</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">O</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>4</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+    <mspace width="0.111em"/>
+    <mo stretchy="false">(</mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">g</mi>
+    </mrow>
+    <mo stretchy="false">)</mo>
+    <mrow class="MJX-TeXAtom-ORD">
+
+    </mrow>
+    <mrow class="MJX-TeXAtom-REL">
+      <mrow class="MJX-TeXAtom-REL">
+        <mover>
+          <mrow class="MJX-TeXAtom-OP MJX-fixedlimits">
+            <mrow class="MJX-TeXAtom-ORD">
+              <mpadded height="0" depth="0">
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo stretchy="false">↽<!-- ↽ --></mo>
+                </mrow>
+                <mspace width="negativethinmathspace"/>
+                <mspace width="negativethinmathspace"/>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo>−<!-- − --></mo>
+                </mrow>
+              </mpadded>
+            </mrow>
+          </mrow>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mstyle displaystyle="false" scriptlevel="0">
+              <mrow class="MJX-TeXAtom-ORD">
+                <mo>−<!-- − --></mo>
+              </mrow>
+              <mspace width="negativethinmathspace"/>
+              <mspace width="negativethinmathspace"/>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mo stretchy="false">⇀<!-- ⇀ --></mo>
+              </mrow>
+            </mstyle>
+          </mrow>
+        </mover>
+      </mrow>
+    </mrow>
+    <mrow class="MJX-TeXAtom-ORD">
+
+    </mrow>
+    <mn>2</mn>
+    <mspace width="thinmathspace"/>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">N</mi>
+      <mi mathvariant="normal">O</mi>
+    </mrow>
+    <msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded width="0">
+            <mphantom>
+              <mi>X</mi>
+            </mphantom>
+          </mpadded>
+        </mrow>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mpadded height="0">
+            <mn>2</mn>
+          </mpadded>
+        </mrow>
+      </mrow>
+    </msub>
+    <mspace width="0.111em"/>
+    <mo stretchy="false">(</mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi mathvariant="normal">g</mi>
+    </mrow>
+    <mo stretchy="false">)</mo>
+  </mrow>
+</math> 反應的平衡常數？
+    </p>
+    <choiceInteraction responseIdentifier="r_1" shuffle="false" maxChoices="1" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+      <simpleChoice identifier="r_1_A"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="11.7">
+  <mn>11.7</mn>
+</math></simpleChoice>
+      <simpleChoice identifier="r_1_B" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="7.56">
+  <mn>7.56</mn>
+</math></simpleChoice>
+      <simpleChoice identifier="r_1_C" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="9.7\times 10^{-1}">
+  <mn>9.7</mn>
+  <mo>×<!-- × --></mo>
+  <msup>
+    <mn>10</mn>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo>−<!-- − --></mo>
+      <mn>1</mn>
+    </mrow>
+  </msup>
+</math></simpleChoice>
+      <simpleChoice identifier="r_1_D" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="8.5\times 10^{-2}">
+  <mn>8.5</mn>
+  <mo>×<!-- × --></mo>
+  <msup>
+    <mn>10</mn>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo>−<!-- − --></mo>
+      <mn>2</mn>
+    </mrow>
+  </msup>
+</math></simpleChoice>
+      <simpleChoice identifier="r_1_E" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="4.7\times 10^{-3}">
+  <mn>4.7</mn>
+  <mo>×<!-- × --></mo>
+  <msup>
+    <mn>10</mn>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo>−<!-- − --></mo>
+      <mn>3</mn>
+    </mrow>
+  </msup>
+</math></simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+    <responseProcessing xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+    <responseCondition>
+          <responseIf>
+            <not>
+              <isNull>
+                <variable identifier="r_1"/>
+              </isNull>
+            </not>
+            <setOutcomeValue identifier="SCORE_1">
+              <sum>
+                <variable identifier="SCORE_1"/>
+                <mapResponse identifier="r_1"/>
+              </sum>
+            </setOutcomeValue>
+          </responseIf>
+          </responseCondition><setOutcomeValue identifier="SCORE">
+        <sum>
+        <variable identifier="SCORE"/>
+        <variable identifier="SCORE_1"/>
+        </sum>
+      </setOutcomeValue></responseProcessing>
+    </assessmentItem>

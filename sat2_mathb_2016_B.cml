@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<assessmentItem identifier="sat2_mathb_2016_B">
+<itemBody>
+<p>設 \(x,c\) 為實數，方陣
+    \( A=\begin{bmatrix}
+          3 &amp; 2 \\
+          -2 &amp; x
+        \end{bmatrix}\) 、
+    \(B=\begin{bmatrix}
+          3 &amp; -2 \\
+          2 &amp; x
+      \end{bmatrix}\) 。已知 \(A\)的反方陣恰好是  \(B\) 的  \(c\)倍（其中 \(c\ne 0\)），
+    則數對 \((x,c)=(\ceec{1},\frac{\ceec{2}}{\ceec{3}\ceec{4}})\)。（請化為最簡分數）</p>
+    <groupInlineChoiceInteraction correct="3113" quota="6" />
+</itemBody>
+</assessmentItem>

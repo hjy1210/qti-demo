@@ -1,0 +1,18 @@
+{
+  "identifier": "sat2_phy_2016_03",
+  "responseInfo": {
+    "r_1": {
+      "baseType": "identifier",
+      "cardinality": "single",
+      "correctResponse": "r_1_A",
+      "mapping": "<mapping defaultValue=\"0\" xmlns=\"http://www.imsglobal.org/xsd/imsqti_v2p1\"><mapEntry mapKey=\"r_1_A\" mappedValue=\"3\"/></mapping>"
+    }
+  },
+  "outcomeInfo": {
+    "SCORE": 0,
+    "SCORE_1": 0
+  },
+  "responseProcessing": "<responseProcessing xmlns=\"http://www.imsglobal.org/xsd/imsqti_v2p1\"><responseCondition><responseIf><not><isNull><variable identifier=\"r_1\"/></isNull></not><setOutcomeValue identifier=\"SCORE_1\"><sum><variable identifier=\"SCORE_1\"/><mapResponse identifier=\"r_1\"/></sum></setOutcomeValue></responseIf></responseCondition><setOutcomeValue identifier=\"SCORE\"><sum><variable identifier=\"SCORE\"/><variable identifier=\"SCORE_1\"/></sum></setOutcomeValue></responseProcessing>",
+  "styleContent": ".kai {font-family:標楷體;}\r\n.cnumber {list-style-type: cjk-ideographic;}\r\n.underline {text-decoration: underline; }\r\n.blockquote{margin:0px 0px 0px 30px;}\r\n.box {border:1px black solid}\r\ntable.table{border-collapse: collapse;}\r\ntable.table td,th{border: 1px solid black;}\r\ntd.right {text-align:right;}\r\n",
+  "html": "<div class=\"sat2_phy_2016_03\">\n    \r\n    <p xmlns=\"http://www.imsglobal.org/xsd/imsqti_v2p1\">欲瞭解聲波如何在金屬中傳播，可利用簡化的一維模型：將金屬原子視為質量 <math xmlns=\"http://www.w3.org/1998/Math/MathML\" alttext=\"m\">\n  <mi>m</mi>\n</math> 的小球， 以間距 <math xmlns=\"http://www.w3.org/1998/Math/MathML\" alttext=\"d\">\n  <mi>d</mi>\n</math> 排列成一直線，且相鄰兩個小球間以力常數 <math xmlns=\"http://www.w3.org/1998/Math/MathML\" alttext=\"k\">\n  <mi>k</mi>\n</math> 的彈簧連結， 藉以模擬原子間的作用力。在此簡化模型的假設下，應用因次分析來判定，\r\n      下列何者可能為金屬中的聲速？\r\n    </p>\r\n    <table><tr><td width=\"30px\"><input name=\"r_1\" type=\"radio\" value=\"r_1_A\"/></td><td><math xmlns=\"http://www.w3.org/1998/Math/MathML\" alttext=\"d\\sqrt{k/m}\">\n  <mi>d</mi>\n  <msqrt>\n    <mi>k</mi>\n    <mrow class=\"MJX-TeXAtom-ORD\">\n      <mo>/</mo>\n    </mrow>\n    <mi>m</mi>\n  </msqrt>\n</math></td></tr><tr><td width=\"30px\"><input name=\"r_1\" type=\"radio\" value=\"r_1_B\"/></td><td><math xmlns=\"http://www.w3.org/1998/Math/MathML\" alttext=\"d\\sqrt{mk}\">\n  <mi>d</mi>\n  <msqrt>\n    <mi>m</mi>\n    <mi>k</mi>\n  </msqrt>\n</math></td></tr><tr><td width=\"30px\"><input name=\"r_1\" type=\"radio\" value=\"r_1_C\"/></td><td><math xmlns=\"http://www.w3.org/1998/Math/MathML\" alttext=\"\\sqrt{dm/k}\">\n  <msqrt>\n    <mi>d</mi>\n    <mi>m</mi>\n    <mrow class=\"MJX-TeXAtom-ORD\">\n      <mo>/</mo>\n    </mrow>\n    <mi>k</mi>\n  </msqrt>\n</math></td></tr><tr><td width=\"30px\"><input name=\"r_1\" type=\"radio\" value=\"r_1_D\"/></td><td><math xmlns=\"http://www.w3.org/1998/Math/MathML\" alttext=\"dk/m\">\n  <mi>d</mi>\n  <mi>k</mi>\n  <mrow class=\"MJX-TeXAtom-ORD\">\n    <mo>/</mo>\n  </mrow>\n  <mi>m</mi>\n</math></td></tr><tr><td width=\"30px\"><input name=\"r_1\" type=\"radio\" value=\"r_1_E\"/></td><td><math xmlns=\"http://www.w3.org/1998/Math/MathML\" alttext=\"mk/d\">\n  <mi>m</mi>\n  <mi>k</mi>\n  <mrow class=\"MJX-TeXAtom-ORD\">\n    <mo>/</mo>\n  </mrow>\n  <mi>d</mi>\n</math></td></tr></table>\r\n  </div>"
+}

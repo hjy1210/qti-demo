@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assessmentItem identifier="sat2_eng_2016_16_20">
+  <itemBody>
+    <p>Alan Turing was one of the leading scientific geniuses of the 20th century. Many scholars consider him the father of
+      modern computer science. He was also the man who cracked the
+      <inlineChoiceInteraction shuffle="false" required="false" quota="1" correct="D">
+        <inlineChoice>eventually</inlineChoice>
+        <inlineChoice>precisely</inlineChoice>
+        <inlineChoice>concernedly</inlineChoice>
+        <inlineChoice>supposedly</inlineChoice>
+      </inlineChoiceInteraction> uncrackable Enigma code used by Nazi Germany. His code-breaking turned the tide of World War II and helped save two
+      million lives. Nevertheless,
+      <inlineChoiceInteraction shuffle="false" required="false" quota="1" correct="D">
+        <inlineChoice>many</inlineChoice>
+        <inlineChoice>some</inlineChoice>
+        <inlineChoice>any</inlineChoice>
+        <inlineChoice>few</inlineChoice>
+      </inlineChoiceInteraction> people have even heard his name.</p>
+    <p>Turing displayed signs of high intelligence in math and science at a young age. By the time he was 23, he had already
+      come up with the idea of what
+      <inlineChoiceInteraction shuffle="false" required="false" quota="1" correct="A">
+        <inlineChoice>would become</inlineChoice>
+        <inlineChoice>should become</inlineChoice>
+        <inlineChoice>could have become</inlineChoice>
+        <inlineChoice>had become</inlineChoice>
+      </inlineChoiceInteraction>
+      the modern computer—the Turing machine. Today, Turing machines are still used in theoretical computation. He also proposed
+      the now famous Turing test, used to determine whether a computer exhibits intelligent behavior equivalent to that of
+      a human.</p>
+    <p>The postwar era, however, was a disaster for Turing. He was gay, which was then a crime in Britain.
+      <inlineChoiceInteraction shuffle="false" required="false" quota="1" correct="B">
+        <inlineChoice>Because of</inlineChoice>
+        <inlineChoice>Instead of</inlineChoice>
+        <inlineChoice>In addition to</inlineChoice>
+        <inlineChoice>With respect to</inlineChoice>
+      </inlineChoiceInteraction> being hailed as one of the crucial figures in defeating the Nazis, Turing was convicted of “gross indecency.” This
+      <inlineChoiceInteraction shuffle="false" required="false" quota="1" correct="C">
+        <inlineChoice>compromise</inlineChoice>
+        <inlineChoice>procession</inlineChoice>
+        <inlineChoice>humiliation</inlineChoice>
+        <inlineChoice>supplement</inlineChoice>
+      </inlineChoiceInteraction>
+      drove him to commit suicide in 1954, at the age of 41. Nearly 60 years after his death, Queen Elizabeth II granted Turing
+      a formal pardon for his conviction, upon an online petition signed by prominent scientists and technology leaders around
+      the world.</p>
+  </itemBody>
+</assessmentItem>

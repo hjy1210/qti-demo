@@ -1,0 +1,53 @@
+<assessmentItem xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p1.xsd" identifier="telc_sample_1" title="telc_sample_1" adaptive="false" timeDependent="false">
+    <responseDeclaration identifier="r_1" cardinality="single" baseType="identifier">
+        <correctResponse><value>r_1_B</value></correctResponse>
+        <mapping defaultValue="0"><mapEntry mapKey="r_1_B" mappedValue="5"/></mapping>
+       </responseDeclaration>
+    <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+    </outcomeDeclaration>
+    <outcomeDeclaration identifier="SCORE_1" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+      </outcomeDeclaration>
+    <stylesheet href="styles/style.css" type="text/css"/>
+    <itemBody xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+    
+    <p>
+        <!--<object type="audio/mpeg" height="50" data="audios/example1.mp3">
+          <param name="autoplay" value="false" />
+        </object>-->
+      <audio src="audios/example1.mp3" controls="true"/>
+    </p>
+    <choiceInteraction responseIdentifier="r_1" shuffle="false" maxChoices="1">
+      <simpleChoice identifier="r_1_A"><img src="images/1A.png" alt=""/></simpleChoice>
+      <simpleChoice identifier="r_1_B"><img src="images/1B.png" alt=""/></simpleChoice>
+      <simpleChoice identifier="r_1_C"><img src="images/1C.png" alt=""/></simpleChoice>
+      <simpleChoice identifier="r_1_D"><img src="images/1D.png" alt=""/></simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+    <responseProcessing>
+    <responseCondition>
+          <responseIf>
+            <not>
+              <isNull>
+                <variable identifier="r_1"/>
+              </isNull>
+            </not>
+            <setOutcomeValue identifier="SCORE_1">
+              <sum>
+                <variable identifier="SCORE_1"/>
+                <mapResponse identifier="r_1"/>
+              </sum>
+            </setOutcomeValue>
+          </responseIf>
+          </responseCondition><setOutcomeValue identifier="SCORE">
+        <sum>
+        <variable identifier="SCORE"/>
+        <variable identifier="SCORE_1"/>
+        </sum>
+      </setOutcomeValue></responseProcessing>
+    </assessmentItem>

@@ -1,0 +1,18 @@
+{
+  "identifier": "sat2_chi_2016_01",
+  "responseInfo": {
+    "r_1": {
+      "baseType": "identifier",
+      "cardinality": "single",
+      "correctResponse": "r_1_C",
+      "mapping": "<mapping defaultValue=\"0\" xmlns=\"http://www.imsglobal.org/xsd/imsqti_v2p1\"><mapEntry mapKey=\"r_1_C\" mappedValue=\"2\"/></mapping>"
+    }
+  },
+  "outcomeInfo": {
+    "SCORE": 0,
+    "SCORE_1": 0
+  },
+  "responseProcessing": "<responseProcessing xmlns=\"http://www.imsglobal.org/xsd/imsqti_v2p1\"><responseCondition><responseIf><not><isNull><variable identifier=\"r_1\"/></isNull></not><setOutcomeValue identifier=\"SCORE_1\"><sum><variable identifier=\"SCORE_1\"/><mapResponse identifier=\"r_1\"/></sum></setOutcomeValue></responseIf></responseCondition><setOutcomeValue identifier=\"SCORE\"><sum><variable identifier=\"SCORE\"/><variable identifier=\"SCORE_1\"/></sum></setOutcomeValue></responseProcessing>",
+  "styleContent": ".kai {font-family:標楷體;}\r\n.cnumber {list-style-type: cjk-ideographic;}\r\n.underline {text-decoration: underline; }\r\n.blockquote{margin:0px 0px 0px 30px;}\r\n.box {border:1px black solid}\r\ntable.table{border-collapse: collapse;}\r\ntable.table td,th{border: 1px solid black;}\r\ntd.right {text-align:right;}\r\n",
+  "html": "<div class=\"sat2_chi_2016_01\">\n    \r\n    <p xmlns=\"http://www.imsglobal.org/xsd/imsqti_v2p1\">下列文句，完全<span class=\"underline\"><strong>沒有</strong></span>錯別字的選項是：</p>\r\n   <table><tr><td width=\"30px\"><input name=\"r_1\" type=\"radio\" value=\"r_1_A\"/></td><td>李大仁做事一向腳踏實地，不會文過拭非，將來應有令人拭目以待的成就</td></tr><tr><td width=\"30px\"><input name=\"r_1\" type=\"radio\" value=\"r_1_B\"/></td><td>自從工業革命以後，許多傳統的手工藝漸趨勢微，加速產業轉型勢在必行</td></tr><tr><td width=\"30px\"><input name=\"r_1\" type=\"radio\" value=\"r_1_C\"/></td><td>眼見對手步步進逼，太宇不甘示弱地予以反擊，昭示堅持奮戰到底的決心</td></tr><tr><td width=\"30px\"><input name=\"r_1\" type=\"radio\" value=\"r_1_D\"/></td><td>眾多親友的見證下，非凡與敏敏含情脈脈相視，立下視死不渝的愛情宣言</td></tr></table>\r\n  </div>"
+}

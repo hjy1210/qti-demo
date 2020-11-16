@@ -1,0 +1,48 @@
+<assessmentItem xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p1.xsd" identifier="sat2_chi_2016_01" title="sat2_chi_2016_01" adaptive="false" timeDependent="false">
+    <responseDeclaration identifier="r_1" cardinality="single" baseType="identifier">
+        <correctResponse><value>r_1_C</value></correctResponse>
+        <mapping defaultValue="0"><mapEntry mapKey="r_1_C" mappedValue="2"/></mapping>
+       </responseDeclaration>
+    <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+    </outcomeDeclaration>
+    <outcomeDeclaration identifier="SCORE_1" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+      </outcomeDeclaration>
+    <stylesheet href="styles/style.css" type="text/css"/>
+    <itemBody xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+    
+    <p>下列文句，完全<span class="underline"><strong>沒有</strong></span>錯別字的選項是：</p>
+   <choiceInteraction responseIdentifier="r_1" shuffle="false" maxChoices="1">
+      <simpleChoice identifier="r_1_A">李大仁做事一向腳踏實地，不會文過拭非，將來應有令人拭目以待的成就</simpleChoice>
+      <simpleChoice identifier="r_1_B">自從工業革命以後，許多傳統的手工藝漸趨勢微，加速產業轉型勢在必行</simpleChoice>
+      <simpleChoice identifier="r_1_C">眼見對手步步進逼，太宇不甘示弱地予以反擊，昭示堅持奮戰到底的決心</simpleChoice>
+      <simpleChoice identifier="r_1_D">眾多親友的見證下，非凡與敏敏含情脈脈相視，立下視死不渝的愛情宣言</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+    <responseProcessing>
+    <responseCondition>
+          <responseIf>
+            <not>
+              <isNull>
+                <variable identifier="r_1"/>
+              </isNull>
+            </not>
+            <setOutcomeValue identifier="SCORE_1">
+              <sum>
+                <variable identifier="SCORE_1"/>
+                <mapResponse identifier="r_1"/>
+              </sum>
+            </setOutcomeValue>
+          </responseIf>
+          </responseCondition><setOutcomeValue identifier="SCORE">
+        <sum>
+        <variable identifier="SCORE"/>
+        <variable identifier="SCORE_1"/>
+        </sum>
+      </setOutcomeValue></responseProcessing>
+    </assessmentItem>

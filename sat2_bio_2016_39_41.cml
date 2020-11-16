@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assessmentItem identifier="sat2_bio_2016_39_41">
+  <itemBody>
+    <p>閱讀下面引文，回答後面三題</p>
+    <div class="blockquote">
+      近年來因環境變遷造成異常淹水逆境，已嚴重衝擊全球糧食作物的生產。 淹水會造成植物根部缺氧、能量生成過少且產生酒精毒害而造成植物死亡。 然而在所有的穀類作物中，水稻卻是唯一可耐淹水的重要糧食作物。 淹水可增加水稻中植物激素的合成：一方面促進細胞分裂及延長，讓莖的莖節向上伸長，
+      使植株高於水面以進行空氣交換；另一方面，促進根部皮層細胞部分老化死亡， 進一步特化成具有較大細胞間隙的通氣組織，以利於儲存氧氣使根部維持活性。 臺灣的學者經多年研究更進一步解開水稻耐淹水的分子調控機制。 該研究團隊發現當水稻種子在淹水缺氧時，會誘導兩種蛋白激酶（CIPK15及SnRK1A）、
+      轉錄因子MYBS1及可將澱粉轉化成糖的\(\alpha\)-澱粉水解酶（\(\alpha\)-amylase） 等基因的大量表現。先前研究已發現MYBS1可結合在\(\alpha\)-澱粉水解酶基因的啟動子序列， 增加\(\alpha\)-澱粉水解酶基因的表現。而當植物細胞缺糖時，
+      則會促成SnRK1A活化MYBS1的活性。進一步的分析則發現當水稻CIPK15基因產生突變時， SnRK1A的蛋白質則無法累積， 同時也觀察到CIPK15突變種子無法在同時淹水及缺糖的情況下發芽而死亡。 這些研究成果得知植物中耐淹水的機制為透過缺糖訊息傳遞途徑，
+      促進碳水化合物的分解，使種子有足夠的能量在水中發芽。 此篇論文的關鍵發現將可協助育出各種耐淹水作物，減少淹水農損。
+    </div>
+    <choiceInteraction cardinality="single" correct="B" quota="2">
+      <prompt> 水稻在淹水時可合成哪些激素以增加生存能力？</prompt>
+      <simpleChoice>吉貝素及離層酸</simpleChoice>
+      <simpleChoice>吉貝素及乙烯</simpleChoice>
+      <simpleChoice>生長素及離層酸</simpleChoice>
+      <simpleChoice>細胞分裂素及乙烯</simpleChoice>
+    </choiceInteraction>
+    <choiceInteraction cardinality="single" correct="A" quota="2">
+      <prompt>水稻在淹水時可合成哪些激素以增加生存能力？</prompt>
+      <simpleChoice>CIPK15\(\rightarrow\)SnRK1A\(\rightarrow\)MYBS1\(\rightarrow\alpha\)-澱粉水解酶\(\rightarrow\)檸檬酸循環</simpleChoice>
+      <simpleChoice>SnRK1A\(\rightarrow\)MYBS1\(\rightarrow\)CIPK15\(\rightarrow\alpha\)-澱粉水解酶\(\rightarrow\)檸檬酸循環</simpleChoice>
+      <simpleChoice>檸檬酸循環\(\rightarrow\)CIPK15\(\rightarrow\)SnRK1A\(\rightarrow\)MYBS1\(\rightarrow\alpha\)-澱粉水解酶</simpleChoice>
+      <simpleChoice>MYBS1\(\rightarrow\alpha\)-澱粉水解酶\(\rightarrow\)檸檬酸循環\(\rightarrow\)CIPK15\(\rightarrow\)SnRK1A</simpleChoice>
+    </choiceInteraction>
+    <choiceInteraction cardinality="multiple" correct="BD" quota="3">
+      <prompt>下列哪些結果符合本文的研究成果？</prompt>
+      <simpleChoice>MYBS1基因突變的種子可在長時間淹水時發芽</simpleChoice>
+      <simpleChoice>在同時淹水及缺糖時，在CIPK15突變種子中發酵作用活性降低</simpleChoice>
+      <simpleChoice>缺糖時種子中\(\alpha\)-澱粉水解酶的量没有變化</simpleChoice>
+      <simpleChoice>提高\(\alpha\)-澱粉水解酶活性可幫助CIPK15突變種子在淹水時發芽</simpleChoice>
+      <simpleChoice>在淹水的CIPK15突變種子中，\(\alpha\)-澱粉水解酶基因的表現上升</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+</assessmentItem>

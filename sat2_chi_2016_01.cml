@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<assessmentItem identifier="sat2_chi_2016_01">
+  <itemBody>
+    <p>下列文句，完全<span class="underline"><strong>沒有</strong></span>錯別字的選項是：</p>
+   <choiceInteraction cardinality="single" correct="C" quota="2">
+      <simpleChoice>李大仁做事一向腳踏實地，不會文過拭非，將來應有令人拭目以待的成就</simpleChoice>
+      <simpleChoice>自從工業革命以後，許多傳統的手工藝漸趨勢微，加速產業轉型勢在必行</simpleChoice>
+      <simpleChoice>眼見對手步步進逼，太宇不甘示弱地予以反擊，昭示堅持奮戰到底的決心</simpleChoice>
+      <simpleChoice>眾多親友的見證下，非凡與敏敏含情脈脈相視，立下視死不渝的愛情宣言</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+</assessmentItem>

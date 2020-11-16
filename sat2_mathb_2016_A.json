@@ -1,0 +1,27 @@
+{
+  "identifier": "sat2_mathb_2016_A",
+  "responseInfo": {
+    "r_1_1": {
+      "baseType": "identifier",
+      "cardinality": "single",
+      "correctResponse": "r_1_1_7"
+    },
+    "r_1_2": {
+      "baseType": "identifier",
+      "cardinality": "single",
+      "correctResponse": "r_1_2_2"
+    },
+    "r_1_3": {
+      "baseType": "identifier",
+      "cardinality": "single",
+      "correctResponse": "r_1_3_0"
+    }
+  },
+  "outcomeInfo": {
+    "SCORE": 0,
+    "SCORE_1": 0
+  },
+  "responseProcessing": "<responseProcessing xmlns=\"http://www.imsglobal.org/xsd/imsqti_v2p1\"><responseCondition><responseIf><and><match><variable identifier=\"r_1_1\"/><correct identifier=\"r_1_1\"/></match><match><variable identifier=\"r_1_2\"/><correct identifier=\"r_1_2\"/></match><match><variable identifier=\"r_1_3\"/><correct identifier=\"r_1_3\"/></match></and><setOutcomeValue identifier=\"SCORE_1\"><sum><variable identifier=\"SCORE_1\"/><baseValue baseType=\"float\">6</baseValue></sum></setOutcomeValue></responseIf></responseCondition><setOutcomeValue identifier=\"SCORE\"><sum><variable identifier=\"SCORE\"/><variable identifier=\"SCORE_1\"/></sum></setOutcomeValue></responseProcessing>",
+  "styleContent": ".kai {font-family:標楷體;}\r\n.cnumber {list-style-type: cjk-ideographic;}\r\n.underline {text-decoration: underline; }\r\n.blockquote{margin:0px 0px 0px 30px;}\r\n.box {border:1px black solid}\r\ntable.table{border-collapse: collapse;}\r\ntable.table td,th{border: 1px solid black;}\r\ntd.right {text-align:right;}\r\n",
+  "html": "<div class=\"sat2_mathb_2016_A\">\n    \r\n    <p xmlns=\"http://www.imsglobal.org/xsd/imsqti_v2p1\">不透明袋中有三顆白球及三顆紅球。從袋中每次取出一球依序置於桌面，每次每顆球被取出的機率相同。\r\n      全部取出後，前三顆球中有相鄰兩球同為白球的機率為\r\n      <math xmlns=\"http://www.w3.org/1998/Math/MathML\" alttext=\"\\frac{\\ceec{1}}{\\ceec{2}\\ceec{3}}\">\n  <mfrac>\n    <mrow class=\"MJX-TeXAtom-ORD\">\n      <menclose notation=\"box\">\n        <mtext>1</mtext>\n      </menclose>\n    </mrow>\n    <mrow>\n      <mrow class=\"MJX-TeXAtom-ORD\">\n        <menclose notation=\"box\">\n          <mtext>2</mtext>\n        </menclose>\n      </mrow>\n      <mrow class=\"MJX-TeXAtom-ORD\">\n        <menclose notation=\"box\">\n          <mtext>3</mtext>\n        </menclose>\n      </mrow>\n    </mrow>\n  </mfrac>\n</math>。（請化為最簡分數）</p>\r\n   <div xmlns=\"http://www.imsglobal.org/xsd/imsqti_v2p1\"> <math xmlns=\"http://www.w3.org/1998/Math/MathML\" alttext=\"\\ceec{1}\">\n  <mrow class=\"MJX-TeXAtom-ORD\">\n    <menclose notation=\"box\">\n      <mtext>1</mtext>\n    </menclose>\n  </mrow>\n</math>=<select><option>-option-</option><option value=\"r_1_1_1\" name=\"r_1_1\">1</option><option value=\"r_1_1_2\" name=\"r_1_1\">2</option><option value=\"r_1_1_3\" name=\"r_1_1\">3</option><option value=\"r_1_1_4\" name=\"r_1_1\">4</option><option value=\"r_1_1_5\" name=\"r_1_1\">5</option><option value=\"r_1_1_6\" name=\"r_1_1\">6</option><option value=\"r_1_1_7\" name=\"r_1_1\">7</option><option value=\"r_1_1_8\" name=\"r_1_1\">8</option><option value=\"r_1_1_9\" name=\"r_1_1\">9</option><option value=\"r_1_1_0\" name=\"r_1_1\">0</option><option value=\"r_1_1_M\" name=\"r_1_1\">-</option><option value=\"r_1_1_N\" name=\"r_1_1\">#</option></select> <math xmlns=\"http://www.w3.org/1998/Math/MathML\" alttext=\"\\ceec{2}\">\n  <mrow class=\"MJX-TeXAtom-ORD\">\n    <menclose notation=\"box\">\n      <mtext>2</mtext>\n    </menclose>\n  </mrow>\n</math>=<select><option>-option-</option><option value=\"r_1_2_1\" name=\"r_1_2\">1</option><option value=\"r_1_2_2\" name=\"r_1_2\">2</option><option value=\"r_1_2_3\" name=\"r_1_2\">3</option><option value=\"r_1_2_4\" name=\"r_1_2\">4</option><option value=\"r_1_2_5\" name=\"r_1_2\">5</option><option value=\"r_1_2_6\" name=\"r_1_2\">6</option><option value=\"r_1_2_7\" name=\"r_1_2\">7</option><option value=\"r_1_2_8\" name=\"r_1_2\">8</option><option value=\"r_1_2_9\" name=\"r_1_2\">9</option><option value=\"r_1_2_0\" name=\"r_1_2\">0</option><option value=\"r_1_2_M\" name=\"r_1_2\">-</option><option value=\"r_1_2_N\" name=\"r_1_2\">#</option></select> <math xmlns=\"http://www.w3.org/1998/Math/MathML\" alttext=\"\\ceec{3}\">\n  <mrow class=\"MJX-TeXAtom-ORD\">\n    <menclose notation=\"box\">\n      <mtext>3</mtext>\n    </menclose>\n  </mrow>\n</math>=<select><option>-option-</option><option value=\"r_1_3_1\" name=\"r_1_3\">1</option><option value=\"r_1_3_2\" name=\"r_1_3\">2</option><option value=\"r_1_3_3\" name=\"r_1_3\">3</option><option value=\"r_1_3_4\" name=\"r_1_3\">4</option><option value=\"r_1_3_5\" name=\"r_1_3\">5</option><option value=\"r_1_3_6\" name=\"r_1_3\">6</option><option value=\"r_1_3_7\" name=\"r_1_3\">7</option><option value=\"r_1_3_8\" name=\"r_1_3\">8</option><option value=\"r_1_3_9\" name=\"r_1_3\">9</option><option value=\"r_1_3_0\" name=\"r_1_3\">0</option><option value=\"r_1_3_M\" name=\"r_1_3\">-</option><option value=\"r_1_3_N\" name=\"r_1_3\">#</option></select></div>\r\n  </div>"
+}

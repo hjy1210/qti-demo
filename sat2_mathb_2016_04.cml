@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<assessmentItem identifier="sat2_mathb_2016_04">
+  <itemBody>
+    <p>設 \(f(x)\) 為一未知的實係數多項式，但知道 \(f(x)\) 除以 \( (x-5)(x-6)^2\) 的餘式為 \(5x^2+6x+7\)。根據上述所給條件， 請選出正確的選項
+    </p>
+    <choiceInteraction cardinality="multiple" correct="45" quota="8">
+      <simpleChoice>可求出 \(f(0)\) 之值</simpleChoice>
+      <simpleChoice>可求出 \(f(11)\) 之值</simpleChoice>
+      <simpleChoice>可求出 \(f(x)\) 除以 \((x-5)^2\) 的餘式</simpleChoice>
+      <simpleChoice>可求出 \(f(x)\) 除以 \((x-6)^2\) 的餘式</simpleChoice>
+      <simpleChoice>可求出 \(f(x)\) 除以 \((x-5)(x-6)\) 的餘式</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+</assessmentItem>

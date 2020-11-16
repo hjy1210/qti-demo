@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<assessmentItem identifier="sat2_geo_2016_02">
+  <itemBody>
+    <p>洪水頻率係指某個大小的洪峰流量再次出現的平均時間，下圖顯示一地區的洪水頻率（洪水重現週期）與淹水範圍的關係。
+      圖中哪條曲線，最能說明兩者關係？</p>
+    <p><img src='images/floodfrequency.png' alt='洪水頻率圖' /></p>
+   <choiceInteraction cardinality="single" correct="B" quota="2">
+      <simpleChoice>甲</simpleChoice>
+      <simpleChoice>乙</simpleChoice>
+      <simpleChoice>丙</simpleChoice>
+      <simpleChoice>丁</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+</assessmentItem>

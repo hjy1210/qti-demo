@@ -1,0 +1,94 @@
+<assessmentItem xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p1.xsd" identifier="sat2_chi_2016_14_15" title="sat2_chi_2016_14_15" adaptive="false" timeDependent="false">
+    <responseDeclaration identifier="r_1" cardinality="single" baseType="identifier">
+        <correctResponse><value>r_1_B</value></correctResponse>
+        <mapping defaultValue="0"><mapEntry mapKey="r_1_B" mappedValue="2"/></mapping>
+       </responseDeclaration><responseDeclaration identifier="r_2" cardinality="single" baseType="identifier">
+        <correctResponse><value>r_2_C</value></correctResponse>
+        <mapping defaultValue="0"><mapEntry mapKey="r_2_C" mappedValue="2"/></mapping>
+       </responseDeclaration>
+    <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+    </outcomeDeclaration>
+    <outcomeDeclaration identifier="SCORE_1" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+      </outcomeDeclaration><outcomeDeclaration identifier="SCORE_2" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+      </outcomeDeclaration>
+    <stylesheet href="styles/style.css" type="text/css"/>
+    <itemBody xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+    
+    <p>閱讀下文，回答下面兩題。</p>
+    <blockquote class="kai">
+      <div>
+          越甲至齊，雍門子狄請死之。齊王曰：「鼓鐸之聲未聞，矢石未交，長兵未接， 子何務死之？為人臣之禮邪？」雍門子狄對曰：「臣聞之：昔者王田於囿， 左轂鳴，車右請死之，而王曰：『子何為死？』車右對曰：『為其鳴吾君也。』王曰： 『左轂鳴者，工師之罪也，子何事之有焉？』車右曰：『臣不見工師之乘，而見其鳴吾君也。』<span>遂刎頸而死</span>。知有之乎？」齊王曰：「有之。」雍門子狄曰： 「今越甲至，其鳴吾君也，豈左轂之下哉？車右可以死左轂， 而臣獨不可以死越甲也？」遂刎頸而死。是日，越人引甲而退七十里， 曰：「齊王有臣鈞如雍門子狄，擬使越社稷不血食。」遂引甲而歸。
+          （《說苑‧立節》）
+      </div>
+    </blockquote>
+    <div class="box kai">
+      越甲:越國軍隊
+      <br/> 車右：駕者右邊的武士
+      <br/> 鈞:同「均」
+      <br/> 血食:殺牲取血以祭天地祖先。保有政權方能血食祭祀。
+    </div>
+    <choiceInteraction responseIdentifier="r_1" shuffle="false" maxChoices="1">
+      <prompt> 依據上文，敘述正確的選項是：</prompt>
+      <simpleChoice identifier="r_1_A">齊王指責雍門子狄臨陣脫逃，未善盡人臣之責</simpleChoice>
+      <simpleChoice identifier="r_1_B">雍門子狄認為使君王陷於危殆，實為臣子之罪</simpleChoice>
+      <simpleChoice identifier="r_1_C">齊王對於雍門子狄有所誤解，致使他自刎明志</simpleChoice>
+      <simpleChoice identifier="r_1_D">車右為無力督導工匠製車而自責，故刎頸而死</simpleChoice>
+    </choiceInteraction>
+    <choiceInteraction responseIdentifier="r_2" shuffle="false" maxChoices="1">
+      <prompt>關於越人「引甲而歸」的原因，敘述正確的選項是：</prompt>
+      <simpleChoice identifier="r_2_A">見齊國兵車眾多、軍容盛大，自忖無法與之為敵</simpleChoice>
+      <simpleChoice identifier="r_2_B">車右預知越甲將至，以死勸告齊王務必提前戒備</simpleChoice>
+      <simpleChoice identifier="r_2_C">認為齊人忠君愛國，若執意攻伐將招致亡國之禍</simpleChoice>
+      <simpleChoice identifier="r_2_D">敬佩雍門子狄敢為死士，畏懼其不惜犧牲的氣勢</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+    <responseProcessing>
+    <responseCondition>
+          <responseIf>
+            <not>
+              <isNull>
+                <variable identifier="r_1"/>
+              </isNull>
+            </not>
+            <setOutcomeValue identifier="SCORE_1">
+              <sum>
+                <variable identifier="SCORE_1"/>
+                <mapResponse identifier="r_1"/>
+              </sum>
+            </setOutcomeValue>
+          </responseIf>
+          </responseCondition><setOutcomeValue identifier="SCORE">
+        <sum>
+        <variable identifier="SCORE"/>
+        <variable identifier="SCORE_1"/>
+        </sum>
+      </setOutcomeValue><responseCondition>
+          <responseIf>
+            <not>
+              <isNull>
+                <variable identifier="r_2"/>
+              </isNull>
+            </not>
+            <setOutcomeValue identifier="SCORE_2">
+              <sum>
+                <variable identifier="SCORE_2"/>
+                <mapResponse identifier="r_2"/>
+              </sum>
+            </setOutcomeValue>
+          </responseIf>
+          </responseCondition><setOutcomeValue identifier="SCORE">
+        <sum>
+        <variable identifier="SCORE"/>
+        <variable identifier="SCORE_2"/>
+        </sum>
+      </setOutcomeValue></responseProcessing>
+    </assessmentItem>

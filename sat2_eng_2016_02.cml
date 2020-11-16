@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<assessmentItem identifier="sat2_eng_2016_02">
+  <itemBody>
+    <p>Microscopes are used in medical research labs for studying bacteria or
+      \(\underline{\hspace{1cm}}\) that are too small to be visible to the naked eye.</p>
+   <choiceInteraction cardinality="single" correct="C" quota="1">
+      <simpleChoice>agencies</simpleChoice>
+      <simpleChoice>codes</simpleChoice>
+      <simpleChoice>germs</simpleChoice>
+      <simpleChoice>indexes</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+</assessmentItem>

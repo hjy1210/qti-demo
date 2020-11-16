@@ -1,0 +1,187 @@
+<assessmentItem xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p1.xsd" identifier="sat2_eng_2016_16_20" title="sat2_eng_2016_16_20" adaptive="false" timeDependent="false">
+    <responseDeclaration identifier="r_1" cardinality="single" baseType="identifier">
+            <correctResponse>
+            <value>r_1_D</value>
+            </correctResponse>
+            </responseDeclaration><responseDeclaration identifier="r_2" cardinality="single" baseType="identifier">
+            <correctResponse>
+            <value>r_2_D</value>
+            </correctResponse>
+            </responseDeclaration><responseDeclaration identifier="r_3" cardinality="single" baseType="identifier">
+            <correctResponse>
+            <value>r_3_A</value>
+            </correctResponse>
+            </responseDeclaration><responseDeclaration identifier="r_4" cardinality="single" baseType="identifier">
+            <correctResponse>
+            <value>r_4_B</value>
+            </correctResponse>
+            </responseDeclaration><responseDeclaration identifier="r_5" cardinality="single" baseType="identifier">
+            <correctResponse>
+            <value>r_5_C</value>
+            </correctResponse>
+            </responseDeclaration>
+    <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+    </outcomeDeclaration>
+    <outcomeDeclaration identifier="SCORE_1" cardinality="single" baseType="float">
+        <defaultValue>
+          <value>0</value>
+        </defaultValue>
+      </outcomeDeclaration><outcomeDeclaration identifier="SCORE_2" cardinality="single" baseType="float">
+        <defaultValue>
+          <value>0</value>
+        </defaultValue>
+      </outcomeDeclaration><outcomeDeclaration identifier="SCORE_3" cardinality="single" baseType="float">
+        <defaultValue>
+          <value>0</value>
+        </defaultValue>
+      </outcomeDeclaration><outcomeDeclaration identifier="SCORE_4" cardinality="single" baseType="float">
+        <defaultValue>
+          <value>0</value>
+        </defaultValue>
+      </outcomeDeclaration><outcomeDeclaration identifier="SCORE_5" cardinality="single" baseType="float">
+        <defaultValue>
+          <value>0</value>
+        </defaultValue>
+      </outcomeDeclaration>
+    <stylesheet href="styles/style.css" type="text/css"/>
+    <itemBody xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+    
+    <p>Alan Turing was one of the leading scientific geniuses of the 20th century. Many scholars consider him the father of
+      modern computer science. He was also the man who cracked the
+      <inlineChoiceInteraction shuffle="false" required="false" responseIdentifier="r_1">
+        <inlineChoice identifier="r_1_A">eventually</inlineChoice>
+        <inlineChoice identifier="r_1_B">precisely</inlineChoice>
+        <inlineChoice identifier="r_1_C">concernedly</inlineChoice>
+        <inlineChoice identifier="r_1_D">supposedly</inlineChoice>
+      </inlineChoiceInteraction> uncrackable Enigma code used by Nazi Germany. His code-breaking turned the tide of World War II and helped save two
+      million lives. Nevertheless,
+      <inlineChoiceInteraction shuffle="false" required="false" responseIdentifier="r_2">
+        <inlineChoice identifier="r_2_A">many</inlineChoice>
+        <inlineChoice identifier="r_2_B">some</inlineChoice>
+        <inlineChoice identifier="r_2_C">any</inlineChoice>
+        <inlineChoice identifier="r_2_D">few</inlineChoice>
+      </inlineChoiceInteraction> people have even heard his name.</p>
+    <p>Turing displayed signs of high intelligence in math and science at a young age. By the time he was 23, he had already
+      come up with the idea of what
+      <inlineChoiceInteraction shuffle="false" required="false" responseIdentifier="r_3">
+        <inlineChoice identifier="r_3_A">would become</inlineChoice>
+        <inlineChoice identifier="r_3_B">should become</inlineChoice>
+        <inlineChoice identifier="r_3_C">could have become</inlineChoice>
+        <inlineChoice identifier="r_3_D">had become</inlineChoice>
+      </inlineChoiceInteraction>
+      the modern computer—the Turing machine. Today, Turing machines are still used in theoretical computation. He also proposed
+      the now famous Turing test, used to determine whether a computer exhibits intelligent behavior equivalent to that of
+      a human.</p>
+    <p>The postwar era, however, was a disaster for Turing. He was gay, which was then a crime in Britain.
+      <inlineChoiceInteraction shuffle="false" required="false" responseIdentifier="r_4">
+        <inlineChoice identifier="r_4_A">Because of</inlineChoice>
+        <inlineChoice identifier="r_4_B">Instead of</inlineChoice>
+        <inlineChoice identifier="r_4_C">In addition to</inlineChoice>
+        <inlineChoice identifier="r_4_D">With respect to</inlineChoice>
+      </inlineChoiceInteraction> being hailed as one of the crucial figures in defeating the Nazis, Turing was convicted of “gross indecency.” This
+      <inlineChoiceInteraction shuffle="false" required="false" responseIdentifier="r_5">
+        <inlineChoice identifier="r_5_A">compromise</inlineChoice>
+        <inlineChoice identifier="r_5_B">procession</inlineChoice>
+        <inlineChoice identifier="r_5_C">humiliation</inlineChoice>
+        <inlineChoice identifier="r_5_D">supplement</inlineChoice>
+      </inlineChoiceInteraction>
+      drove him to commit suicide in 1954, at the age of 41. Nearly 60 years after his death, Queen Elizabeth II granted Turing
+      a formal pardon for his conviction, upon an online petition signed by prominent scientists and technology leaders around
+      the world.</p>
+  </itemBody>
+    <responseProcessing>
+    <responseCondition>
+       <responseIf>
+        <match>
+          <variable identifier="r_1"/>
+          <correct identifier="r_1"/>
+        </match>
+        <setOutcomeValue identifier="SCORE_1">
+          <sum>
+            <variable identifier="SCORE_1"/>
+            <baseValue baseType="float">1</baseValue>
+          </sum>
+        </setOutcomeValue>
+       </responseIf>
+      </responseCondition><setOutcomeValue identifier="SCORE">
+        <sum>
+          <variable identifier="SCORE"/>
+          <variable identifier="SCORE_1"/>
+        </sum>
+      </setOutcomeValue><responseCondition>
+       <responseIf>
+        <match>
+          <variable identifier="r_2"/>
+          <correct identifier="r_2"/>
+        </match>
+        <setOutcomeValue identifier="SCORE_2">
+          <sum>
+            <variable identifier="SCORE_2"/>
+            <baseValue baseType="float">1</baseValue>
+          </sum>
+        </setOutcomeValue>
+       </responseIf>
+      </responseCondition><setOutcomeValue identifier="SCORE">
+        <sum>
+          <variable identifier="SCORE"/>
+          <variable identifier="SCORE_2"/>
+        </sum>
+      </setOutcomeValue><responseCondition>
+       <responseIf>
+        <match>
+          <variable identifier="r_3"/>
+          <correct identifier="r_3"/>
+        </match>
+        <setOutcomeValue identifier="SCORE_3">
+          <sum>
+            <variable identifier="SCORE_3"/>
+            <baseValue baseType="float">1</baseValue>
+          </sum>
+        </setOutcomeValue>
+       </responseIf>
+      </responseCondition><setOutcomeValue identifier="SCORE">
+        <sum>
+          <variable identifier="SCORE"/>
+          <variable identifier="SCORE_3"/>
+        </sum>
+      </setOutcomeValue><responseCondition>
+       <responseIf>
+        <match>
+          <variable identifier="r_4"/>
+          <correct identifier="r_4"/>
+        </match>
+        <setOutcomeValue identifier="SCORE_4">
+          <sum>
+            <variable identifier="SCORE_4"/>
+            <baseValue baseType="float">1</baseValue>
+          </sum>
+        </setOutcomeValue>
+       </responseIf>
+      </responseCondition><setOutcomeValue identifier="SCORE">
+        <sum>
+          <variable identifier="SCORE"/>
+          <variable identifier="SCORE_4"/>
+        </sum>
+      </setOutcomeValue><responseCondition>
+       <responseIf>
+        <match>
+          <variable identifier="r_5"/>
+          <correct identifier="r_5"/>
+        </match>
+        <setOutcomeValue identifier="SCORE_5">
+          <sum>
+            <variable identifier="SCORE_5"/>
+            <baseValue baseType="float">1</baseValue>
+          </sum>
+        </setOutcomeValue>
+       </responseIf>
+      </responseCondition><setOutcomeValue identifier="SCORE">
+        <sum>
+          <variable identifier="SCORE"/>
+          <variable identifier="SCORE_5"/>
+        </sum>
+      </setOutcomeValue></responseProcessing>
+    </assessmentItem>

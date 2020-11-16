@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<assessmentItem identifier="sat2_chi_2016_22">
+  <itemBody>
+    <p>曹丕〈典論論文〉中「常人貴遠賤近」的「貴」，是「 以 … … 為貴」的意思 。</p>
+   <choiceInteraction cardinality="multiple" correct="BDE" quota="3">
+      <simpleChoice>君子之學也以「美」其身</simpleChoice>
+      <simpleChoice>孟嘗君「怪」之，曰：此誰也</simpleChoice>
+      <simpleChoice>諸侯恐懼，會盟而謀「弱」秦</simpleChoice>
+      <simpleChoice>「甘」其食，美其服，安其居，樂其俗</simpleChoice>
+      <simpleChoice>人知從太守遊而樂，而不知太守之「樂」其樂也</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+</assessmentItem>

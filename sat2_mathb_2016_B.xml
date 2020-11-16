@@ -1,0 +1,186 @@
+<assessmentItem xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p1.xsd" identifier="sat2_mathb_2016_B" title="sat2_mathb_2016_B" adaptive="false" timeDependent="false">
+    <responseDeclaration identifier="r_1_1" cardinality="single" baseType="identifier">
+              <correctResponse>
+              <value>r_1_1_3</value>
+              </correctResponse>
+              </responseDeclaration><responseDeclaration identifier="r_1_2" cardinality="single" baseType="identifier">
+              <correctResponse>
+              <value>r_1_2_1</value>
+              </correctResponse>
+              </responseDeclaration><responseDeclaration identifier="r_1_3" cardinality="single" baseType="identifier">
+              <correctResponse>
+              <value>r_1_3_1</value>
+              </correctResponse>
+              </responseDeclaration><responseDeclaration identifier="r_1_4" cardinality="single" baseType="identifier">
+              <correctResponse>
+              <value>r_1_4_3</value>
+              </correctResponse>
+              </responseDeclaration>
+    <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+    </outcomeDeclaration>
+    <outcomeDeclaration identifier="SCORE_1" cardinality="single" baseType="float">
+        <defaultValue>
+          <value>0</value>
+        </defaultValue>
+      </outcomeDeclaration>
+    <stylesheet href="styles/style.css" type="text/css"/>
+    <itemBody xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+    
+<p>設 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="x,c">
+  <mi>x</mi>
+  <mo>,</mo>
+  <mi>c</mi>
+</math> 為實數，方陣
+    <math xmlns="http://www.w3.org/1998/Math/MathML" alttext=" A=\begin{bmatrix}
+          3 &amp; 2 \\
+          -2 &amp; x
+        \end{bmatrix}">
+  <mi>A</mi>
+  <mo>=</mo>
+  <mrow>
+    <mo>[</mo>
+    <mtable rowspacing="4pt" columnspacing="1em">
+      <mtr>
+        <mtd>
+          <mn>3</mn>
+        </mtd>
+        <mtd>
+          <mn>2</mn>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mo>−<!-- − --></mo>
+          <mn>2</mn>
+        </mtd>
+        <mtd>
+          <mi>x</mi>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>]</mo>
+  </mrow>
+</math> 、
+    <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="B=\begin{bmatrix}
+          3 &amp; -2 \\
+          2 &amp; x
+      \end{bmatrix}">
+  <mi>B</mi>
+  <mo>=</mo>
+  <mrow>
+    <mo>[</mo>
+    <mtable rowspacing="4pt" columnspacing="1em">
+      <mtr>
+        <mtd>
+          <mn>3</mn>
+        </mtd>
+        <mtd>
+          <mo>−<!-- − --></mo>
+          <mn>2</mn>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mn>2</mn>
+        </mtd>
+        <mtd>
+          <mi>x</mi>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>]</mo>
+  </mrow>
+</math> 。已知 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="A">
+  <mi>A</mi>
+</math>的反方陣恰好是  <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="B">
+  <mi>B</mi>
+</math> 的  <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="c">
+  <mi>c</mi>
+</math>倍（其中 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="c\ne 0">
+  <mi>c</mi>
+  <mo>≠<!-- ≠ --></mo>
+  <mn>0</mn>
+</math>），
+    則數對 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="(x,c)=(\ceec{1},\frac{\ceec{2}}{\ceec{3}\ceec{4}})">
+  <mo stretchy="false">(</mo>
+  <mi>x</mi>
+  <mo>,</mo>
+  <mi>c</mi>
+  <mo stretchy="false">)</mo>
+  <mo>=</mo>
+  <mo stretchy="false">(</mo>
+  <mrow class="MJX-TeXAtom-ORD">
+    <menclose notation="box">
+      <mtext>1</mtext>
+    </menclose>
+  </mrow>
+  <mo>,</mo>
+  <mfrac>
+    <mrow class="MJX-TeXAtom-ORD">
+      <menclose notation="box">
+        <mtext>2</mtext>
+      </menclose>
+    </mrow>
+    <mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <menclose notation="box">
+          <mtext>3</mtext>
+        </menclose>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <menclose notation="box">
+          <mtext>4</mtext>
+        </menclose>
+      </mrow>
+    </mrow>
+  </mfrac>
+  <mo stretchy="false">)</mo>
+</math>。（請化為最簡分數）</p>
+    <div xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"> <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\ceec{1}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <menclose notation="box">
+      <mtext>1</mtext>
+    </menclose>
+  </mrow>
+</math>=<inlineChoiceInteraction responseIdentifier="r_1_1" shuffle="false" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><inlineChoice identifier="r_1_1_1">1</inlineChoice><inlineChoice identifier="r_1_1_2">2</inlineChoice><inlineChoice identifier="r_1_1_3">3</inlineChoice><inlineChoice identifier="r_1_1_4">4</inlineChoice><inlineChoice identifier="r_1_1_5">5</inlineChoice><inlineChoice identifier="r_1_1_6">6</inlineChoice><inlineChoice identifier="r_1_1_7">7</inlineChoice><inlineChoice identifier="r_1_1_8">8</inlineChoice><inlineChoice identifier="r_1_1_9">9</inlineChoice><inlineChoice identifier="r_1_1_0">0</inlineChoice><inlineChoice identifier="r_1_1_M">-</inlineChoice><inlineChoice identifier="r_1_1_N">#</inlineChoice></inlineChoiceInteraction> <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\ceec{2}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <menclose notation="box">
+      <mtext>2</mtext>
+    </menclose>
+  </mrow>
+</math>=<inlineChoiceInteraction responseIdentifier="r_1_2" shuffle="false" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><inlineChoice identifier="r_1_2_1">1</inlineChoice><inlineChoice identifier="r_1_2_2">2</inlineChoice><inlineChoice identifier="r_1_2_3">3</inlineChoice><inlineChoice identifier="r_1_2_4">4</inlineChoice><inlineChoice identifier="r_1_2_5">5</inlineChoice><inlineChoice identifier="r_1_2_6">6</inlineChoice><inlineChoice identifier="r_1_2_7">7</inlineChoice><inlineChoice identifier="r_1_2_8">8</inlineChoice><inlineChoice identifier="r_1_2_9">9</inlineChoice><inlineChoice identifier="r_1_2_0">0</inlineChoice><inlineChoice identifier="r_1_2_M">-</inlineChoice><inlineChoice identifier="r_1_2_N">#</inlineChoice></inlineChoiceInteraction> <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\ceec{3}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <menclose notation="box">
+      <mtext>3</mtext>
+    </menclose>
+  </mrow>
+</math>=<inlineChoiceInteraction responseIdentifier="r_1_3" shuffle="false" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><inlineChoice identifier="r_1_3_1">1</inlineChoice><inlineChoice identifier="r_1_3_2">2</inlineChoice><inlineChoice identifier="r_1_3_3">3</inlineChoice><inlineChoice identifier="r_1_3_4">4</inlineChoice><inlineChoice identifier="r_1_3_5">5</inlineChoice><inlineChoice identifier="r_1_3_6">6</inlineChoice><inlineChoice identifier="r_1_3_7">7</inlineChoice><inlineChoice identifier="r_1_3_8">8</inlineChoice><inlineChoice identifier="r_1_3_9">9</inlineChoice><inlineChoice identifier="r_1_3_0">0</inlineChoice><inlineChoice identifier="r_1_3_M">-</inlineChoice><inlineChoice identifier="r_1_3_N">#</inlineChoice></inlineChoiceInteraction> <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\ceec{4}">
+  <mrow class="MJX-TeXAtom-ORD">
+    <menclose notation="box">
+      <mtext>4</mtext>
+    </menclose>
+  </mrow>
+</math>=<inlineChoiceInteraction responseIdentifier="r_1_4" shuffle="false" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"><inlineChoice identifier="r_1_4_1">1</inlineChoice><inlineChoice identifier="r_1_4_2">2</inlineChoice><inlineChoice identifier="r_1_4_3">3</inlineChoice><inlineChoice identifier="r_1_4_4">4</inlineChoice><inlineChoice identifier="r_1_4_5">5</inlineChoice><inlineChoice identifier="r_1_4_6">6</inlineChoice><inlineChoice identifier="r_1_4_7">7</inlineChoice><inlineChoice identifier="r_1_4_8">8</inlineChoice><inlineChoice identifier="r_1_4_9">9</inlineChoice><inlineChoice identifier="r_1_4_0">0</inlineChoice><inlineChoice identifier="r_1_4_M">-</inlineChoice><inlineChoice identifier="r_1_4_N">#</inlineChoice></inlineChoiceInteraction></div>
+</itemBody>
+    <responseProcessing>
+    <responseCondition>
+        <responseIf>
+          <and>
+          <match><variable identifier="r_1_1"/><correct identifier="r_1_1"/></match><match><variable identifier="r_1_2"/><correct identifier="r_1_2"/></match><match><variable identifier="r_1_3"/><correct identifier="r_1_3"/></match><match><variable identifier="r_1_4"/><correct identifier="r_1_4"/></match></and>
+          <setOutcomeValue identifier="SCORE_1">
+            <sum>
+              <variable identifier="SCORE_1"/>
+              <baseValue baseType="float">6</baseValue>
+            </sum>
+          </setOutcomeValue>
+        </responseIf>
+      </responseCondition><setOutcomeValue identifier="SCORE">
+        <sum>
+          <variable identifier="SCORE"/>
+          <variable identifier="SCORE_1"/>
+        </sum>
+      </setOutcomeValue></responseProcessing>
+    </assessmentItem>

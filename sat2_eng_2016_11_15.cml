@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assessmentItem identifier="sat2_eng_2016_11_15">
+  <itemBody>
+    <p>
+      Have you been irritated by someone standing too close in line, talking too loud or making eye contact for too long? Or, they
+      may have
+      <inlineChoiceInteraction shuffle="false" required="false" quota="1" correct="A">
+        <inlineChoice>offended</inlineChoice>
+        <inlineChoice>controlled</inlineChoice>
+        <inlineChoice>acquired</inlineChoice>
+        <inlineChoice>supplied</inlineChoice>
+      </inlineChoiceInteraction> you with the loud music from their earphones, or by taking up more than one seat on a crowded subway car. You feel unhappy because your personal space has been violated.
+    </p>
+    <p>
+      According to scientists, personal space involves certain invisible forces imposed on you through all the
+      <inlineChoiceInteraction
+        shuffle="false" required="false" quota="1" correct="C">
+        <inlineChoice>angles</inlineChoice>
+        <inlineChoice>events</inlineChoice>
+        <inlineChoice>senses</inlineChoice>
+        <inlineChoice>regions</inlineChoice>
+        </inlineChoiceInteraction>. For example, people may feel their space is being invaded when they experience an unwelcome sound, smell, or stare.
+    </p>
+    <p>In certain situations such as in crowded subway cars or elevators, it is not always possible for people to keep their
+      <inlineChoiceInteraction shuffle="false" required="false" quota="1" correct="C">
+        <inlineChoice>prefer</inlineChoice>
+        <inlineChoice>preferring</inlineChoice>
+        <inlineChoice>preferred</inlineChoice>
+        <inlineChoice>being preferred</inlineChoice>
+      </inlineChoiceInteraction> distance from others. They learn coping strategies to deal with their discomfort. For instance, people often avoid
+      eye contact with someone standing
+      <inlineChoiceInteraction shuffle="false" required="false" quota="1" correct="B">
+        <inlineChoice>long before</inlineChoice>
+        <inlineChoice>close to</inlineChoice>
+        <inlineChoice>aside from</inlineChoice>
+        <inlineChoice>soon after</inlineChoice>
+      </inlineChoiceInteraction> them, or they pretend that these people are lifeless objects in their personal space. Given the opportunity, they may
+      <inlineChoiceInteraction shuffle="false" required="false" quota="1" correct="A">
+        <inlineChoice>retreat</inlineChoice>
+        <inlineChoice>explore</inlineChoice>
+        <inlineChoice>dispense</inlineChoice>
+        <inlineChoice>connect</inlineChoice>
+      </inlineChoiceInteraction> to a corner, putting distance between themselves and strangers. Or, they may sit or stand equidistant from one another
+      like birds on a wire.
+    </p>
+  </itemBody>
+</assessmentItem>

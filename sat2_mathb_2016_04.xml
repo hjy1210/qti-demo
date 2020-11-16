@@ -1,0 +1,163 @@
+<assessmentItem xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p1.xsd" identifier="sat2_mathb_2016_04" title="sat2_mathb_2016_04" adaptive="false" timeDependent="false">
+    <responseDeclaration identifier="r_1" cardinality="multiple" baseType="identifier">
+        <correctResponse><value>r_1_45</value></correctResponse>
+        <mapping defaultValue="-1"><mapEntry mapKey="r_1_4" mappedValue="1"/><mapEntry mapKey="r_1_5" mappedValue="1"/></mapping>
+       </responseDeclaration>
+    <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+    </outcomeDeclaration>
+    <outcomeDeclaration identifier="SCORE_1" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+      </outcomeDeclaration>
+    <stylesheet href="styles/style.css" type="text/css"/>
+    <itemBody xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+    
+    <p>設 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="f(x)">
+  <mi>f</mi>
+  <mo stretchy="false">(</mo>
+  <mi>x</mi>
+  <mo stretchy="false">)</mo>
+</math> 為一未知的實係數多項式，但知道 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="f(x)">
+  <mi>f</mi>
+  <mo stretchy="false">(</mo>
+  <mi>x</mi>
+  <mo stretchy="false">)</mo>
+</math> 除以 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext=" (x-5)(x-6)^2">
+  <mo stretchy="false">(</mo>
+  <mi>x</mi>
+  <mo>−<!-- − --></mo>
+  <mn>5</mn>
+  <mo stretchy="false">)</mo>
+  <mo stretchy="false">(</mo>
+  <mi>x</mi>
+  <mo>−<!-- − --></mo>
+  <mn>6</mn>
+  <msup>
+    <mo stretchy="false">)</mo>
+    <mn>2</mn>
+  </msup>
+</math> 的餘式為 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="5x^2+6x+7">
+  <mn>5</mn>
+  <msup>
+    <mi>x</mi>
+    <mn>2</mn>
+  </msup>
+  <mo>+</mo>
+  <mn>6</mn>
+  <mi>x</mi>
+  <mo>+</mo>
+  <mn>7</mn>
+</math>。根據上述所給條件， 請選出正確的選項
+    </p>
+    <choiceInteraction responseIdentifier="r_1" shuffle="false" maxChoices="0" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+      <simpleChoice identifier="r_1_1">可求出 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="f(0)">
+  <mi>f</mi>
+  <mo stretchy="false">(</mo>
+  <mn>0</mn>
+  <mo stretchy="false">)</mo>
+</math> 之值</simpleChoice>
+      <simpleChoice identifier="r_1_2" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">可求出 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="f(11)">
+  <mi>f</mi>
+  <mo stretchy="false">(</mo>
+  <mn>11</mn>
+  <mo stretchy="false">)</mo>
+</math> 之值</simpleChoice>
+      <simpleChoice identifier="r_1_3" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">可求出 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="f(x)">
+  <mi>f</mi>
+  <mo stretchy="false">(</mo>
+  <mi>x</mi>
+  <mo stretchy="false">)</mo>
+</math> 除以 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="(x-5)^2">
+  <mo stretchy="false">(</mo>
+  <mi>x</mi>
+  <mo>−<!-- − --></mo>
+  <mn>5</mn>
+  <msup>
+    <mo stretchy="false">)</mo>
+    <mn>2</mn>
+  </msup>
+</math> 的餘式</simpleChoice>
+      <simpleChoice identifier="r_1_4" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">可求出 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="f(x)">
+  <mi>f</mi>
+  <mo stretchy="false">(</mo>
+  <mi>x</mi>
+  <mo stretchy="false">)</mo>
+</math> 除以 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="(x-6)^2">
+  <mo stretchy="false">(</mo>
+  <mi>x</mi>
+  <mo>−<!-- − --></mo>
+  <mn>6</mn>
+  <msup>
+    <mo stretchy="false">)</mo>
+    <mn>2</mn>
+  </msup>
+</math> 的餘式</simpleChoice>
+      <simpleChoice identifier="r_1_5" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">可求出 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="f(x)">
+  <mi>f</mi>
+  <mo stretchy="false">(</mo>
+  <mi>x</mi>
+  <mo stretchy="false">)</mo>
+</math> 除以 <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="(x-5)(x-6)">
+  <mo stretchy="false">(</mo>
+  <mi>x</mi>
+  <mo>−<!-- − --></mo>
+  <mn>5</mn>
+  <mo stretchy="false">)</mo>
+  <mo stretchy="false">(</mo>
+  <mi>x</mi>
+  <mo>−<!-- − --></mo>
+  <mn>6</mn>
+  <mo stretchy="false">)</mo>
+</math> 的餘式</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+    <responseProcessing xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+    <responseCondition>
+          <responseIf>
+            <isNull>
+              <variable identifier="r_1"/>
+            </isNull>
+            <setOutcomeValue identifier="SCORE_1">
+             <sum>
+              <variable identifier="SCORE_1"/>
+              <baseValue baseType="float">0.0</baseValue>
+             </sum>
+            </setOutcomeValue>
+          </responseIf>
+          <responseElse>
+            <setOutcomeValue identifier="SCORE_1">
+             <sum>
+              <variable identifier="SCORE_1"/>
+              <max>
+                <baseValue baseType="float">0.0</baseValue>
+                <product>
+                  <baseValue baseType="float">8</baseValue>
+                  <subtract>
+                    <baseValue baseType="float">1.0</baseValue>
+                    <divide>
+                      <product>
+                        <baseValue baseType="float">2.0</baseValue>
+                        <subtract>
+                          <baseValue baseType="float">2</baseValue>
+                          <mapResponse identifier="r_1"/>
+                        </subtract>
+                      </product>
+                      <baseValue baseType="float">5</baseValue>
+                    </divide>
+                  </subtract>
+                </product>
+              </max>
+              </sum>
+            </setOutcomeValue>
+          </responseElse>
+          </responseCondition><setOutcomeValue identifier="SCORE">
+        <sum>
+        <variable identifier="SCORE"/>
+        <variable identifier="SCORE_1"/>
+        </sum>
+      </setOutcomeValue></responseProcessing>
+    </assessmentItem>

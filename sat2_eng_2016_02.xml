@@ -1,0 +1,54 @@
+<assessmentItem xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p1.xsd" identifier="sat2_eng_2016_02" title="sat2_eng_2016_02" adaptive="false" timeDependent="false">
+    <responseDeclaration identifier="r_1" cardinality="single" baseType="identifier">
+        <correctResponse><value>r_1_C</value></correctResponse>
+        <mapping defaultValue="0"><mapEntry mapKey="r_1_C" mappedValue="1"/></mapping>
+       </responseDeclaration>
+    <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+    </outcomeDeclaration>
+    <outcomeDeclaration identifier="SCORE_1" cardinality="single" baseType="float">
+      <defaultValue>
+        <value>0</value>
+      </defaultValue>
+      </outcomeDeclaration>
+    <stylesheet href="styles/style.css" type="text/css"/>
+    <itemBody xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+    
+    <p>Microscopes are used in medical research labs for studying bacteria or
+      <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\underline{\hspace{1cm}}">
+  <munder>
+    <mspace width="1cm"/>
+    <mo>_<!-- _ --></mo>
+  </munder>
+</math> that are too small to be visible to the naked eye.</p>
+   <choiceInteraction responseIdentifier="r_1" shuffle="false" maxChoices="1" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">
+      <simpleChoice identifier="r_1_A">agencies</simpleChoice>
+      <simpleChoice identifier="r_1_B">codes</simpleChoice>
+      <simpleChoice identifier="r_1_C">germs</simpleChoice>
+      <simpleChoice identifier="r_1_D">indexes</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+    <responseProcessing>
+    <responseCondition>
+          <responseIf>
+            <not>
+              <isNull>
+                <variable identifier="r_1"/>
+              </isNull>
+            </not>
+            <setOutcomeValue identifier="SCORE_1">
+              <sum>
+                <variable identifier="SCORE_1"/>
+                <mapResponse identifier="r_1"/>
+              </sum>
+            </setOutcomeValue>
+          </responseIf>
+          </responseCondition><setOutcomeValue identifier="SCORE">
+        <sum>
+        <variable identifier="SCORE"/>
+        <variable identifier="SCORE_1"/>
+        </sum>
+      </setOutcomeValue></responseProcessing>
+    </assessmentItem>
