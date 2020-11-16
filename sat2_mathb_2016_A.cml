@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<assessmentItem identifier="sat2_mathb_2016_A">
-  <itemBody>
-    <p>不透明袋中有三顆白球及三顆紅球。從袋中每次取出一球依序置於桌面，每次每顆球被取出的機率相同。
-      全部取出後，前三顆球中有相鄰兩球同為白球的機率為
-      \(\frac{\ceec{1}}{\ceec{2}\ceec{3}}\)。（請化為最簡分數）</p>
-   <groupInlineChoiceInteraction correct="720" quota="6" />
-  </itemBody>
-</assessmentItem>
