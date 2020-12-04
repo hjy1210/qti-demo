@@ -62,10 +62,11 @@ function actionMML(math, doc) {
 	math.typesetRoot = adaptor.firstChild(adaptor.body(adaptor.parse(mml, 'text/html')));
 }
 
-async function toMML(htmlfile) {
+module.exports = async function toMML(htmlfile) {
 	//
 	// Load MathJax and initialize MathJax and typeset the given math
 	//
+	let res = '';
 	try {
 		let MathJax = await require('mathjax-full').init({
 			//
@@ -104,7 +105,6 @@ async function toMML(htmlfile) {
 		const adaptor = MathJax.startup.adaptor;
 		const html = MathJax.startup.document;
 		html.render();
-		let res = '';
 		res += adaptor.doctype(html.document); // console.log(adaptor.doctype(html.document));
 		res += adaptor.outerHTML(adaptor.root(html.document)); //console.log(adaptor.outerHTML(adaptor.root(html.document)));
 		return res;
@@ -114,4 +114,4 @@ async function toMML(htmlfile) {
 	}
 }
 
-module.exports = { toMML };
+// module.exports = { toMML };

@@ -38,7 +38,7 @@ function actionMML(math, doc) {
 	math.typesetRoot = adaptor.firstChild(adaptor.body(adaptor.parse(mml, 'text/html')));
 }
 
-async function toMML(htmlfile) {
+module.exports = async function toMML(htmlfile) {
 	//
 	//  Configure MathJax
 	//
@@ -97,4 +97,4 @@ async function toMML(htmlfile) {
 		return res;
 	}
 }
-module.exports = { toMML };
+// module.exports = { toMML };
