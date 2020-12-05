@@ -13,7 +13,7 @@ var type
 if (process.argv[3]) 
   type=process.argv[3] // pu for MathML with special treatment, mml for MathML, otherwise no MML
 else
-  type="pu"
+  type="mml"
 var promise=cml2item(cmlxml,type)
 promise
   .then(xml=>{

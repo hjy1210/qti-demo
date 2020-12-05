@@ -88,8 +88,8 @@ module.exports = function toMML(htmlfile) {
 			html.render();
 			res += adaptor.doctype(html.document); // console.log(adaptor.doctype(html.document));
 			res += adaptor.outerHTML(adaptor.root(html.document)); // console.log(adaptor.outerHTML(adaptor.root(html.document)));
-			let start = res.indexOf('<item-body ');
-			let end = res.indexOf('</item-body>') + 12;
+			let start = res.indexOf('<qti-item-body ');
+			let end = res.indexOf('</qti-item-body>') + 16;
 			//var doc = new DOMParser().parseFromString(res)
 			//var docEle = doc.documentElement
 			//var itemBody = docEle.getElementsByTagName('itembody')
@@ -101,8 +101,8 @@ module.exports = function toMML(htmlfile) {
 }
 // module.exports = { toMML };
 
-/*var cmlStr = `<itemBody>Solution of equation \\(ax^2+bx+c=0\\) is
+/*var cmlStr = `<qti-item-body>Solution of equation \\(ax^2+bx+c=0\\) is
 \\[x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}.\\] Molecular formula of sulfuric acid is
-\\(\\ce{H2SO4}\\).\\(\\pu{1.0e-20 J}\\)</itemBody>`
+\\(\\ce{H2SO4}\\).\\(\\pu{1.0e-20 J}\\)</qti-item-body>`
 
 toMML(cmlStr).then(result=>console.log(result))*/

@@ -2,16 +2,6 @@ var fs = require('fs');
 var archiver = require('archiver');
 var AdmZip = require('adm-zip');
 let toMML = require('./cml2xml30')
-//var toMML=require('./util2')
-//var toMML = require('./cml2xml30')
-// const options = {
-//   format: ["TeX"],
-//
-//     TeX: {
-//       Macros: { ceec: ['{\\fbox{#1}}', 1] }
-//     }
-//   }
-// }
 var DOMParser = require('xmldom').DOMParser;
 var XMLSerializer = require('xmldom').XMLSerializer;
 //var root = '<?xml version="1.0" encoding="UTF-8" ?>\n<assessmentItem></assessmentItem>'
@@ -26,44 +16,44 @@ module.exports = function cml2item(rawxml, type) {
 		cI.removeAttribute('correct');
 		cI.removeAttribute('quota');
 
-		var scorendxStr = `<outcomeDeclaration identifier="SCORE_${respNdx}" cardinality="single"
-        baseType="float">
-      <defaultValue>
-        <value>0</value>
-      </defaultValue>
-      </outcomeDeclaration>`;
+		var scorendxStr = `<qti-outcome-declaration identifier="SCORE_${respNdx}" cardinality="single"
+        base-type="float">
+      <qti-default-value>
+        <qti-value>0</qti-value>
+      </qti-default-value>
+      </qti-outcome-declaration>`;
 		//console.log("1",new XMLSerializer().serializeToString(outcomeDeclaration))
 		//console.log("2",new XMLSerializer().serializeToString(imsdoc))
 		imsdoc.insertBefore(new DOMParser().parseFromString(scorendxStr).documentElement, endofOutcomeDeclaration);
 
 		var respId = 'r_' + respNdx;
-		var responseStr = `<responseDeclaration identifier="${respId}" cardinality="${cardinality}" baseType="identifier">
-        <correctResponse/>
+		var responseStr = `<qti-response-declaration identifier="${respId}" cardinality="${cardinality}" base-type="identifier">
+        <qti-correct-response/>
         <mapping />
-       </responseDeclaration>
+       </qti-response-declaration>
       `;
 		var responseDeclaration = new DOMParser().parseFromString(responseStr).documentElement;
-		var correctResponse = responseDeclaration.getElementsByTagName('correctResponse')[0];
+		var correctResponse = responseDeclaration.getElementsByTagName('qti-correct-response')[0];
 		var mapping = responseDeclaration.getElementsByTagName('mapping')[0];
 
 		if (cardinality !== 'multiple') {
-			mapping.setAttribute('defaultValue', '0');
-			var value = imsroot.createElement('value');
+			mapping.setAttribute('default-value', '0');
+			var value = imsroot.createElement('qti-value');
 			value.appendChild(imsroot.createTextNode(respId + '_' + correct));
 			correctResponse.appendChild(value);
-			var mapEntry = imsroot.createElement('mapEntry');
-			mapEntry.setAttribute('mapKey', respId + '_' + correct);
-			mapEntry.setAttribute('mappedValue', '' + quota);
+			var mapEntry = imsroot.createElement('qti-map-entry');
+			mapEntry.setAttribute('map-key', respId + '_' + correct);
+			mapEntry.setAttribute('mapped-value', '' + quota);
 			mapping.appendChild(mapEntry);
 		} else {
-			mapping.setAttribute('defaultValue', '-1');
-			var value = imsroot.createElement('value');
+			mapping.setAttribute('default-value', '-1');
+			var value = imsroot.createElement('qti-value');
 			value.appendChild(imsroot.createTextNode(respId + '_' + correct));
 			correctResponse.appendChild(value);
 			for (var i = 0; i < correct.length; i++) {
-				var mapEntry = imsroot.createElement('mapEntry');
-				mapEntry.setAttribute('mapKey', respId + '_' + correct[i]);
-				mapEntry.setAttribute('mappedValue', '1');
+				var mapEntry = imsroot.createElement('qti-map-entry');
+				mapEntry.setAttribute('map-key', respId + '_' + correct[i]);
+				mapEntry.setAttribute('mapped-value', '1');
 				mapping.appendChild(mapEntry);
 			}
 		}
@@ -71,9 +61,9 @@ module.exports = function cml2item(rawxml, type) {
 		imsdoc.insertBefore(responseDeclaration, endofResponseDeclaration);
 
 		var choiceInteraction = cI; /////imsroot.createElement('choiceInteraction')
-		choiceInteraction.setAttribute('responseIdentifier', respId);
+		choiceInteraction.setAttribute('response-identifier', respId);
 		choiceInteraction.setAttribute('shuffle', 'false');
-		choiceInteraction.setAttribute('maxChoices', cardinality === 'single' ? '1' : '0');
+		choiceInteraction.setAttribute('max-choices', cardinality === 'single' ? '1' : '0');
 
 		//itemBody.appendChild(choiceInteraction)
 		//moveChildren(cI, choiceInteraction)
@@ -84,73 +74,73 @@ module.exports = function cml2item(rawxml, type) {
 			simpleChoices[i].setAttribute('identifier', respId + '_' + cursymbol[i]);
 		}
 		if (cardinality !== 'multiple') {
-			var rspcondstr = `<responseCondition>
-          <responseIf>
-            <not>
-              <isNull>
-                <variable identifier='${respId}'/>
-              </isNull>
-            </not>
-            <setOutcomeValue identifier="SCORE_${respNdx}">
-              <sum>
-                <variable identifier="SCORE_${respNdx}"/>
-                <mapResponse identifier='${respId}'/>
-              </sum>
-            </setOutcomeValue>
-          </responseIf>
-          </responseCondition>`;
+			var rspcondstr = `<qti-response-condition>
+          <qti-response-if>
+            <qti-not>
+              <qti-is-null>
+                <qti-variable identifier='${respId}'/>
+              </qti-is-null>
+            </qti-not>
+            <qti-set-outcome-value identifier="SCORE_${respNdx}">
+              <qti-sum>
+                <qti-variable identifier="SCORE_${respNdx}"/>
+                <qti-map-response identifier='${respId}'/>
+              </qti-sum>
+            </qti-set-outcome-value>
+          </qti-response-if>
+          </qti-response-condition>`;
 			var responseCondition = new DOMParser().parseFromString(rspcondstr).documentElement;
 			responseProcessing.appendChild(responseCondition);
 		} else {
-			var rspcondstr = `<responseCondition>
-          <responseIf>
-            <isNull>
-              <variable identifier='${respId}'/>
-            </isNull>
-            <setOutcomeValue identifier="SCORE_${respNdx}">
-             <sum>
-              <variable identifier="SCORE_${respNdx}"/>
-              <baseValue baseType="float">0.0</baseValue>
-             </sum>
-            </setOutcomeValue>
-          </responseIf>
-          <responseElse>
-            <setOutcomeValue identifier="SCORE_${respNdx}">
-             <sum>
-              <variable identifier="SCORE_${respNdx}"/>
-              <max>
-                <baseValue baseType="float">0.0</baseValue>
-                <product>
-                  <baseValue baseType="float">${quota}</baseValue>
-                  <subtract>
-                    <baseValue baseType="float">1.0</baseValue>
-                    <divide>
-                      <product>
-                        <baseValue baseType="float">2.0</baseValue>
-                        <subtract>
-                          <baseValue baseType="float">${correct.length.toString()}</baseValue>
-                          <mapResponse identifier='${respId}'/>
-                        </subtract>
-                      </product>
-                      <baseValue baseType="float">${simpleChoices.length}</baseValue>
-                    </divide>
-                  </subtract>
-                </product>
-              </max>
-              </sum>
-            </setOutcomeValue>
-          </responseElse>
-          </responseCondition>`;
+			var rspcondstr = `<qti-response-condition>
+          <qti-response-if>
+            <qti-is-null>
+              <qti-variable identifier='${respId}'/>
+            </qti-is-null>
+            <qti-set-outcome-value identifier="SCORE_${respNdx}">
+             <qti-sum>
+              <qti-variable identifier="SCORE_${respNdx}"/>
+              <qti-base-value base-type="float">0.0</qti-base-value>
+             </qti-sum>
+            </qti-set-outcome-value>
+          </qti-response-if>
+          <qti-response-else>
+            <qti-set-outcome-value identifier="SCORE_${respNdx}">
+             <qti-sum>
+              <qti-variable identifier="SCORE_${respNdx}"/>
+              <qti-max>
+                <qti-base-value base-type="float">0.0</qti-base-value>
+                <qti-product>
+                  <qti-base-value base-type="float">${quota}</qti-base-value>
+                  <qti-subtract>
+                    <qti-base-value base-type="float">1.0</qti-base-value>
+                    <qti-divide>
+                      <qti-product>
+                        <qti-base-value base-type="float">2.0</qti-base-value>
+                        <qti-subtract>
+                          <qti-base-value base-type="float">${correct.length.toString()}</qti-base-value>
+                          <qti-map-response identifier='${respId}'/>
+                        </qti-subtract>
+                      </qti-product>
+                      <qti-base-value base-type="float">${simpleChoices.length}</qti-base-value>
+                    </qti-divide>
+                  </qti-subtract>
+                </qti-product>
+              </qti-max>
+              </qti-sum>
+            </qti-set-outcome-value>
+          </qti-response-else>
+          </qti-response-condition>`;
 			var responseCondition = new DOMParser().parseFromString(rspcondstr).documentElement;
 			responseProcessing.appendChild(responseCondition);
 			//console.log(new XMLSerializer().serializeToString(responseCondition) )
 		}
-		var sumStr = `<setOutcomeValue identifier="SCORE">
-        <sum>
-        <variable identifier="SCORE"/>
-        <variable identifier="SCORE_${respNdx}"/>
-        </sum>
-      </setOutcomeValue>`;
+		var sumStr = `<qti-set-outcome-value identifier="SCORE">
+        <qti-sum>
+        <qti-variable identifier="SCORE"/>
+        <qti-variable identifier="SCORE_${respNdx}"/>
+        </qti-sum>
+      </qti-set-outcome-value>`;
 		responseProcessing.appendChild(new DOMParser().parseFromString(sumStr).documentElement);
 	}
 	function manipulateInlineChoiceInteraction(node) {
@@ -422,29 +412,31 @@ module.exports = function cml2item(rawxml, type) {
 	var msymbol = '1234567890-#';
 	var identifier = rawxmldoc.getAttribute('identifier');
 	//console.log('identifier', identifier)
-	var root = `<assessmentItem 
-    xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p1.xsd" 
-    identifier="${identifier}" title="${identifier}" adaptive="false" timeDependent="false">
+	var root = `<qti-assessment-item
+	xmlns="http://www.imsglobal.org/xsd/qti/imsqtiasi_v3p0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 
+	https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" 
+    identifier="${identifier}" title="${identifier}" timeDependent="false">
     <endofResponseDeclaration/>
-    <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">
-      <defaultValue>
-        <value>0</value>
-      </defaultValue>
-    </outcomeDeclaration>
+    <qti-outcome-declaration identifier="SCORE" cardinality="single" baseType="float">
+      <qti-default-value>
+        <qti-value>0</qti-value>
+      </qti-default-value>
+    </qti-outcome-declaration>
     <endofOutcomeDeclaration/>
     <stylesheet href="styles/style.css" type="text/css"/>
-    <item-body>
-    </item-body>
-    <responseProcessing>
-    </responseProcessing>
-    </assessmentItem>`;
+    <qti-item-body>
+    </qti-item-body>
+    <qti-response-processing>
+    </qti-response-processing>
+    </qti-assessment-item>`;
 	var imsroot = new DOMParser().parseFromString(root);
 	var imsdoc = imsroot.documentElement;
-	var itemBody = imsdoc.getElementsByTagName('item-body')[0];
+	var itemBody = imsdoc.getElementsByTagName('qti-item-body')[0];
 	var endofResponseDeclaration = imsdoc.getElementsByTagName('endofResponseDeclaration')[0];
 	var endofOutcomeDeclaration = imsdoc.getElementsByTagName('endofOutcomeDeclaration')[0];
-	var responseProcessing = imsdoc.getElementsByTagName('responseProcessing')[0];
+	var responseProcessing = imsdoc.getElementsByTagName('qti-response-processing')[0];
 
 	var iB = rawxmldoc.getElementsByTagName('item-body')[0];
 
@@ -455,7 +447,7 @@ module.exports = function cml2item(rawxml, type) {
 	imsdoc.removeChild(endofResponseDeclaration);
 	imsdoc.removeChild(endofOutcomeDeclaration);
 
-	var needMML = type === 'mml' || type === 'pu';
+	var needMML = type === 'mml';
 	return new Promise(function(fulfill, reject) {
 		if (needMML) {
 			var itemBodyStr = new XMLSerializer().serializeToString(itemBody);
