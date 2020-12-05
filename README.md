@@ -107,6 +107,7 @@ QTI 3.0 的標記名稱全部改成小寫。
 
 MathJax-Node 搭配 MathJax2，而 MathJax@3 node application 的示範在[MathJax-demos-node](https://github.com/mathjax/MathJax-demos-node)，tex2mml-page 會把標記名稱全部改成小寫。
 
-開始改寫 cml2json.js，目的要搭配 MathJax@3 與 QTI3.0。
+開始寫 cml2json30.js，目的要搭配 MathJax@3 與 QTI3.0。
 
+用 [qtiv3-examples simple.zip](https://github.com/IMSGlobal/qti-examples/blob/master/qtiv3-examples/packaging/simple/simple.zip) 測試得知 Tao Tub 不支援 QTI3.0。
 

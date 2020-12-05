@@ -1,6 +1,6 @@
 ///// node cml2json.js cmlfile [pu|mml]
 var cml2item=require('./cml2item30')
-var item2package=require('./item2package')
+var item2package=require('./item2package30')
 var package2json=require('./package2json')
 var fs=require('fs')
 

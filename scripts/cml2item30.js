@@ -425,7 +425,7 @@ module.exports = function cml2item(rawxml, type) {
       </qti-default-value>
     </qti-outcome-declaration>
     <endofOutcomeDeclaration/>
-    <stylesheet href="styles/style.css" type="text/css"/>
+    <qti-stylesheet href="styles/style.css" type="text/css"/>
     <qti-item-body>
     </qti-item-body>
     <qti-response-processing>
