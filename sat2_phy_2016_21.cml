@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<assessment-item identifier="sat2_phy_2016_21">
+  <item-body>
+    <p>一個電中性的鋰原子在有兩個電子被游離後，成為只剩一個電子的鋰離子，下圖為其能階示意圖， 圖中 \(n\) 為主量子數。令 \(E_{nn'}\) 為能階 \(n\) 與能階 \(n'\) 的能階差， 即 \(E_{nn'}=E_n -
+      E_{n'}\)，當電子從能階 \(n\) 躍遷到能階 \(n'\) 時， 若 \(n > n'\)，會輻射出波長為 \(\lambda_{nn'}\) 的光子;若 \( n &lt; n'\)，
+      則需吸收波長為 \( \lambda_{nn'} \) 的光子。 已知普朗克常數 \(h=\pu{6.63e-34 J*s}\)，\(\pu{1eV}=\pu{1.6e-19 J}\) ， 光速 \(c=\pu{3.0e8 m/s}\)，<br />下列關於此鋰離子的敘述哪些正確？
+      <img src='images/phy_2016_21.png' alt="" /></p>
+    <choice-interaction cardinality="multiple" correct="BDE" quota="5">
+      <simple-choice>\(\lambda_{21}+\lambda_{32}=\lambda_{31}\)</simple-choice>
+      <simple-choice>\(E_{31}=E_{21}+E_{32}\)</simple-choice>
+      <simple-choice>在能階 \(n=3\) 的電子無法直接躍遷到能階 \(n=1\)</simple-choice>
+      <simple-choice>在能階 \(n=2\) 的電子可吸收 \(\lambda_{23}\) 的光子躍遷到能階 \(n=3\)</simple-choice>
+      <simple-choice>當電子在能階 \(n=1\)時，以波長 \(\ce{9nm} \ce{H2SO4}\) 的光子可將其游離</simple-choice>
+    </choice-interaction>
+  </item-body>
+</assessment-item>

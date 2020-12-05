@@ -99,3 +99,14 @@ archiver zip file asyncally.
 * 原來的package2html.js搭配qtidisplay.js，在一個網頁有兩個gapMatchInteraction的時候會互相衝突。
 * 改用package2htmlVue.js，因為script都封裝在元件內，同一個網頁不管有幾個gapMatchInteraction都可以運作。
  * 用package2htmlJs.js搭配qtidisplayJs.js，負擔較輕。
+
+### QTI 3.0
+[QTI 3.0](https://www.imsglobal.org/spec/qti/v3p0/impl/) 支援 video, audio。
+
+QTI 3.0 的標記名稱全部改成小寫。
+
+MathJax-Node 搭配 MathJax2，而 MathJax@3 node application 的示範在[MathJax-demos-node](https://github.com/mathjax/MathJax-demos-node)，tex2mml-page 會把標記名稱全部改成小寫。
+
+開始改寫 cml2json.js，目的要搭配 MathJax@3 與 QTI3.0。
+
+

@@ -5,9 +5,19 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Launch cml",
+      "program": "${workspaceFolder}/scripts/cml2json.js",
+      "args": ["${workspaceFolder}/sat2_phy_2016_21.cml"],
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "pwa-node"
+    },
+    {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "Launch",
       "program": "${file}"
     }
   ]
