@@ -151,56 +151,54 @@ module.exports = function cml2item(rawxml, type) {
 		iCI.removeAttribute('quota');
 		var respId = 'r_' + respNdx;
 
-		var scorendxStr = `<outcomeDeclaration identifier="SCORE_${respNdx}" cardinality="single"
-      baseType="float">
-        <defaultValue>
-          <value>0</value>
-        </defaultValue>
-      </outcomeDeclaration>`;
+		var scorendxStr = `<qti-outcome-declaration identifier="SCORE_${respNdx}" cardinality="single"
+      base-type="float">
+        <qti-default-value>
+          <qti-value>0</qti-value>
+        </qti-default-value>
+      </qti-outcome-declaration>`;
 		//console.log("1",new XMLSerializer().serializeToString(outcomeDeclaration))
 		//console.log("2",new XMLSerializer().serializeToString(imsdoc))
 		imsdoc.insertBefore(new DOMParser().parseFromString(scorendxStr).documentElement, endofOutcomeDeclaration);
 
 		//console.log(correct,quota,respId)
-		var responseDeclarationStr = `<responseDeclaration identifier="${respId}" cardinality="single" baseType="identifier">
-            <correctResponse>
-            <value>${respId + '_' + correct}</value>
-            </correctResponse>
-            </responseDeclaration>`;
+		var responseDeclarationStr = `<qti-response-declaration identifier="${respId}" cardinality="single" base-type="identifier">
+            <qti-correct-response>
+            <qti-value>${respId + '_' + correct}</qti-value>
+            </qti-correct-response>
+            </qti-response-declaration>`;
 		var responseDeclaration = new DOMParser().parseFromString(responseDeclarationStr).documentElement;
 		imsdoc.insertBefore(responseDeclaration, endofResponseDeclaration);
 
-		var inlineChoiceInteraction = iCI; /////imsroot.createElement('inlineChoiceInteraction')
-		inlineChoiceInteraction.setAttribute('responseIdentifier', respId);
+		var inlineChoiceInteraction = iCI; 
+		inlineChoiceInteraction.setAttribute('response-identifier', respId);
 		inlineChoiceInteraction.setAttribute('shuffle', 'false');
-		/////itemBody.appendChild(inlineChoiceInteraction)
-		/////moveChildren(iCI, inlineChoiceInteraction)
-		var inlineChoices = inlineChoiceInteraction.getElementsByTagName('inlineChoice');
+		var inlineChoices = inlineChoiceInteraction.getElementsByTagName('qti-inline-choice');
 		var cursymbol = symbol.indexOf(correct[0]) >= 0 ? symbol : msymbol;
 		for (var i = 0; i < inlineChoices.length; i++) {
 			inlineChoices[i].setAttribute('identifier', respId + '_' + cursymbol[i]);
 		}
 
-		var rspcondstr = `<responseCondition>
-       <responseIf>
-        <match>
-          <variable identifier="${respId}"/>
-          <correct identifier="${respId}"/>
-        </match>
-        <setOutcomeValue identifier="SCORE_${respNdx}">
-          <sum>
-            <variable identifier="SCORE_${respNdx}" />
-            <baseValue baseType="float">${quota}</baseValue>
-          </sum>
-        </setOutcomeValue>
-       </responseIf>
-      </responseCondition>`;
-		var sumStr = `<setOutcomeValue identifier="SCORE">
-        <sum>
-          <variable identifier="SCORE" />
-          <variable identifier="SCORE_${respNdx}" />
-        </sum>
-      </setOutcomeValue identifier="SCORE">
+		var rspcondstr = `<qti-response-condition>
+       <qti-response-if>
+        <qti-match>
+          <qti-variable identifier="${respId}"/>
+          <qti-correct identifier="${respId}"/>
+        </qti-match>
+        <qti-set-outcome-value identifier="SCORE_${respNdx}">
+          <qti-sum>
+            <qti-variable identifier="SCORE_${respNdx}" />
+            <base-value base-type="float">${quota}</base-value>
+          </qti-sum>
+        </qti-set-outcome-value>
+       </qti-response-if>
+      </qti-response-condition>`;
+		var sumStr = `<qti-set-outcome-value identifier="SCORE">
+        <qti-sum>
+          <qti-variable identifier="SCORE" />
+          <qti-variable identifier="SCORE_${respNdx}" />
+        </qti-sum>
+      </qti-set-outcome-value identifier="SCORE">
       `;
 		var responseCondition = new DOMParser().parseFromString(rspcondstr).documentElement;
 		responseProcessing.appendChild(responseCondition);
@@ -216,66 +214,66 @@ module.exports = function cml2item(rawxml, type) {
 		gICI.removeAttribute('correct');
 		gICI.removeAttribute('quota');
 		var respId; // = 'resp_' + identifier + "_" + respNdx
-		var scorendxStr = `<outcomeDeclaration identifier="SCORE_${respNdx}" cardinality="single" baseType="float">
-        <defaultValue>
-          <value>0</value>
-        </defaultValue>
-      </outcomeDeclaration>`;
+		var scorendxStr = `<qti-outcome-declaration identifier="SCORE_${respNdx}" cardinality="single" base-type="float">
+        <qti-default-value>
+          <qti-value>0</qti-value>
+        </qti-default-value>
+      </qti-outcome-declaration>`;
 		//console.log("1",new XMLSerializer().serializeToString(outcomeDeclaration))
 		//console.log("2",new XMLSerializer().serializeToString(imsdoc))
 		imsdoc.insertBefore(new DOMParser().parseFromString(scorendxStr).documentElement, endofOutcomeDeclaration);
 
 		var groupSize = correct.length;
-		var rspcondstr = `<responseCondition>
-        <responseIf>
-          <and>
-          </and>
-          <setOutcomeValue identifier="SCORE_${respNdx}">
-            <sum>
-              <variable identifier="SCORE_${respNdx}" />
-              <baseValue baseType="float">${quota}</baseValue>
-            </sum>
-          </setOutcomeValue>
-        </responseIf>
-      </responseCondition>`;
+		var rspcondstr = `<qti-response-condition>
+        <qti-response-if>
+          <qti-and>
+          </qti-and>
+          <qti-set-outcome-value identifier="SCORE_${respNdx}">
+            <qti-sum>
+              <qti-variable identifier="SCORE_${respNdx}" />
+              <base-value base-type="float">${quota}</base-value>
+            </qti-sum>
+          </qti-set-outcome-value>
+        </qti-response-if>
+      </qti-response-condition>`;
 		var responseCondition = new DOMParser().parseFromString(rspcondstr).documentElement;
 		responseProcessing.appendChild(responseCondition);
-		var sumStr = `<setOutcomeValue identifier="SCORE">
-        <sum>
-          <variable identifier="SCORE"/>
-          <variable identifier="SCORE_${respNdx}"/>
-        </sum>
-      </setOutcomeValue>`;
+		var sumStr = `<qti-set-outcome-value identifier="SCORE">
+        <qti-sum>
+          <qti-variable identifier="SCORE"/>
+          <qti-variable identifier="SCORE_${respNdx}"/>
+        </qti-sum>
+      </qti-set-outcome-value>`;
 		responseProcessing.appendChild(new DOMParser().parseFromString(sumStr).documentElement);
 
 		var and = responseCondition.getElementsByTagName('and')[0];
 		for (var k = 0; k < groupSize; k++) {
 			respId = 'r_' + respNdx + '_' + (k + 1);
 			// respId = 'resp_' + (respNdx + k)
-			var responseDeclarationStr = `<responseDeclaration identifier="${respId}" cardinality="single" baseType="identifier">
-              <correctResponse>
-              <value>${respId + '_' + nsymbol[msymbol.indexOf(correct[k])]}</value>
-              </correctResponse>
-              </responseDeclaration>`;
+			var responseDeclarationStr = `<qti-response-declaration identifier="${respId}" cardinality="single" base-type="identifier">
+              <qti-correct-response>
+              <qti-value>${respId + '_' + nsymbol[msymbol.indexOf(correct[k])]}</qti-value>
+              </qti-correct-response>
+              </qti-response-declaration>`;
 			var responseDeclaration = new DOMParser().parseFromString(responseDeclarationStr).documentElement;
 			imsdoc.insertBefore(responseDeclaration, endofResponseDeclaration);
 
-			var inlineChoiceInteraction = imsroot.createElement('inlineChoiceInteraction');
-			inlineChoiceInteraction.setAttribute('responseIdentifier', respId);
+			var inlineChoiceInteraction = imsroot.createElement('qti-inline-choice-interaction');
+			inlineChoiceInteraction.setAttribute('response-identifier', respId);
 			inlineChoiceInteraction.setAttribute('shuffle', 'false');
 			//var inlineChoices = inlineChoiceInteraction.getElementsByTagName('inlineChoice')
 			//var cursymbol = symbol.indexOf(correct[0]) >= 0 ? symbol : msymbol
 			for (var i = 0; i < msymbol.length; i++) {
-				var inlineChoiceStr = `<inlineChoice identifier="${respId + '_' + nsymbol[i]}">${msymbol[
+				var inlineChoiceStr = `<qti-inline-choice identifier="${respId + '_' + nsymbol[i]}">${msymbol[
 					i
-				]}</inlineChoice>`;
+				]}</qti-inline-choice>`;
 				var inlineChoice = new DOMParser().parseFromString(inlineChoiceStr).documentElement;
 				inlineChoiceInteraction.appendChild(inlineChoice);
 			}
 			var text = ` \\(\\ceec{${k + 1}}\\)=`;
 			div.appendChild(imsroot.createTextNode(text));
 			div.appendChild(inlineChoiceInteraction);
-			var matchStr = `<match><variable identifier="${respId}"/><correct identifier="${respId}"/></match>`;
+			var matchStr = `<qti-match><qti-variable identifier="${respId}"/><qti-correct identifier="${respId}"/></qti-match>`;
 			var match = new DOMParser().parseFromString(matchStr).documentElement;
 			and.appendChild(match);
 		}
@@ -285,26 +283,26 @@ module.exports = function cml2item(rawxml, type) {
 		var gMI = node;
 		var respId = 'r_' + respNdx;
 		var gapMatchInteraction = gMI; /////imsroot.createElement('inlineChoiceInteraction')
-		gapMatchInteraction.setAttribute('responseIdentifier', respId);
+		gapMatchInteraction.setAttribute('response-identifier', respId);
 		gapMatchInteraction.setAttribute('shuffle', 'false');
 		//console.log(correct,quota,respId)
-		var scorendxStr = `<outcomeDeclaration identifier="SCORE_${respNdx}" cardinality="single"  baseType="float">
-        <defaultValue>
-          <value>0</value>
-        </defaultValue>
-      </outcomeDeclaration>`;
+		var scorendxStr = `<qti-outcome-declaration identifier="SCORE_${respNdx}" cardinality="single"  base-type="float">
+        <qti-default-value>
+          <qti-value>0</qti-value>
+        </qti-default-value>
+      </qti-outcome-declaration>`;
 		//console.log("1",new XMLSerializer().serializeToString(outcomeDeclaration))
 		//console.log("2",new XMLSerializer().serializeToString(imsdoc))
 		imsdoc.insertBefore(new DOMParser().parseFromString(scorendxStr).documentElement, endofOutcomeDeclaration);
 
-		var responseDeclarationStr = `<responseDeclaration identifier="${respId}" cardinality="multiple" baseType="directedPair"></responseDeclaration>`;
+		var responseDeclarationStr = `<qti-response-declaration identifier="${respId}" cardinality="multiple" base-type="directedPair"></qti-response-declaration>`;
 		var responseDeclaration = new DOMParser().parseFromString(responseDeclarationStr).documentElement;
 		imsdoc.insertBefore(responseDeclaration, endofResponseDeclaration);
 
-		var correctResponse = imsroot.createElement('correctResponse');
+		var correctResponse = imsroot.createElement('qti-correct-response');
 		responseDeclaration.appendChild(correctResponse);
 		var mapping = imsroot.createElement('mapping');
-		mapping.setAttribute('defaultValue', '0');
+		mapping.setAttribute('default-value', '0');
 		responseDeclaration.appendChild(mapping);
 
 		/////itemBody.appendChild(inlineChoiceInteraction)
@@ -334,36 +332,36 @@ module.exports = function cml2item(rawxml, type) {
 			gaps[i].removeAttribute('correct');
 		}
 
-		var rspcondstr = `<responseCondition>
-		    <responseIf>
+		var rspcondstr = `<qti-response-condition>
+		    <qti-response-if>
 			    <isNull>
-				    <variable identifier="${respId}"/>
+				    <qti-variable identifier="${respId}"/>
 			    </isNull>
-          <setOutcomeValue identifier="SCORE">
-            <sum>
-              <variable identifier="SCORE_${respNdx}"/>
-              <baseValue baseType="float">0.0</baseValue>
-            </sum>
-			    </setOutcomeValue>
-		    </responseIf>
+          <qti-set-outcome-value identifier="SCORE">
+            <qti-sum>
+              <qti-variable identifier="SCORE_${respNdx}"/>
+              <base-value base-type="float">0.0</base-value>
+            </qti-sum>
+			    </qti-set-outcome-value>
+		    </qti-response-if>
 		    <responseElse>
-			    <setOutcomeValue identifier="SCORE_${respNdx}">
-            <sum>
-              <variable identifier="SCORE_${respNdx}"/>
+			    <qti-set-outcome-value identifier="SCORE_${respNdx}">
+            <qti-sum>
+              <qti-variable identifier="SCORE_${respNdx}"/>
               <mapResponse identifier="${respId}"/>
-            </sum>
-			    </setOutcomeValue>
+            </qti-sum>
+			    </qti-set-outcome-value>
 		    </responseElse>
-	    </responseCondition>`;
+	    </qti-response-condition>`;
 		var responseCondition = new DOMParser().parseFromString(rspcondstr).documentElement;
 		responseProcessing.appendChild(responseCondition);
 
-		var sumStr = `<setOutcomeValue identifier="SCORE">
-        <sum>
-          <variable identifier="SCORE"/>
-          <variable identifier="SCORE_${respNdx}"/>
-        </sum>
-      </setOutcomeValue>`;
+		var sumStr = `<qti-set-outcome-value identifier="SCORE">
+        <qti-sum>
+          <qti-variable identifier="SCORE"/>
+          <qti-variable identifier="SCORE_${respNdx}"/>
+        </qti-sum>
+      </qti-set-outcome-value>`;
 		responseProcessing.appendChild(new DOMParser().parseFromString(sumStr).documentElement);
 	}
 
@@ -376,7 +374,7 @@ module.exports = function cml2item(rawxml, type) {
 				//var cI = node.childNodes[i]
 				respNdx++;
 				manipulateChoiceInteraction(node.childNodes[i]);
-			} else if (node.childNodes[i].nodeName === 'inlineChoiceInteraction') {
+			} else if (node.childNodes[i].nodeName === 'qti-inline-choice-interaction') {
 				//var iCI = node.childNodes[i]
 				respNdx++;
 				manipulateInlineChoiceInteraction(node.childNodes[i]);
@@ -419,7 +417,7 @@ module.exports = function cml2item(rawxml, type) {
 	https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" 
     identifier="${identifier}" title="${identifier}" timeDependent="false">
     <endofResponseDeclaration/>
-    <qti-outcome-declaration identifier="SCORE" cardinality="single" baseType="float">
+    <qti-outcome-declaration identifier="SCORE" cardinality="single" base-type="float">
       <qti-default-value>
         <qti-value>0</qti-value>
       </qti-default-value>
