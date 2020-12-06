@@ -182,13 +182,13 @@ module.exports=function package2json(zipfile) {
     var gaps = []
     var gaptexts = []
 
-    var gapMatchInteractions = itemBody.getElementsByTagName("gapMatchInteraction")
-    var responseDeclarations = itemDoc.getElementsByTagName('responseDeclaration')
+    var gapMatchInteractions = itemBody.getElementsByTagName("qti-gap-match-interaction")
+    var responseDeclarations = itemDoc.getElementsByTagName('qti-response-declaration')
     //console.log(inlineChoiceInteractions.length)
     for (var ii = gapMatchInteractions.length - 1; ii >= 0; ii--) {
-      var responseIdentifier = gapMatchInteractions[ii].getAttribute('responseIdentifier')
+      var responseIdentifier = gapMatchInteractions[ii].getAttribute('response-identifier')
       //console.log(responseIdentifier)
-      var gaptextElements = gapMatchInteractions[ii].getElementsByTagName('gapText')
+      var gaptextElements = gapMatchInteractions[ii].getElementsByTagName('qti-gap-text')
       //console.log(gaptextElements.length)
       var div = itemDoc.parentNode.createElement('div')
       //div.setAttribute("name",responseIdentifier)
@@ -220,7 +220,7 @@ module.exports=function package2json(zipfile) {
       }
       gaptextElements[0].parentNode.insertBefore(div, gaptextElements[0])
       for (var i = gaptextElements.length - 1; i >= 0; i--) gaptextElements[i].parentNode.removeChild(gaptextElements[i])
-      var gapElements = gapMatchInteractions[ii].getElementsByTagName('gap')
+      var gapElements = gapMatchInteractions[ii].getElementsByTagName('qti-gap')
       gaps = []
       for (var i = gapElements.length - 1; i >= 0; i--) {
         //if (gapElements[i].getAttribute("class") === "gap") {

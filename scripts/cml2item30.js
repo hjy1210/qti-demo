@@ -282,7 +282,7 @@ module.exports = function cml2item(rawxml, type) {
 	function manipulateGapMatchInteraction(node) {
 		var gMI = node;
 		var respId = 'r_' + respNdx;
-		var gapMatchInteraction = gMI; /////imsroot.createElement('inlineChoiceInteraction')
+		var gapMatchInteraction = gMI;
 		gapMatchInteraction.setAttribute('response-identifier', respId);
 		gapMatchInteraction.setAttribute('shuffle', 'false');
 		//console.log(correct,quota,respId)
@@ -291,8 +291,6 @@ module.exports = function cml2item(rawxml, type) {
           <qti-value>0</qti-value>
         </qti-default-value>
       </qti-outcome-declaration>`;
-		//console.log("1",new XMLSerializer().serializeToString(outcomeDeclaration))
-		//console.log("2",new XMLSerializer().serializeToString(imsdoc))
 		imsdoc.insertBefore(new DOMParser().parseFromString(scorendxStr).documentElement, endofOutcomeDeclaration);
 
 		var responseDeclarationStr = `<qti-response-declaration identifier="${respId}" cardinality="multiple" base-type="directedPair"></qti-response-declaration>`;
@@ -305,15 +303,13 @@ module.exports = function cml2item(rawxml, type) {
 		mapping.setAttribute('default-value', '0');
 		responseDeclaration.appendChild(mapping);
 
-		/////itemBody.appendChild(inlineChoiceInteraction)
-		/////moveChildren(iCI, inlineChoiceInteraction)
-		var gaps = gapMatchInteraction.getElementsByTagName('gap');
-		var gapTexts = gapMatchInteraction.getElementsByTagName('gapText');
+		var gaps = gapMatchInteraction.getElementsByTagName('qti-gap');
+		var gapTexts = gapMatchInteraction.getElementsByTagName('qti-gap-text');
 		var cursymbol = symbol.indexOf(gaps[0].getAttribute('correct')[0]) >= 0 ? symbol : msymbol;
 		for (var i = 0; i < gapTexts.length; i++) {
 			gapTexts[i].setAttribute('identifier', respId + '_' + cursymbol[i]);
-			gapTexts[i].setAttribute('matchMax', '1');
-			gapTexts[i].setAttribute('matchMin', '0');
+			gapTexts[i].setAttribute('match-max', '1');
+			gapTexts[i].setAttribute('match-min', '0');
 		}
 
 		for (var i = 0; i < gaps.length; i++) {
@@ -321,37 +317,37 @@ module.exports = function cml2item(rawxml, type) {
 			gaps[i].setAttribute('required', 'false');
 			var correctvalue = respId + '_' + gaps[i].getAttribute('correct');
 			var correctvalue = correctvalue + ' ' + gaps[i].getAttribute('identifier');
-			var value = imsroot.createElement('value');
+			var value = imsroot.createElement('qti-value');
 			value.appendChild(imsroot.createTextNode(correctvalue));
 			correctResponse.appendChild(value);
-			var mapEntry = imsroot.createElement('mapEntry');
+			var mapEntry = imsroot.createElement('qti-map-entry');
 			mapping.appendChild(mapEntry);
-			mapEntry.setAttribute('mapKey', correctvalue);
-			mapEntry.setAttribute('mappedValue', gaps[i].getAttribute('quota'));
+			mapEntry.setAttribute('map-key', correctvalue);
+			mapEntry.setAttribute('mapped-value', gaps[i].getAttribute('quota'));
 			gaps[i].removeAttribute('quota');
 			gaps[i].removeAttribute('correct');
 		}
 
 		var rspcondstr = `<qti-response-condition>
 		    <qti-response-if>
-			    <isNull>
+			    <qti-is-null>
 				    <qti-variable identifier="${respId}"/>
-			    </isNull>
+			    </qti-is-null>
           <qti-set-outcome-value identifier="SCORE">
             <qti-sum>
               <qti-variable identifier="SCORE_${respNdx}"/>
-              <base-value base-type="float">0.0</base-value>
+              <qti-base-value base-type="float">0.0</qti-base-value>
             </qti-sum>
 			    </qti-set-outcome-value>
 		    </qti-response-if>
-		    <responseElse>
+		    <qti-response-else>
 			    <qti-set-outcome-value identifier="SCORE_${respNdx}">
             <qti-sum>
               <qti-variable identifier="SCORE_${respNdx}"/>
-              <mapResponse identifier="${respId}"/>
+              <qti-map-response identifier="${respId}"/>
             </qti-sum>
 			    </qti-set-outcome-value>
-		    </responseElse>
+		    </qti-response-else>
 	    </qti-response-condition>`;
 		var responseCondition = new DOMParser().parseFromString(rspcondstr).documentElement;
 		responseProcessing.appendChild(responseCondition);
@@ -384,7 +380,7 @@ module.exports = function cml2item(rawxml, type) {
 				//var len=node.childNodes[i].getAttribute("correct").length
 				manipulateGroupInlineChoiceInteraction(node.childNodes[i]);
 				//respNdx = respNdx + (len - 1)
-			} else if (node.childNodes[i].nodeName === 'gapMatchInteraction') {
+			} else if (node.childNodes[i].nodeName === 'qti-gap-match-interaction') {
 				//var iCI = node.childNodes[i]
 				respNdx++;
 				manipulateGapMatchInteraction(node.childNodes[i]);
