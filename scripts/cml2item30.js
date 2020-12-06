@@ -29,12 +29,12 @@ module.exports = function cml2item(rawxml, type) {
 		var respId = 'r_' + respNdx;
 		var responseStr = `<qti-response-declaration identifier="${respId}" cardinality="${cardinality}" base-type="identifier">
         <qti-correct-response/>
-        <mapping />
+        <qti-mapping />
        </qti-response-declaration>
       `;
 		var responseDeclaration = new DOMParser().parseFromString(responseStr).documentElement;
 		var correctResponse = responseDeclaration.getElementsByTagName('qti-correct-response')[0];
-		var mapping = responseDeclaration.getElementsByTagName('mapping')[0];
+		var mapping = responseDeclaration.getElementsByTagName('qti-mapping')[0];
 
 		if (cardinality !== 'multiple') {
 			mapping.setAttribute('default-value', '0');
@@ -67,7 +67,7 @@ module.exports = function cml2item(rawxml, type) {
 
 		//itemBody.appendChild(choiceInteraction)
 		//moveChildren(cI, choiceInteraction)
-		var simpleChoices = choiceInteraction.getElementsByTagName('simple-choice');
+		var simpleChoices = choiceInteraction.getElementsByTagName('qti-simple-choice');
 		//var simpleChoices = choiceInteraction.getElementsByTagName('simpleChoice')
 		var cursymbol = symbol.indexOf(correct[0]) >= 0 ? symbol : msymbol;
 		for (var i = 0; i < simpleChoices.length; i++) {
@@ -301,7 +301,7 @@ module.exports = function cml2item(rawxml, type) {
 
 		var correctResponse = imsroot.createElement('qti-correct-response');
 		responseDeclaration.appendChild(correctResponse);
-		var mapping = imsroot.createElement('mapping');
+		var mapping = imsroot.createElement('qti-mapping');
 		mapping.setAttribute('default-value', '0');
 		responseDeclaration.appendChild(mapping);
 
@@ -369,7 +369,7 @@ module.exports = function cml2item(rawxml, type) {
 		if (!node.hasChildNodes()) return;
 		for (var i = 0; i < node.childNodes.length; i++) {
 			//console.log(node.nodeType,node.nodeName)
-			if (node.childNodes[i].nodeName === 'choice-interaction') {
+			if (node.childNodes[i].nodeName === 'qti-choice-interaction') {
 				//console.log("correct", iB.childNodes[i].getAttribute("correct"))
 				//var cI = node.childNodes[i]
 				respNdx++;
@@ -436,7 +436,7 @@ module.exports = function cml2item(rawxml, type) {
 	var endofOutcomeDeclaration = imsdoc.getElementsByTagName('endofOutcomeDeclaration')[0];
 	var responseProcessing = imsdoc.getElementsByTagName('qti-response-processing')[0];
 
-	var iB = rawxmldoc.getElementsByTagName('item-body')[0];
+	var iB = rawxmldoc.getElementsByTagName('qti-item-body')[0];
 
 	var respNdx = 0;
 	modifyNode(iB);

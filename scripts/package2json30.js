@@ -90,7 +90,7 @@ module.exports=function package2json(zipfile) {
   }
   
   function replaceChoiceInteractions() {
-    var choiceInteractions = itemBody.getElementsByTagName("choice-interaction")
+    var choiceInteractions = itemBody.getElementsByTagName("qti-choice-interaction")
     for (var i = choiceInteractions.length-1; i >=0; i--) {
       var responseIdentifier = choiceInteractions[i].getAttribute('response-identifier')
       var responseDeclaration=getResponseDeclation(responseIdentifier)
@@ -109,7 +109,7 @@ module.exports=function package2json(zipfile) {
         tr.appendChild(td)
         table.appendChild(tr)
       }
-      var simpleChoices = choiceInteractions[i].getElementsByTagName('simple-choice')
+      var simpleChoices = choiceInteractions[i].getElementsByTagName('qti-simple-choice')
       var button
       for (var j = 0; j < simpleChoices.length; j++) {
         tr = itemDoc.parentNode.createElement('tr')
