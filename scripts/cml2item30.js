@@ -188,7 +188,7 @@ module.exports = function cml2item(rawxml, type) {
         <qti-set-outcome-value identifier="SCORE_${respNdx}">
           <qti-sum>
             <qti-variable identifier="SCORE_${respNdx}" />
-            <base-value base-type="float">${quota}</base-value>
+            <qti-base-value base-type="float">${quota}</qti-base-value>
           </qti-sum>
         </qti-set-outcome-value>
        </qti-response-if>
@@ -231,7 +231,7 @@ module.exports = function cml2item(rawxml, type) {
           <qti-set-outcome-value identifier="SCORE_${respNdx}">
             <qti-sum>
               <qti-variable identifier="SCORE_${respNdx}" />
-              <base-value base-type="float">${quota}</base-value>
+              <qti-base-value base-type="float">${quota}</qti-base-value>
             </qti-sum>
           </qti-set-outcome-value>
         </qti-response-if>
