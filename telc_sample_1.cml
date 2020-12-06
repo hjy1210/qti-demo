@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<qti-assessment-item identifier="telc_sample_1">
+  <qti-item-body>
+    <p>
+        <!--<object type="audio/mpeg" height="50" data="audios/example1.mp3">
+          <param name="autoplay" value="false" />
+        </object>-->
+      <audio src="audios/example1.mp3" controls="true" />
+    </p>
+    <qti-choice-interaction cardinality="single" correct="B" quota="5">
+      <qti-simple-choice><img src='images/1A.png' alt=""/></qti-simple-choice>
+      <qti-simple-choice><img src='images/1B.png' alt=""/></qti-simple-choice>
+      <qti-simple-choice><img src='images/1C.png' alt=""/></qti-simple-choice>
+      <qti-simple-choice><img src='images/1D.png' alt=""/></qti-simple-choice>
+    </qti-choice-interaction>
+  </qti-item-body>
+</qti-assessment-item>
