@@ -246,7 +246,7 @@ module.exports = function cml2item(rawxml, type) {
       </qti-set-outcome-value>`;
 		responseProcessing.appendChild(new DOMParser().parseFromString(sumStr).documentElement);
 
-		var and = responseCondition.getElementsByTagName('and')[0];
+		var and = responseCondition.getElementsByTagName('qti-and')[0];
 		for (var k = 0; k < groupSize; k++) {
 			respId = 'r_' + respNdx + '_' + (k + 1);
 			// respId = 'resp_' + (respNdx + k)
@@ -374,7 +374,7 @@ module.exports = function cml2item(rawxml, type) {
 				//var iCI = node.childNodes[i]
 				respNdx++;
 				manipulateInlineChoiceInteraction(node.childNodes[i]);
-			} else if (node.childNodes[i].nodeName === 'groupInlineChoiceInteraction') {
+			} else if (node.childNodes[i].nodeName === 'qti-group-inline-choice-interaction') {
 				//var iCI = node.childNodes[i]
 				respNdx++;
 				//var len=node.childNodes[i].getAttribute("correct").length
