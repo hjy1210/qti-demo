@@ -154,13 +154,13 @@ module.exports=function package2json(zipfile) {
     }
   }
   function replaceInlineChoiceInteractions() {
-    var inlineChoiceInteractions = itemBody.getElementsByTagName("inlineChoiceInteraction")
-    var responseDeclarations = itemDoc.getElementsByTagName('responseDeclaration')
+    var inlineChoiceInteractions = itemBody.getElementsByTagName("qti-inline-choice-interaction")
+    var responseDeclarations = itemDoc.getElementsByTagName('qti-response-declaration')
     //console.log(inlineChoiceInteractions.length)
     for (var i = inlineChoiceInteractions.length - 1; i >= 0; i--) {
-      var responseIdentifier = inlineChoiceInteractions[i].getAttribute('responseIdentifier')
+      var responseIdentifier = inlineChoiceInteractions[i].getAttribute('response-identifier')
       //console.log(responseIdentifier)
-      var inlineChoices = inlineChoiceInteractions[i].getElementsByTagName('inlineChoice')
+      var inlineChoices = inlineChoiceInteractions[i].getElementsByTagName('qti-inline-choice')
       var select = itemDoc.parentNode.createElement('select')
       var option = itemDoc.parentNode.createElement('option')
       option.appendChild(itemDoc.parentNode.createTextNode('-option-'))

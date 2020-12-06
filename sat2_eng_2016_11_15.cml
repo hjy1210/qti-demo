@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qti-assessment-item identifier="sat2_eng_2016_11_15">
+  <qti-item-body>
+    <p>
+      Have you been irritated by someone standing too close in line, talking too loud or making eye contact for too long? Or, they
+      may have
+      <qti-inline-choice-interaction shuffle="false" required="false" quota="1" correct="A">
+        <qti-inline-choice>offended</qti-inline-choice>
+        <qti-inline-choice>controlled</qti-inline-choice>
+        <qti-inline-choice>acquired</qti-inline-choice>
+        <qti-inline-choice>supplied</qti-inline-choice>
+      </qti-inline-choice-interaction> you with the loud music from their earphones, or by taking up more than one seat on a crowded subway car. You feel unhappy because your personal space has been violated.
+    </p>
+    <p>
+      According to scientists, personal space involves certain invisible forces imposed on you through all the
+      <qti-inline-choice-interaction
+        shuffle="false" required="false" quota="1" correct="C">
+        <qti-inline-choice>angles</qti-inline-choice>
+        <qti-inline-choice>events</qti-inline-choice>
+        <qti-inline-choice>senses</qti-inline-choice>
+        <qti-inline-choice>regions</qti-inline-choice>
+        </qti-inline-choice-interaction>. For example, people may feel their space is being invaded when they experience an unwelcome sound, smell, or stare.
+    </p>
+    <p>In certain situations such as in crowded subway cars or elevators, it is not always possible for people to keep their
+      <qti-inline-choice-interaction shuffle="false" required="false" quota="1" correct="C">
+        <qti-inline-choice>prefer</qti-inline-choice>
+        <qti-inline-choice>preferring</qti-inline-choice>
+        <qti-inline-choice>preferred</qti-inline-choice>
+        <qti-inline-choice>being preferred</qti-inline-choice>
+      </qti-inline-choice-interaction> distance from others. They learn coping strategies to deal with their discomfort. For instance, people often avoid
+      eye contact with someone standing
+      <qti-inline-choice-interaction shuffle="false" required="false" quota="1" correct="B">
+        <qti-inline-choice>long before</qti-inline-choice>
+        <qti-inline-choice>close to</qti-inline-choice>
+        <qti-inline-choice>aside from</qti-inline-choice>
+        <qti-inline-choice>soon after</qti-inline-choice>
+      </qti-inline-choice-interaction> them, or they pretend that these people are lifeless objects in their personal space. Given the opportunity, they may
+      <qti-inline-choice-interaction shuffle="false" required="false" quota="1" correct="A">
+        <qti-inline-choice>retreat</qti-inline-choice>
+        <qti-inline-choice>explore</qti-inline-choice>
+        <qti-inline-choice>dispense</qti-inline-choice>
+        <qti-inline-choice>connect</qti-inline-choice>
+      </qti-inline-choice-interaction> to a corner, putting distance between themselves and strangers. Or, they may sit or stand equidistant from one another
+      like birds on a wire.
+    </p>
+  </qti-item-body>
+</qti-assessment-item>
