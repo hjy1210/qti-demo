@@ -79,7 +79,7 @@ module.exports=function package2json(zipfile) {
     return zipEntries.filter(entry => entry.entryName === name)
   }
   function getResponseDeclation(responseIdentifier){
-    var collections=itemDoc.getElementsByTagName("responseDeclaration")
+    var collections=itemDoc.getElementsByTagName("qti-response-declaration")
     var res
     for (var i=0;i<collections.length;i++){
       if (collections[i].getAttribute('identifier')===responseIdentifier){
@@ -90,13 +90,13 @@ module.exports=function package2json(zipfile) {
   }
   
   function replaceChoiceInteractions() {
-    var choiceInteractions = itemBody.getElementsByTagName("choiceInteraction")
+    var choiceInteractions = itemBody.getElementsByTagName("choice-interaction")
     for (var i = choiceInteractions.length-1; i >=0; i--) {
-      var responseIdentifier = choiceInteractions[i].getAttribute('responseIdentifier')
+      var responseIdentifier = choiceInteractions[i].getAttribute('response-identifier')
       var responseDeclaration=getResponseDeclation(responseIdentifier)
       //var isMultiple = choiceInteractions[i].getAttribute('maxChoices') == "0" || responseDeclaration.getAttribute('cardinality') === "multiple"
       var isMultiple =  responseDeclaration.getAttribute('cardinality') === "multiple"
-      var prompt = choiceInteractions[i].getElementsByTagName("prompt")[0]
+      var prompt = choiceInteractions[i].getElementsByTagName("qti-prompt")[0]
       var table = itemDoc.parentNode.createElement('table')
       var tr, td
       if (prompt) {
@@ -109,7 +109,7 @@ module.exports=function package2json(zipfile) {
         tr.appendChild(td)
         table.appendChild(tr)
       }
-      var simpleChoices = choiceInteractions[i].getElementsByTagName('simpleChoice')
+      var simpleChoices = choiceInteractions[i].getElementsByTagName('simple-choice')
       var button
       for (var j = 0; j < simpleChoices.length; j++) {
         tr = itemDoc.parentNode.createElement('tr')

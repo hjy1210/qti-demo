@@ -10,7 +10,7 @@
       <simple-choice>\(E_{31}=E_{21}+E_{32}\)</simple-choice>
       <simple-choice>在能階 \(n=3\) 的電子無法直接躍遷到能階 \(n=1\)</simple-choice>
       <simple-choice>在能階 \(n=2\) 的電子可吸收 \(\lambda_{23}\) 的光子躍遷到能階 \(n=3\)</simple-choice>
-      <simple-choice>當電子在能階 \(n=1\)時，以波長 \(\ce{9nm} \ce{H2SO4}\) 的光子可將其游離</simple-choice>
+      <simple-choice>當電子在能階 \(n=1\)時，以波長 \(\ce{9nm}\) 的光子可將其游離</simple-choice>
     </choice-interaction>
   </item-body>
 </assessment-item>
