@@ -419,7 +419,6 @@ module.exports = function cml2item(rawxml, type) {
       </qti-default-value>
     </qti-outcome-declaration>
     <endofOutcomeDeclaration/>
-    <qti-stylesheet href="styles/style.css" type="text/css"/>
     <qti-item-body>
     </qti-item-body>
     <qti-response-processing>
@@ -433,7 +432,10 @@ module.exports = function cml2item(rawxml, type) {
 	var responseProcessing = imsdoc.getElementsByTagName('qti-response-processing')[0];
 
 	var iB = rawxmldoc.getElementsByTagName('qti-item-body')[0];
-
+	var stylesheets = rawxmldoc.getElementsByTagName('qti-stylesheet')
+	if (stylesheets.length>0){
+		imsdoc.insertBefore(stylesheets[0], itemBody);
+	}
 	var respNdx = 0;
 	modifyNode(iB);
 	moveChildren(iB, itemBody);

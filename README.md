@@ -111,3 +111,52 @@ MathJax-Node 搭配 MathJax2，而 MathJax@3 node application 的示範在[MathJ
 
 用 [qtiv3-examples simple.zip](https://github.com/IMSGlobal/qti-examples/blob/master/qtiv3-examples/packaging/simple/simple.zip) 測試得知 Tao Tub 不支援 QTI3.0。
 
+* [qti-choice-interaction](https://www.imsglobal.org/spec/qti/v3p0/impl#h.j9nu1oa1tu3b)
+* [qti-gap-match-interaction](https://www.imsglobal.org/spec/qti/v3p0/impl#h.7sroqk3xl8e1)
+* [qti-inline-choice-interaction](https://www.imsglobal.org/spec/qti/v3p0/impl#h.8zaq47h31112)
+* [ Composite Items](https://www.imsglobal.org/spec/qti/v3p0/impl#h.fzolwwxsh7ga)
+* [qti-product,...](https://www.imsglobal.org/sites/default/files/spec/qti/v3/info/index.html#AbstractAttribute_NumericExpressionGroup_qti-product)
+
+## cml2json30
+執行
+
+`node scripts\cml2json30.js sat2_phy_2016_21.cml`
+
+可產生 sat2_phy_2016_21.xml,sat2_phy_2016_21.zip,sat2_phy_2016_21.json
+
+過程如下：
+
+1. 利用 cml2item30 的 cml2item 將 cml 檔案轉成 qti-assessment-item 檔案 
+2. 利用 item2package30 將 qti-assessment-item 檔案連同所需的資源檔案包裝成 zip檔
+3. 利用 package2json30 從 zip 檔案取得資料存成所需的json檔，json檔案的內容有考試時需要的stylecontent,html，也有評分時要用到的responseInfo,outcomeInfo, responseProcessing。
+
+### cml2item30
+cml2xml30 裡面的 toMML 函數，是個promise， 利用 MathJax@3 的 MathJax 製作，將含有tex公式的html字串轉成mathmml 標記。
+
+cml2item30 裡面的 cml2item 函數，是個promise，
+1. 先將 cml 檔案的內容轉成qti-assessment-item格式，其中
+    * qti-choice-interaction 用 manipulateChoiceInteraction 
+    * qti-inline-choice-interaction 用 manipulateInlineChoiceInteraction
+    * qti-group-inline-choice-interaction 用 manipulateGroupInlineChoiceInteraction
+    * qti-gap-match-interaction 用 manipulateGapMatchInteraction
+1. 再利用 toMML 將 cml 檔案裏面的tex數學公式轉成 mathmml 標記。
+
+cml2json30 利用cml2item，存檔 qti-assessment-item 的 xml 檔案。
+
+### item2package30
+item2package30 裡面的 item2package 是個 promise。
+1. 用 qti-assessment-item 的 xml 檔案的資訊製作 imsmanifest.xml，連同所需的資源檔案包裝成zip 檔。
+
+### package2json30
+1. package2json30 裡面的 package2json 從 zip 檔案裡面取出 item 的 itemStr字串
+2. package2json30 裡面的 getInfo 函數，由 itemStr字串與 zip 檔案產生 itemInfo。 
+   itemInfo 是 json object，由 identifier, responseInfo, outcomeInfo, responseProcessing, stylecontent 所組成。 
+3. itemStr 轉成 itemDoc
+4. itemDoc 裡面的 itemBody 轉換成 html 格式
+    * replaceChoiceInteractions 轉換 qti-choice-interaction
+    * replaceInlineChoiceInteractions 轉換 qti-inline-choice-interaction
+    * replaceGapMatchInteractions 轉換 qti-gap-match-interaction
+    * replaceImages 將圖形檔案內容轉成base64文字格式
+    * replaceAudios 將audio檔案內容轉成base64文字格式
+5. itemBody 的html格式，併入 itemInfo.html
+6. itemInfo 裡面的 html, stylecontent 考試時使用，其它評分時使用。
