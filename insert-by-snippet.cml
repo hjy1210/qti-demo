@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<qti-assessment-item identifier="identifier">
+    <qti-item-body>
+        <p>題目內容 
+        <qti-group-inline-choice-interaction correct="720" quota="6" />
+        </p>
+        <p>
+        <qti-choice-interaction cardinality="single" correct="B" quota="2">
+            <qti-simple-choice>搖滾樂</qti-simple-choice>
+            <qti-simple-choice>爵士樂</qti-simple-choice>
+            <qti-simple-choice>重金屬音樂</qti-simple-choice>
+            <qti-simple-choice>鄉村音樂</qti-simple-choice>
+        </qti-choice-interaction>
+        <qti-gap-match-interaction>
+            <qti-gap-text>movable</qti-gap-text>
+            <qti-gap-text>installed</qti-gap-text>
+            <qti-gap-text>diversified</qti-gap-text>
+            <qti-gap-text>problem</qti-gap-text>
+            <qti-gap-text>aged</qti-gap-text>
+            <qti-gap-text>planning</qti-gap-text>
+            <qti-gap-text>measured</qti-gap-text>
+            <qti-gap-text>constructing</qti-gap-text>
+            <qti-gap-text>exact</qti-gap-text>
+            <qti-gap-text>deteriorating</qti-gap-text>
+            <qti-gap-text>statue</qti-gap-text>
+            <qti-gap-text>religious</qti-gap-text>
+        <p>.......
+        <qti-gap quota="1" correct="K" /> ....
+        ..... <qti-gap quota="1" correct="E" /> ...
+        ....<qti-gap quota="1" correct="J" /> ....
+        </p>
+        <p>....
+        ...<qti-gap quota="1" correct="F" /> .....
+        ...<qti-gap quota="1" correct="G" />....
+        .....
+        .... <qti-gap quota="1" correct="I" /> .....
+        ....<qti-gap quota="1" correct="B" /> ......
+        </p>
+        <p>....
+        <qti-gap quota="1" correct="H" /> .....
+        .. <qti-gap quota="1" correct="A" /> ....
+        .....
+        </p>
+        <p>....
+        <qti-gap quota="1" correct="D" /> .....
+        ......
+        </p>
+        </qti-gap-match-interaction>
+        </p>
+        <p><qti-inline-choice-interaction required="true" quota="1" correct="E">
+            <qti-inline-choice>offended</qti-inline-choice>
+            <qti-inline-choice>controlled</qti-inline-choice>
+            <qti-inline-choice>acquired</qti-inline-choice>
+            <qti-inline-choice>supplied</qti-inline-choice>
+        </qti-inline-choice-interaction></p>
+        <qti-choice-interaction cardinality="single" correct="B" quota="2">
+            <qti-simple-choice>搖滾樂</qti-simple-choice>
+            <qti-simple-choice>爵士樂</qti-simple-choice>
+            <qti-simple-choice>重金屬音樂</qti-simple-choice>
+            <qti-simple-choice>鄉村音樂</qti-simple-choice>
+        </qti-choice-interaction>
+        <qti-inline-choice-interaction required="true" quota="2" correct="C">
+            <qti-inline-choice>offended</qti-inline-choice>
+            <qti-inline-choice>controlled</qti-inline-choice>
+            <qti-inline-choice>acquired</qti-inline-choice>
+            <qti-inline-choice>supplied</qti-inline-choice>
+        </qti-inline-choice-interaction>
+    </qti-item-body>
+</qti-assessment-item>

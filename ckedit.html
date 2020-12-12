@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
+    <!-- filesaver.js is downloaded from https://github.com/eligrey/FileSaver.js -->
+    <script src="./scripts/filesaver.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <p><a href="https://github.com/ckeditor/ckeditor5">CKEditor 5</a>, a set of <b>ready-to-use rich text editors</b> created with 
+        a powerful framework. Made with real-time collaborative editing in mind.
+    </p>
+    <p>Javascript script filesaver.js is downloaded from 
+        <a href="https://github.com/eligrey/FileSaver.js">here</a>.
+        We can use it to save web data to local file, if user permitted it. 
+    </p>
+    <div id="editor">This is some sample content.</div>
+    <p><input type="submit" value="Submit" id="submit"></p>
+    <script>
+        //var FileSaver = require('./filesaver');
+        var getKeys = function(obj){
+            var keys = [];
+            for(var key in obj){
+                keys.push(key);
+            }
+             return keys;
+        }
+        let editor2;
+
+            ClassicEditor
+                    .create( document.querySelector( '#editor' ) )
+                    .then( editor => {
+                        editor2 = editor;
+                            console.log( editor );
+                    } )
+                    .catch( error => {
+                            console.error( error );
+                    } );
+        document.querySelector( '#submit' ).addEventListener( 'click', () => {
+            const editorData = editor2.getData();
+            var blob = new Blob([editorData], {type: "text/plain;charset=utf-8"});
+            saveAs(blob, "data.txt");
+            console.log(editorData)
+        })
+    </script>
+</body>
+</html>

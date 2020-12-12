@@ -1,0 +1,94 @@
+{
+	// Place your qti-demo 工作區 snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Qti30 Item": {
+		"prefix": ["qti-assessment-item"],
+		"body": ["<?xml version=\"1.0\" encoding=\"UTF-8\" ?>",
+			"<qti-assessment-item identifier=\"${1:identifier}\">",
+			  "\t<qti-item-body>",
+				"\t\t<p>${2:題目內容}</p>",
+			  "\t</qti-item-body>",
+			"</qti-assessment-item>"
+			]
+	},
+	"qti-inline-choice-interaction" :{
+		"prefix":["qti-inline-choice-interaction"],
+		"body": [
+			"<qti-inline-choice-interaction required=\"${1:true}\" quota=\"${2|1,2|}\" correct=\"${3|A,B,C,D,E|}\">",
+			"\t<qti-inline-choice>${4:offended}</qti-inline-choice>",
+			"\t<qti-inline-choice>${5:controlled}</qti-inline-choice>",
+			"\t<qti-inline-choice>${6:acquired}</qti-inline-choice>",
+			"\t<qti-inline-choice>${7:supplied}</qti-inline-choice>",
+		  "</qti-inline-choice-interaction>"
+		]
+	},
+	"qti-group-inline-choice-interaction":{
+		"prefix": ["qti-group-inline-choice-item"],
+		"body": ["<qti-group-inline-choice-interaction correct=\"${1:720}\" quota=\"${2:6}\" />"]
+	},
+	"qti-choice-interaction": {
+		"prefix": ["qti-choice-interaction"],
+		"body": ["<qti-choice-interaction cardinality=\"${1:single}\" correct=\"${2:B}\" quota=\"${3:2}\">",
+			"\t<qti-simple-choice>${4:搖滾樂}</qti-simple-choice>",
+			"\t<qti-simple-choice>${5:爵士樂}</qti-simple-choice>",
+			"\t<qti-simple-choice>${6:重金屬音樂}</qti-simple-choice>",
+			"\t<qti-simple-choice>${7:鄉村音樂}</qti-simple-choice>",
+		  "</qti-choice-interaction>"
+	  ]
+	},
+	"qti-gap-match-inteaction": {
+		"prefix":["qti-gap-match-inteaction"],
+		"body":[
+			"<qti-gap-match-interaction>",
+			"\t<qti-gap-text>${1:movable}</qti-gap-text>",
+			"\t<qti-gap-text>${2:installed}</qti-gap-text>",
+			"\t<qti-gap-text>${3:diversified}</qti-gap-text>",
+			"\t<qti-gap-text>${4:problem}</qti-gap-text>",
+			"\t<qti-gap-text>${5:aged}</qti-gap-text>",
+			"\t<qti-gap-text>${6:planning}</qti-gap-text>",
+			"\t<qti-gap-text>${7:measured}</qti-gap-text>",
+			"\t<qti-gap-text>${8:constructing}</qti-gap-text>",
+			"\t<qti-gap-text>${9:exact}</qti-gap-text>",
+			"\t<qti-gap-text>${10:deteriorating}</qti-gap-text>",
+			"\t<qti-gap-text>${11:statue}</qti-gap-text>",
+			"\t<qti-gap-text>${12:religious}</qti-gap-text>",
+			"<p>.......",
+			  "<qti-gap quota=\"1\" correct=\"${13:K}\" /> ....",
+			  "..... <qti-gap quota=\"1\" correct=\"${14:E}\" /> ...",
+			  "....<qti-gap quota=\"1\" correct=\"${15:J}\" /> ....",
+			"</p>",
+			"<p>....",
+			  "...<qti-gap quota=\"1\" correct=\"${16:F}\" /> .....",
+			  "...<qti-gap quota=\"1\" correct=\"${17:G}\" />....",
+			  ".....",
+			  ".... <qti-gap quota=\"1\" correct=\"${18:I}\" /> .....",
+			  "....<qti-gap quota=\"1\" correct=\"${19:B}\" /> ......",
+			"</p>",
+			"<p>....",
+			  "<qti-gap quota=\"1\" correct=\"${20:H}\" /> .....",
+.			  ".. <qti-gap quota=\"1\" correct=\"${21:A}\" /> ....",
+			  ".....",
+			"</p>",
+			"<p>....",
+			  "<qti-gap quota=\"1\" correct=\"${22:D}\" /> .....",
+			  "......",
+			"</p>",
+		  "</qti-gap-match-interaction>"
+		]
+	}
+	
+}
