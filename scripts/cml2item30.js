@@ -39,20 +39,20 @@ module.exports = function cml2item(rawxml, type) {
 		if (cardinality !== 'multiple') {
 			mapping.setAttribute('default-value', '0');
 			var value = imsroot.createElement('qti-value');
-			value.appendChild(imsroot.createTextNode(respId + '_' + correct));
+			value.appendChild(imsroot.createTextNode(correct));
 			correctResponse.appendChild(value);
 			var mapEntry = imsroot.createElement('qti-map-entry');
-			mapEntry.setAttribute('map-key', respId + '_' + correct);
+			mapEntry.setAttribute('map-key', correct);
 			mapEntry.setAttribute('mapped-value', '' + quota);
 			mapping.appendChild(mapEntry);
 		} else {
 			mapping.setAttribute('default-value', '-1');
 			var value = imsroot.createElement('qti-value');
-			value.appendChild(imsroot.createTextNode(respId + '_' + correct));
+			value.appendChild(imsroot.createTextNode(correct));
 			correctResponse.appendChild(value);
 			for (var i = 0; i < correct.length; i++) {
 				var mapEntry = imsroot.createElement('qti-map-entry');
-				mapEntry.setAttribute('map-key', respId + '_' + correct[i]);
+				mapEntry.setAttribute('map-key', correct[i]);
 				mapEntry.setAttribute('mapped-value', '1');
 				mapping.appendChild(mapEntry);
 			}
@@ -71,7 +71,7 @@ module.exports = function cml2item(rawxml, type) {
 		//var simpleChoices = choiceInteraction.getElementsByTagName('simpleChoice')
 		var cursymbol = symbol.indexOf(correct[0]) >= 0 ? symbol : msymbol;
 		for (var i = 0; i < simpleChoices.length; i++) {
-			simpleChoices[i].setAttribute('identifier', respId + '_' + cursymbol[i]);
+			simpleChoices[i].setAttribute('identifier', cursymbol[i]);
 		}
 		if (cardinality !== 'multiple') {
 			var rspcondstr = `<qti-response-condition>
@@ -164,7 +164,7 @@ module.exports = function cml2item(rawxml, type) {
 		//console.log(correct,quota,respId)
 		var responseDeclarationStr = `<qti-response-declaration identifier="${respId}" cardinality="single" base-type="identifier">
             <qti-correct-response>
-            <qti-value>${respId + '_' + correct}</qti-value>
+            <qti-value>${correct}</qti-value>
             </qti-correct-response>
             </qti-response-declaration>`;
 		var responseDeclaration = new DOMParser().parseFromString(responseDeclarationStr).documentElement;
@@ -176,7 +176,7 @@ module.exports = function cml2item(rawxml, type) {
 		var inlineChoices = inlineChoiceInteraction.getElementsByTagName('qti-inline-choice');
 		var cursymbol = symbol.indexOf(correct[0]) >= 0 ? symbol : msymbol;
 		for (var i = 0; i < inlineChoices.length; i++) {
-			inlineChoices[i].setAttribute('identifier', respId + '_' + cursymbol[i]);
+			inlineChoices[i].setAttribute('identifier', cursymbol[i]);
 		}
 
 		var rspcondstr = `<qti-response-condition>
@@ -252,7 +252,7 @@ module.exports = function cml2item(rawxml, type) {
 			// respId = 'resp_' + (respNdx + k)
 			var responseDeclarationStr = `<qti-response-declaration identifier="${respId}" cardinality="single" base-type="identifier">
               <qti-correct-response>
-              <qti-value>${respId + '_' + nsymbol[msymbol.indexOf(correct[k])]}</qti-value>
+              <qti-value>${nsymbol[msymbol.indexOf(correct[k])]}</qti-value>
               </qti-correct-response>
               </qti-response-declaration>`;
 			var responseDeclaration = new DOMParser().parseFromString(responseDeclarationStr).documentElement;
@@ -264,7 +264,7 @@ module.exports = function cml2item(rawxml, type) {
 			//var inlineChoices = inlineChoiceInteraction.getElementsByTagName('inlineChoice')
 			//var cursymbol = symbol.indexOf(correct[0]) >= 0 ? symbol : msymbol
 			for (var i = 0; i < msymbol.length; i++) {
-				var inlineChoiceStr = `<qti-inline-choice identifier="${respId + '_' + nsymbol[i]}">${msymbol[
+				var inlineChoiceStr = `<qti-inline-choice identifier="${nsymbol[i]}">${msymbol[
 					i
 				]}</qti-inline-choice>`;
 				var inlineChoice = new DOMParser().parseFromString(inlineChoiceStr).documentElement;
@@ -307,15 +307,15 @@ module.exports = function cml2item(rawxml, type) {
 		var gapTexts = gapMatchInteraction.getElementsByTagName('qti-gap-text');
 		var cursymbol = symbol.indexOf(gaps[0].getAttribute('correct')[0]) >= 0 ? symbol : msymbol;
 		for (var i = 0; i < gapTexts.length; i++) {
-			gapTexts[i].setAttribute('identifier', respId + '_' + cursymbol[i]);
+			gapTexts[i].setAttribute('identifier', cursymbol[i]);
 			gapTexts[i].setAttribute('match-max', '1');
 			gapTexts[i].setAttribute('match-min', '0');
 		}
 
 		for (var i = 0; i < gaps.length; i++) {
-			gaps[i].setAttribute('identifier', respId + '_gap' + (i + 1));
+			gaps[i].setAttribute('identifier', 'gap' + (i + 1));
 			gaps[i].setAttribute('required', 'false');
-			var correctvalue = respId + '_' + gaps[i].getAttribute('correct');
+			var correctvalue = gaps[i].getAttribute('correct');
 			var correctvalue = correctvalue + ' ' + gaps[i].getAttribute('identifier');
 			var value = imsroot.createElement('qti-value');
 			value.appendChild(imsroot.createTextNode(correctvalue));
