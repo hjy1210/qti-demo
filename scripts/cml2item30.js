@@ -191,6 +191,69 @@ module.exports = function cml2item(rawxml, type) {
             <qti-base-value base-type="float">${quota}</qti-base-value>
           </qti-sum>
         </qti-set-outcome-value>
+	   </qti-response-if>
+	   <qti-set-outcome-value identifier="SCORE_${respNdx}">
+	   <qti-sum>
+		 <qti-variable identifier="SCORE_${respNdx}" />
+		 <qti-base-value base-type="float">0</qti-base-value>
+	   </qti-sum>
+	 </qti-set-outcome-value>
+	<qti-response-else>
+	   </qti-response-else>
+      </qti-response-condition>`;
+		var sumStr = `<qti-set-outcome-value identifier="SCORE">
+        <qti-sum>
+          <qti-variable identifier="SCORE" />
+          <qti-variable identifier="SCORE_${respNdx}" />
+        </qti-sum>
+      </qti-set-outcome-value identifier="SCORE">
+      `;
+		var responseCondition = new DOMParser().parseFromString(rspcondstr).documentElement;
+		responseProcessing.appendChild(responseCondition);
+		responseProcessing.appendChild(new DOMParser().parseFromString(sumStr).documentElement);
+	}
+	function manipulateTextEntryInteraction(node) {
+		var tEI = node;
+		var correct = tEI.getAttribute('correct');
+		var quota = parseFloat(tEI.getAttribute('quota'));
+		tEI.removeAttribute('correct');
+		tEI.removeAttribute('quota');
+		var respId = 'r_' + respNdx;
+
+		var scorendxStr = `<qti-outcome-declaration identifier="SCORE_${respNdx}" cardinality="single"
+      base-type="float">
+        <qti-default-value>
+          <qti-value>0</qti-value>
+        </qti-default-value>
+      </qti-outcome-declaration>`;
+		//console.log("1",new XMLSerializer().serializeToString(outcomeDeclaration))
+		//console.log("2",new XMLSerializer().serializeToString(imsdoc))
+		imsdoc.insertBefore(new DOMParser().parseFromString(scorendxStr).documentElement, endofOutcomeDeclaration);
+
+		//console.log(correct,quota,respId)
+		var responseDeclarationStr = `<qti-response-declaration identifier="${respId}" cardinality="single" base-type="string">
+            <qti-correct-response>
+            <qti-value>${correct}</qti-value>
+            </qti-correct-response>
+            </qti-response-declaration>`;
+		var responseDeclaration = new DOMParser().parseFromString(responseDeclarationStr).documentElement;
+		imsdoc.insertBefore(responseDeclaration, endofResponseDeclaration);
+
+		var textEntryInteraction = tEI; 
+		textEntryInteraction.setAttribute('response-identifier', respId);
+
+		var rspcondstr = `<qti-response-condition>
+       <qti-response-if>
+        <qti-match>
+          <qti-variable identifier="${respId}"/>
+          <qti-correct identifier="${respId}"/>
+        </qti-match>
+        <qti-set-outcome-value identifier="SCORE_${respNdx}">
+          <qti-sum>
+            <qti-variable identifier="SCORE_${respNdx}" />
+            <qti-base-value base-type="float">${quota}</qti-base-value>
+          </qti-sum>
+        </qti-set-outcome-value>
        </qti-response-if>
       </qti-response-condition>`;
 		var sumStr = `<qti-set-outcome-value identifier="SCORE">
@@ -332,7 +395,10 @@ module.exports = function cml2item(rawxml, type) {
 		    <qti-response-if>
 			    <qti-is-null>
 				    <qti-variable identifier="${respId}"/>
-			    </qti-is-null>
+				</qti-is-null>
+				<qti-set-outcome-value identifier="SCORE_${respNdx}">
+					<qti-base-value base-type="float">0.0</qti-base-value>
+				</qti-set-outcome-value>
           <qti-set-outcome-value identifier="SCORE">
             <qti-sum>
               <qti-variable identifier="SCORE_${respNdx}"/>
@@ -374,6 +440,10 @@ module.exports = function cml2item(rawxml, type) {
 				//var iCI = node.childNodes[i]
 				respNdx++;
 				manipulateInlineChoiceInteraction(node.childNodes[i]);
+			} else if (node.childNodes[i].nodeName === 'qti-text-entry-interaction') {
+				//var iCI = node.childNodes[i]
+				respNdx++;
+				manipulateTextEntryInteraction(node.childNodes[i]);
 			} else if (node.childNodes[i].nodeName === 'qti-group-inline-choice-interaction') {
 				//var iCI = node.childNodes[i]
 				respNdx++;

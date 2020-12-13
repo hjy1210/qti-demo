@@ -177,6 +177,33 @@ module.exports=function package2json(zipfile) {
       inlineChoiceInteractions[i].parentNode.replaceChild(select, inlineChoiceInteractions[i])
     }
   }
+  function replaceTextEntryInteractions() {
+    var entryTextInteractions = itemBody.getElementsByTagName("qti-text-entry-interaction")
+    var responseDeclarations = itemDoc.getElementsByTagName('qti-response-declaration')
+    //console.log(inlineChoiceInteractions.length)
+    for (var i = entryTextInteractions.length - 1; i >= 0; i--) {
+      var responseIdentifier = entryTextInteractions[i].getAttribute('response-identifier')
+      var input = itemDoc.parentNode.createElement('input')
+      input.setAttribute("type","text")
+      input.setAttribute("name", responseIdentifier)
+      //console.log(responseIdentifier)
+      /*var inlineChoices = inlineChoiceInteractions[i].getElementsByTagName('qti-inline-choice')
+      var select = itemDoc.parentNode.createElement('select')
+      var option = itemDoc.parentNode.createElement('option')
+      option.appendChild(itemDoc.parentNode.createTextNode('-option-'))
+      select.appendChild(option)
+      for (var j = 0; j < inlineChoices.length; j++) {
+        option = itemDoc.parentNode.createElement('option')
+        option.setAttribute("value",inlineChoices[j].getAttribute('identifier'))
+        option.setAttribute("name",responseIdentifier)
+        moveChildren(inlineChoices[j], option)
+        select.appendChild(option)
+      }*/
+      //moveChildren(inlineChoiceInteractions[i], select)
+      //itemBody.replaceChild(select, inlineChoiceInteractions[i])
+      entryTextInteractions[i].parentNode.replaceChild(input, entryTextInteractions[i])
+    }
+  }
   function replaceGapMatchInteractions() {
     var activeIdentifier = null
     var gaps = []
@@ -277,6 +304,7 @@ module.exports=function package2json(zipfile) {
   var itemBody = itemDoc.getElementsByTagName("qti-item-body")[0]
   replaceChoiceInteractions()
   replaceInlineChoiceInteractions()
+  replaceTextEntryInteractions()
   replaceGapMatchInteractions()
   replaceImages()
   replaceAudios()
