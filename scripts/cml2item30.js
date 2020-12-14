@@ -216,6 +216,7 @@ module.exports = function cml2item(rawxml, type) {
 		var tEI = node;
 		var correct = tEI.getAttribute('correct');
 		var quota = parseFloat(tEI.getAttribute('quota'));
+		tEI.setAttribute('len', correct.length)
 		tEI.removeAttribute('correct');
 		tEI.removeAttribute('quota');
 		var respId = 'r_' + respNdx;

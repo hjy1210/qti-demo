@@ -186,6 +186,9 @@ module.exports=function package2json(zipfile) {
       var input = itemDoc.parentNode.createElement('input')
       input.setAttribute("type","text")
       input.setAttribute("name", responseIdentifier)
+      let len=entryTextInteractions[i].getAttribute('len')
+      input.setAttribute("size",len)  // Specifies the width, in characters
+      input.setAttribute("maxlength",len) // Specifies the maximum number of characters allowed
       //console.log(responseIdentifier)
       /*var inlineChoices = inlineChoiceInteractions[i].getElementsByTagName('qti-inline-choice')
       var select = itemDoc.parentNode.createElement('select')
