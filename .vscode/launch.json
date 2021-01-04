@@ -7,7 +7,7 @@
     {
       "name": "Launch cml",
       "program": "${workspaceFolder}/scripts/cml2json30.js",
-      "args": ["${workspaceFolder}/sat2_phy_2016_21.cml"],
+      "args": ["${workspaceFolder}/sat2_mathb_2016_B_text.cml"],
       "request": "launch",
       "skipFiles": [
         "<node_internals>/**"

@@ -33,3 +33,7 @@ node scripts\cml2json30 sat2_phy_2016_21.cml
 node scripts\cml2json30 sat2_sco_2016_03.cml
 node scripts\cml2json30 telc_sample_1.cml
 node scripts\cml2json30 telc_sample_2.cml
+node scripts\cml2json30 sat2_mathb_2016_A_text.cml
+node scripts\cml2json30 sat2_mathb_2016_B_text.cml
+node scripts\cml2json30 composite.cml
+node scripts\cml2json30 history.cml
